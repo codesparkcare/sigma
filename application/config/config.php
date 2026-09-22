@@ -23,8 +23,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 if (isset($_SERVER['HTTP_HOST'])) {
-    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443) ? 'https://' : 'http://';
-    $config['base_url'] = $protocol . $_SERVER['HTTP_HOST'] . rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
+    $is_local = (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false || strpos($_SERVER['HTTP_HOST'], '127.0.0.1') !== false);
+    $protocol = $is_local ? 'http://' : 'https://';
+    $script_dir = str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME']));
+    $script_dir = ($script_dir === '/' || $script_dir === '.') ? '' : $script_dir;
+    $config['base_url'] = $protocol . $_SERVER['HTTP_HOST'] . rtrim($script_dir, '/') . '/';
 } else {
     $config['base_url'] = 'http://localhost/sigma/';
 }

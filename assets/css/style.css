@@ -3709,28 +3709,7 @@ textarea {
     display: none;
   }
 
-  .metrics-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-
-  .metric-item {
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-    padding-bottom: 12px;
-  }
-
-  .metric-item:last-child {
-    border-bottom: none;
-  }
-
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .why-grid {
-    grid-template-columns: 1fr;
-  }
+  /* Metrics, Services, Why-Grid: now handled by mobile swipe slider below */
 
   .what-we-do-grid {
     grid-template-columns: 1fr;
@@ -6329,5 +6308,153 @@ textarea {
   .btn-more-services .btn-icon-bubble svg {
     width: 12px !important;
     height: 12px !important;
+  }
+}
+
+/* ==========================================================================
+   MOBILE HORIZONTAL SWIPE SLIDERS
+   Sections: Metrics, Services, Why Choose Us, Projects
+   ========================================================================== */
+
+@media (max-width: 768px) {
+
+  /* ── Swipe hint: show on mobile ── */
+  .mobile-swipe-hint {
+    display: flex !important;
+  }
+
+  /* ── METRICS STRIP: Horizontal scrolling row ── */
+  .metrics-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 12px !important;
+    padding: 8px 16px 16px !important;
+    grid-template-columns: unset !important;
+  }
+
+  .metrics-grid::-webkit-scrollbar { display: none; }
+
+  .metric-item {
+    flex: 0 0 72vw !important;
+    min-width: 220px !important;
+    max-width: 280px !important;
+    scroll-snap-align: start !important;
+    border-right: none !important;
+    border-bottom: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 16px !important;
+    padding: 18px 16px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    backdrop-filter: blur(8px) !important;
+  }
+
+  /* ── SERVICES GRID: Horizontal swipe cards ── */
+  .services-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 14px !important;
+    padding: 8px 16px 20px !important;
+    grid-template-columns: unset !important;
+  }
+
+  .services-grid::-webkit-scrollbar { display: none; }
+
+  .service-card {
+    flex: 0 0 80vw !important;
+    min-width: 260px !important;
+    max-width: 300px !important;
+    scroll-snap-align: start !important;
+  }
+
+  /* ── WHY GRID (Glass Lift Cards): Horizontal swipe ── */
+  .why-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 14px !important;
+    padding: 8px 16px 20px !important;
+    grid-template-columns: unset !important;
+  }
+
+  .why-grid::-webkit-scrollbar { display: none; }
+
+  .why-card {
+    flex: 0 0 78vw !important;
+    min-width: 240px !important;
+    max-width: 290px !important;
+    scroll-snap-align: start !important;
+  }
+
+  /* ── PROJECTS GALLERY: Vertical stacked swipeable cards ── */
+  .projects-expand-gallery {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    scroll-behavior: smooth !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    gap: 12px !important;
+    padding: 8px 16px 20px !important;
+    height: auto !important;
+  }
+
+  .projects-expand-gallery::-webkit-scrollbar { display: none; }
+
+  .project-expand-card {
+    flex: 0 0 78vw !important;
+    min-width: 240px !important;
+    max-width: 300px !important;
+    height: 220px !important;
+    scroll-snap-align: start !important;
+    border-radius: 18px !important;
+    transition: box-shadow 0.3s ease, border-color 0.3s ease !important;
+  }
+
+  .project-expand-card.active {
+    height: 220px !important;
+    flex: 0 0 78vw !important;
+  }
+
+  /* ── Swipe hint indicator dots shared ── */
+  .mobile-swipe-hint {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    opacity: 0.6;
+    font-size: 0.72rem;
+    color: #94a3b8;
+    letter-spacing: 0.5px;
+  }
+
+  .mobile-swipe-hint svg {
+    width: 14px;
+    height: 14px;
+    animation: swipeHintBounce 1.4s ease-in-out infinite;
+  }
+
+  @keyframes swipeHintBounce {
+    0%, 100% { transform: translateX(0); opacity: 0.5; }
+    50% { transform: translateX(4px); opacity: 1; }
   }
 }

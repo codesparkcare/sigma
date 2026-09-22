@@ -568,6 +568,12 @@ $this->load->view('includes/header');
 
       </div>
 
+      <!-- Mobile swipe hint -->
+      <div class="mobile-swipe-hint" style="display:none;">
+        <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        Swipe to explore more
+      </div>
+
       <!-- More Services Action Center -->
       <div class="services-action-bottom">
         <a href="<?= site_url('services') ?>" class="btn-more-services">
@@ -1002,6 +1008,11 @@ $this->load->view('includes/header');
         </div>
 
       </div>
+      <!-- Mobile swipe hint -->
+      <div class="mobile-swipe-hint" style="display:none;">
+        <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        Swipe to explore more
+      </div>
     </div>
   </section>
 
@@ -1213,6 +1224,11 @@ $this->load->view('includes/header');
             </div>
           </div>
         <?php endforeach; ?>
+      </div>
+      <!-- Mobile swipe hint -->
+      <div class="mobile-swipe-hint" style="display:none;">
+        <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        Swipe to see all projects
       </div>
 
       <div class="projects-action-center">

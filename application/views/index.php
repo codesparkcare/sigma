@@ -100,7 +100,7 @@ $this->load->view('includes/header');
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
                 </a>
-                <a href="#contact" class="btn-secondary" style="background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.25); color: #ffffff; padding: 13px 26px; border-radius: 50px; font-weight: 600; display: inline-flex; align-items: center; gap: 8px; backdrop-filter: blur(8px);">
+                <a href="#contact" class="btn-secondary hero-btn-quote">
                   <i class="fa-solid fa-file-invoice-dollar" style="color: #ff3333;"></i>
                   <span>Get Instant Quote</span>
                 </a>

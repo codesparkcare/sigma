@@ -22,6 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | If you need to allow multiple domains, remember that this file is still
 | a PHP script and you can easily do that on your own.
 |
+*/
 if (isset($_SERVER['HTTP_HOST'])) {
     $is_local = (strpos($_SERVER['HTTP_HOST'], 'localhost') !== false || strpos($_SERVER['HTTP_HOST'], '127.0.0.1') !== false);
     $protocol = $is_local ? 'http://' : 'https://';

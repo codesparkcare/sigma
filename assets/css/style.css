@@ -3715,9 +3715,50 @@ textarea {
     grid-template-columns: 1fr;
   }
 
+  /* Process Flow Section: Reduced dead space before flow & centered dashed line */
+  .process-section {
+    padding-top: 24px !important;
+  }
+
+  .process-section .section-header-center {
+    margin-bottom: 16px !important;
+  }
+
+  .process-pill-tag {
+    margin-bottom: 8px !important;
+    font-size: 0.72rem !important;
+    padding: 3px 12px !important;
+  }
+
+  .process-section .section-title {
+    margin-bottom: 8px !important;
+    font-size: clamp(1.4rem, 5vw, 1.8rem) !important;
+  }
+
+  .process-section .section-desc {
+    font-size: 0.84rem !important;
+    line-height: 1.45 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .process-flow-container {
+    margin-top: 10px !important;
+    padding: 6px 6px 18px !important;
+  }
+
+  .process-flow-track {
+    padding: 20px 10px 24px !important;
+  }
+
   .step-circle {
-    width: 54px;
-    height: 54px;
+    width: 54px !important;
+    height: 54px !important;
+  }
+
+  .step-num-badge {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 0.82rem !important;
   }
 
   .step-num {
@@ -3725,11 +3766,14 @@ textarea {
   }
 
   .step-label {
-    font-size: 0.86rem;
+    font-size: 0.84rem !important;
+    margin-top: 12px !important;
   }
 
+  /* Centered perfectly through the 54px circles (track padding 20px + node padding 20px + half circle 27px = 67px) */
   .flow-dashed-line {
-    top: 47px;
+    top: 67px !important;
+    transform: translateY(-50%) !important;
   }
 
   .projects-expand-gallery {

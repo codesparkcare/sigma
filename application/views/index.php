@@ -1137,6 +1137,12 @@ $this->load->view('includes/header');
         </div>
       </div>
 
+      <!-- Mobile swipe hint -->
+      <div class="mobile-swipe-hint" style="display:none;">
+        <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+        Swipe to view all 7 steps
+      </div>
+
     </div>
   </section>
 

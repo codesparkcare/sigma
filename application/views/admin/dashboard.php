@@ -1,25 +1,9 @@
 <div class="row g-4 mb-4">
-    <!-- Stat 1: Sliders -->
+    <!-- Stat 1: Services -->
     <div class="col-sm-6 col-xl-3">
         <div class="admin-card mb-0 p-4 d-flex align-items-center justify-content-between">
             <div>
-                <div class="text-muted text-uppercase fw-bold" style="font-size: 0.75rem; letter-spacing: 0.8px;">Hero Sliders</div>
-                <div class="fs-2 fw-bold text-dark mt-1"><?= $count_sliders ?></div>
-                <a href="<?= site_url('admin/sliders') ?>" class="text-decoration-none text-danger fw-semibold" style="font-size: 0.82rem;">
-                    Manage Sliders <i class="fa-solid fa-arrow-right ms-1"></i>
-                </a>
-            </div>
-            <div style="width: 52px; height: 52px; border-radius: 12px; background: rgba(230, 0, 0, 0.1); color: #e60000; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
-                <i class="fa-solid fa-images"></i>
-            </div>
-        </div>
-    </div>
-
-    <!-- Stat 2: Services -->
-    <div class="col-sm-6 col-xl-3">
-        <div class="admin-card mb-0 p-4 d-flex align-items-center justify-content-between">
-            <div>
-                <div class="text-muted text-uppercase fw-bold" style="font-size: 0.75rem; letter-spacing: 0.8px;">Elevator Services</div>
+                <div class="text-muted text-uppercase fw-bold" style="font-size: 0.75rem; letter-spacing: 0.8px;">Services</div>
                 <div class="fs-2 fw-bold text-dark mt-1"><?= $count_services ?></div>
                 <a href="<?= site_url('admin/services') ?>" class="text-decoration-none text-danger fw-semibold" style="font-size: 0.82rem;">
                     Manage Services <i class="fa-solid fa-arrow-right ms-1"></i>
@@ -31,11 +15,11 @@
         </div>
     </div>
 
-    <!-- Stat 3: Projects -->
+    <!-- Stat 2: Total Projects -->
     <div class="col-sm-6 col-xl-3">
         <div class="admin-card mb-0 p-4 d-flex align-items-center justify-content-between">
             <div>
-                <div class="text-muted text-uppercase fw-bold" style="font-size: 0.75rem; letter-spacing: 0.8px;">Portfolio Projects</div>
+                <div class="text-muted text-uppercase fw-bold" style="font-size: 0.75rem; letter-spacing: 0.8px;">Total Projects</div>
                 <div class="fs-2 fw-bold text-dark mt-1"><?= $count_projects ?></div>
                 <a href="<?= site_url('admin/projects') ?>" class="text-decoration-none text-danger fw-semibold" style="font-size: 0.82rem;">
                     Manage Projects <i class="fa-solid fa-arrow-right ms-1"></i>
@@ -47,7 +31,7 @@
         </div>
     </div>
 
-    <!-- Stat 4: Reviews -->
+    <!-- Stat 3: Client Reviews -->
     <div class="col-sm-6 col-xl-3">
         <div class="admin-card mb-0 p-4 d-flex align-items-center justify-content-between">
             <div>
@@ -59,6 +43,22 @@
             </div>
             <div style="width: 52px; height: 52px; border-radius: 12px; background: rgba(245, 158, 11, 0.1); color: #f59e0b; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
                 <i class="fa-solid fa-star"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stat 4: Contact / Inquiries -->
+    <div class="col-sm-6 col-xl-3">
+        <div class="admin-card mb-0 p-4 d-flex align-items-center justify-content-between">
+            <div>
+                <div class="text-muted text-uppercase fw-bold" style="font-size: 0.75rem; letter-spacing: 0.8px;">Contact</div>
+                <div class="fs-2 fw-bold text-dark mt-1"><?= $count_enquiries ?></div>
+                <a href="<?= site_url('admin/enquiries') ?>" class="text-decoration-none text-danger fw-semibold" style="font-size: 0.82rem;">
+                    View Inquiries <i class="fa-solid fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+            <div style="width: 52px; height: 52px; border-radius: 12px; background: rgba(230, 0, 0, 0.1); color: #e60000; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+                <i class="fa-solid fa-envelope-open-text"></i>
             </div>
         </div>
     </div>

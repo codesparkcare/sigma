@@ -63,6 +63,14 @@
             </a>
         </li>
 
+        <li class="nav-section-title">System & Settings</li>
+        <li>
+            <a href="<?= site_url('admin/smtp_settings') ?>" class="<?= strpos(uri_string(), 'admin/smtp') !== false ? 'active' : '' ?>">
+                <i class="fa-solid fa-envelope-circle-check"></i>
+                <span>SMTP Configuration</span>
+            </a>
+        </li>
+
         <li class="nav-section-title">Live Site</li>
         <li>
             <a href="<?= site_url('') ?>" target="_blank">
@@ -94,14 +102,26 @@
                 <i class="fa-solid fa-external-link"></i>
                 <span>View Website</span>
             </a>
-            <div class="d-flex align-items-center gap-2 border-start ps-3">
-                <div class="d-none d-md-block text-end">
-                    <div class="fw-bold text-dark" style="font-size: 0.88rem;">Admin Manager</div>
-                    <div class="text-muted" style="font-size: 0.75rem;">Sigma Elevators Dubai</div>
-                </div>
-                <div style="width: 38px; height: 38px; border-radius: 50%; background: #e60000; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">
-                    SE
-                </div>
+            <div class="dropdown border-start ps-3">
+                <a href="javascript:void(0);" class="d-flex align-items-center gap-2 text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="d-none d-md-block text-end">
+                        <div class="fw-bold text-dark" style="font-size: 0.88rem;"><?= htmlspecialchars($this->session->userdata('admin_name') ?: 'Admin') ?></div>
+                        <div class="text-muted" style="font-size: 0.75rem;">@<?= htmlspecialchars($this->session->userdata('admin_username') ?: 'admin') ?></div>
+                    </div>
+                    <div style="width: 38px; height: 38px; border-radius: 50%; background: #e60000; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.9rem;">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                    <li><h6 class="dropdown-header">Signed in as <strong><?= htmlspecialchars($this->session->userdata('admin_username') ?: 'admin') ?></strong></h6></li>
+                    <li><a class="dropdown-item" href="<?= site_url('admin/smtp_settings') ?>"><i class="fa-solid fa-envelope-circle-check text-muted me-2"></i> SMTP Settings</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <a class="dropdown-item text-danger fw-semibold" href="<?= site_url('admin/logout') ?>">
+                            <i class="fa-solid fa-right-from-bracket me-2"></i> Sign Out
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </header>

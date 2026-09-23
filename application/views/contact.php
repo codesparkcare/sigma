@@ -71,15 +71,16 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
   }
   .contact-info-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(230, 0, 0, 0.1);
-    border-color: rgba(230, 0, 0, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    border-color: #cbd5e1;
   }
   .contact-card-icon {
     width: 56px;
     height: 56px;
     border-radius: 14px;
-    background: rgba(230, 0, 0, 0.08);
-    color: #e60000;
+    background: #f1f5f9;
+    color: #0f172a;
+    border: 1px solid #e2e8f0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -99,13 +100,13 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
     margin: 0;
   }
   .contact-card-link {
-    color: #e60000;
+    color: #0f172a;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
     transition: color 0.2s;
   }
   .contact-card-link:hover {
-    color: #b30000;
+    color: #e11d48;
     text-decoration: underline;
   }
 
@@ -153,9 +154,9 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
   }
   .form-input:focus, .form-select:focus, .form-textarea:focus {
     outline: none;
-    border-color: #e60000;
+    border-color: #0f172a;
     background: #ffffff;
-    box-shadow: 0 0 0 4px rgba(230, 0, 0, 0.1);
+    box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.08);
   }
   .form-textarea {
     min-height: 120px;
@@ -195,7 +196,7 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
   .form-submit-btn {
     width: 100%;
     padding: 15px 28px;
-    background: #e60000;
+    background: #e11d48;
     color: #ffffff;
     font-weight: 700;
     font-size: 1rem;
@@ -209,9 +210,9 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
     transition: all 0.2s;
   }
   .form-submit-btn:hover {
-    background: #cc0000;
+    background: #be123c;
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(230, 0, 0, 0.3);
+    box-shadow: 0 8px 24px rgba(225, 29, 72, 0.35);
   }
   .alert-notice {
     padding: 14px 18px;
@@ -235,7 +236,7 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
         <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
         <span>Contact Us</span>
       </div>
-      <div class="hero-badge" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(230,0,0,0.15); border: 1px solid rgba(230,0,0,0.3); color: #ff3333; padding: 6px 16px; border-radius: 30px; font-size: 0.85rem; font-weight: 700; margin-bottom: 16px;">
+      <div class="hero-badge" style="display: inline-flex; align-items: center; gap: 8px; background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.25); color: #ffffff; padding: 6px 16px; border-radius: 30px; font-size: 0.85rem; font-weight: 700; margin-bottom: 16px;">
         <i class="fa-solid fa-phone-volume"></i> Direct Line to Dubai Engineering HQ
       </div>
       <h1 class="page-hero-title"><?= htmlspecialchars($contact['heading']) ?></h1>
@@ -264,7 +265,7 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
             Office: <a href="tel:<?= preg_replace('/[^0-9+]/', '', $contact['phone']) ?>" class="contact-card-link"><?= htmlspecialchars($contact['phone']) ?></a>
           </p>
           <p class="contact-card-desc">
-            24/7 Emergency: <a href="tel:<?= preg_replace('/[^0-9+]/', '', $contact['emergency_phone']) ?>" class="contact-card-link" style="color: #e60000; font-weight: 700;"><?= htmlspecialchars($contact['emergency_phone']) ?></a>
+            24/7 Emergency: <a href="tel:<?= preg_replace('/[^0-9+]/', '', $contact['emergency_phone']) ?>" class="contact-card-link" style="color: #0f172a; font-weight: 700;"><?= htmlspecialchars($contact['emergency_phone']) ?></a>
           </p>
         </div>
 
@@ -295,18 +296,18 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
           <form id="contactForm" action="<?= site_url('welcome/save_enquiry') ?>" method="POST">
             <div class="row g-3" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
               <div class="form-group" style="margin-bottom: 0;">
-                <label for="name">Your Full Name <span style="color:#e60000;">*</span></label>
+                <label for="name">Your Full Name <span style="color:#e11d48;">*</span></label>
                 <input type="text" id="name" name="name" class="form-input" required>
               </div>
               <div class="form-group" style="margin-bottom: 0;">
-                <label for="email">Email Address <span style="color:#e60000;">*</span></label>
+                <label for="email">Email Address <span style="color:#e11d48;">*</span></label>
                 <input type="email" id="email" name="email" class="form-input" required>
               </div>
             </div>
 
             <div class="row g-3" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px;">
               <div class="form-group" style="margin-bottom: 0;">
-                <label for="phone">Phone / WhatsApp (UAE) <span style="color:#e60000;">*</span></label>
+                <label for="phone">Phone / WhatsApp (UAE) <span style="color:#e11d48;">*</span></label>
                 <div class="contact-phone-wrap">
                   <span class="country-prefix-badge">
                     <span class="flag-icon">🇦🇪</span>
@@ -330,7 +331,7 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
             </div>
 
             <div class="form-group" style="margin-top: 16px;">
-              <label for="message">Project Details or Inquiry <span style="color:#e60000;">*</span></label>
+              <label for="message">Project Details or Inquiry <span style="color:#e11d48;">*</span></label>
               <textarea id="message" name="message" class="form-textarea" rows="4" required></textarea>
             </div>
 

@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 $base_url = base_url();
 $title = 'Elevator Services & Solutions | Sigma Height Elevators Dubai';
-$meta_description = 'Explore German-engineered elevator services in Dubai: new installation, 24/7 maintenance AMC, emergency repairs, modernization, and luxury villa lifts.';
+$meta_description = 'Explore precision-engineered elevator services in Dubai: new installation, 24/7 maintenance AMC, emergency repairs, modernization, and luxury villa lifts.';
 $this->load->view('includes/header', ['title' => $title, 'meta_description' => $meta_description]);
 ?>
 
@@ -167,7 +167,7 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
     flex: 1;
     text-align: center;
     padding: 10px 16px;
-    background: #e60000;
+    background: #e11d48;
     color: #ffffff;
     font-weight: 600;
     font-size: 0.88rem;
@@ -176,8 +176,9 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
     transition: all 0.2s;
   }
   .btn-quote:hover {
-    background: #cc0000;
+    background: #be123c;
     color: #ffffff;
+    box-shadow: 0 4px 14px rgba(225, 29, 72, 0.35);
   }
 </style>
 
@@ -190,7 +191,7 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
         <span>Our Services</span>
       </div>
       <h1 class="page-hero-title">Expert Elevator Services & <span>Vertical Solutions</span></h1>
-      <p class="page-hero-desc">From bespoke luxury villa lifts to commercial high-speed towers, our German-engineered elevator services comply with strict Dubai Civil Defense and European EN-81 safety standards.</p>
+      <p class="page-hero-desc">From bespoke luxury villa lifts to commercial high-speed towers, our precision-engineered elevator services comply with strict Dubai Civil Defense and European EN-81 safety standards.</p>
     </div>
   </section>
 

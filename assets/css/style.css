@@ -6,12 +6,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap');
 
 :root {
-  /* Brand Colors */
-  --primary-red: #e60000;
-  --primary-red-hover: #c40000;
+  /* Brand Colors - Light Red / Soft Crimson ONLY for Buttons & Interactive Hovers */
+  --primary-red: #e11d48;
+  --primary-red-hover: #be123c;
   --primary-red-light: #fff1f2;
-  --primary-red-border: rgba(230, 0, 0, 0.2);
-  --primary-red-glow: rgba(230, 0, 0, 0.25);
+  --primary-red-border: rgba(225, 29, 72, 0.18);
+  --primary-red-glow: rgba(225, 29, 72, 0.28);
+
+  /* Architectural Obsidian & Platinum Slate System (Timeless Luxury Engineering) */
+  --accent-color: #0f172a;
+  --accent-color-hover: #1e293b;
+  --accent-color-light: #f1f5f9;
+  --accent-color-border: #cbd5e1;
+  --accent-platinum-glow: #e2e8f0;
 
   /* Bright Theme Neutral Palette */
   --bg-page: #ffffff;
@@ -29,8 +36,8 @@
   --text-white: #ffffff;
 
   /* Accents */
-  --accent-gold: #b45309;
-  --accent-gold-bg: #fef3c7;
+  --accent-slate: #0f172a;
+  --accent-slate-bg: #f1f5f9;
   --accent-silver: #64748b;
 
   /* Typography - Clean, Proportional, Executive */
@@ -46,7 +53,7 @@
 
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
   --shadow-card: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
-  --shadow-card-hover: 0 20px 35px -8px rgba(230, 0, 0, 0.12), 0 10px 15px -3px rgba(15, 23, 42, 0.05);
+  --shadow-card-hover: 0 20px 35px -8px rgba(225, 29, 72, 0.12), 0 10px 15px -3px rgba(15, 23, 42, 0.05);
   --shadow-header: 0 4px 20px rgba(0, 0, 0, 0.05);
 
   --transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -499,9 +506,9 @@ textarea {
   align-items: center;
   align-self: flex-start;
   gap: 8px;
-  background: rgba(230, 0, 0, 0.18);
-  border: 1px solid rgba(230, 0, 0, 0.35);
-  color: #ff4d4d;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #f8fafc;
   padding: 5px 14px;
   border-radius: var(--radius-full);
   font-size: 0.78rem;
@@ -540,7 +547,7 @@ textarea {
 }
 
 .hero-title span.highlight {
-  color: #ff3333;
+  color: #f8fafc;
 }
 
 .hero-subtitle {
@@ -622,7 +629,7 @@ textarea {
   gap: 8px;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(230, 0, 0, 0.4);
+  box-shadow: 0 4px 15px rgba(225, 29, 72, 0.35);
   transition: var(--transition);
 }
 
@@ -630,7 +637,7 @@ textarea {
   background: var(--primary-red-hover);
   color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(230, 0, 0, 0.55);
+  box-shadow: 0 8px 22px rgba(225, 29, 72, 0.45);
 }
 
 .btn-secondary {
@@ -715,9 +722,9 @@ textarea {
    BRIGHT METRICS STRIP
    ========================================================================== */
 .trust-metrics-strip {
-  background: linear-gradient(135deg, #0f172a 0%, #1e0a0a 50%, #2d0808 100%);
-  border-bottom: 3px solid rgba(230, 0, 0, 0.4);
-  border-top: 1px solid rgba(230, 0, 0, 0.2);
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0b1120 100%);
+  border-bottom: 3px solid #334155;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding: 38px 0;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
   position: relative;
@@ -753,12 +760,12 @@ textarea {
   width: 50px;
   height: 50px;
   border-radius: 12px;
-  background: var(--primary-red-light);
-  border: 1px solid #fecaca;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--primary-red);
+  color: #f8fafc;
   flex-shrink: 0;
 }
 
@@ -778,7 +785,7 @@ textarea {
 }
 
 .metric-number span.plus {
-  color: var(--primary-red);
+  color: #94a3b8;
 }
 
 .metric-label {
@@ -807,9 +814,9 @@ textarea {
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  background: var(--primary-red-light);
-  border: 1px solid #fecaca;
-  color: var(--primary-red);
+  background: var(--accent-color-light);
+  border: 1px solid var(--accent-color-border);
+  color: var(--accent-color);
   padding: 4px 14px;
   border-radius: var(--radius-full);
   font-size: 0.76rem;
@@ -830,7 +837,7 @@ textarea {
 }
 
 .section-title span.accent {
-  color: var(--primary-red);
+  color: var(--accent-color);
 }
 
 .section-desc {
@@ -1309,7 +1316,7 @@ textarea {
   right: 24px;
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-left: 4px solid var(--primary-red);
+  border-left: 4px solid var(--accent-color);
   border-radius: var(--radius-sm);
   padding: 14px 20px;
   display: flex;
@@ -1322,7 +1329,7 @@ textarea {
   font-family: var(--font-heading);
   font-size: 2rem;
   font-weight: 800;
-  color: var(--primary-red);
+  color: var(--accent-color);
   line-height: 1;
 }
 
@@ -1355,7 +1362,7 @@ textarea {
 .about-pillar-item svg {
   width: 18px;
   height: 18px;
-  color: var(--primary-red);
+  color: var(--accent-color);
   flex-shrink: 0;
   margin-top: 3px;
 }
@@ -1390,16 +1397,16 @@ textarea {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 30% 50%, rgba(230, 0, 0, 0.06) 0%, transparent 65%),
+  background: radial-gradient(ellipse at 30% 50%, rgba(255, 255, 255, 0.04) 0%, transparent 65%),
     radial-gradient(ellipse at 70% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 60%);
   pointer-events: none;
 }
 
 /* Override section title & desc colors for dark background */
 .services-section .section-tagline {
-  background: rgba(230, 0, 0, 0.15);
-  border-color: rgba(230, 0, 0, 0.35);
-  color: #ff6666;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #f8fafc;
 }
 
 .services-section .section-title {
@@ -1422,7 +1429,7 @@ textarea {
   background: rgba(255, 255, 255, 0.04);
   border-radius: var(--radius-md);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-top: 3px solid var(--primary-red);
+  border-top: 3px solid #64748b;
   padding: 30px 24px 26px;
   display: flex;
   flex-direction: column;
@@ -1436,7 +1443,7 @@ textarea {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(230, 0, 0, 0.07) 0%, transparent 60%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -1445,7 +1452,7 @@ textarea {
   transform: translateY(-8px);
   background: rgba(255, 255, 255, 0.08);
   border-color: var(--primary-red);
-  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(230, 0, 0, 0.3);
+  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(225, 29, 72, 0.25);
 }
 
 .service-card:hover::after {
@@ -1464,12 +1471,12 @@ textarea {
   width: 54px;
   height: 54px;
   border-radius: 14px;
-  background: rgba(230, 0, 0, 0.15);
-  border: 1.5px solid rgba(230, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ff5555;
+  color: #f8fafc;
   margin-bottom: 20px;
   transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   flex-shrink: 0;
@@ -1479,7 +1486,7 @@ textarea {
   background: var(--primary-red);
   color: #ffffff;
   transform: scale(1.1) rotate(-3deg);
-  box-shadow: 0 8px 24px rgba(230, 0, 0, 0.45);
+  box-shadow: 0 8px 24px rgba(225, 29, 72, 0.45);
   border-color: var(--primary-red);
 }
 
@@ -1512,7 +1519,7 @@ textarea {
   gap: 8px;
   font-size: 0.8rem;
   font-weight: 700;
-  color: #ff5555;
+  color: #cbd5e1;
   text-transform: uppercase;
   letter-spacing: 0.8px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -1523,7 +1530,7 @@ textarea {
 }
 
 .service-footer-cta:hover {
-  color: #ff3333;
+  color: var(--primary-red);
   gap: 12px;
 }
 
@@ -1570,9 +1577,9 @@ textarea {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: rgba(230, 0, 0, 0.25);
-  border: 1px solid rgba(230, 0, 0, 0.4);
-  color: #ff4d4d;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #f8fafc;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1584,7 +1591,7 @@ textarea {
   color: #ffffff;
   border-color: var(--primary-red);
   transform: translateY(-3px);
-  box-shadow: 0 16px 36px rgba(230, 0, 0, 0.45);
+  box-shadow: 0 16px 36px rgba(225, 29, 72, 0.45);
 }
 
 .btn-more-services:hover .btn-icon-bubble {
@@ -2838,9 +2845,9 @@ textarea {
 }
 
 .contact-section .section-tagline {
-  background: #fee2e2;
-  color: #dc2626;
-  border: 1px solid #fecaca;
+  background: var(--accent-color-light);
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color-border);
 }
 
 .contact-section .section-title {
@@ -2914,20 +2921,20 @@ textarea {
 
 .contact-info-card:hover {
   transform: translateY(-3px) translateX(4px);
-  border-color: rgba(227, 24, 55, 0.4);
-  box-shadow: 0 12px 30px rgba(227, 24, 55, 0.1), 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-color: rgba(225, 29, 72, 0.4);
+  box-shadow: 0 12px 30px rgba(225, 29, 72, 0.12), 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .contact-info-icon {
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: #fee2e2;
-  border: 1px solid #fecaca;
+  background: var(--accent-color-light);
+  border: 1px solid var(--accent-color-border);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--primary-red);
+  color: var(--accent-color);
   flex-shrink: 0;
   transition: all 0.3s ease;
 }
@@ -2937,7 +2944,7 @@ textarea {
   color: #ffffff;
   border-color: var(--primary-red);
   transform: scale(1.08);
-  box-shadow: 0 6px 16px rgba(227, 24, 55, 0.35);
+  box-shadow: 0 6px 16px rgba(225, 29, 72, 0.35);
 }
 
 .contact-info-icon svg {
@@ -2976,7 +2983,7 @@ textarea {
 }
 
 .contact-info-value .emergency-tag a {
-  color: var(--primary-red);
+  color: var(--accent-color);
   font-weight: 700;
 }
 
@@ -3074,7 +3081,7 @@ textarea {
 .contact-trust-item svg {
   width: 16px;
   height: 16px;
-  color: var(--primary-red);
+  color: var(--accent-color);
   flex-shrink: 0;
 }
 
@@ -3082,7 +3089,7 @@ textarea {
 .contact-form-card {
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-top: 4px solid var(--primary-red);
+  border-top: 4px solid var(--accent-color);
   border-radius: 24px;
   padding: 40px;
   box-shadow: 0 20px 45px -12px rgba(15, 23, 42, 0.12),
@@ -3094,9 +3101,9 @@ textarea {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: #fee2e2;
-  border: 1px solid #fecaca;
-  color: #dc2626;
+  background: var(--accent-color-light);
+  border: 1px solid var(--accent-color-border);
+  color: var(--accent-color);
   font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -3158,7 +3165,7 @@ textarea {
 }
 
 .required-star {
-  color: #dc2626;
+  color: var(--primary-red);
   font-weight: 900;
 }
 
@@ -3228,7 +3235,7 @@ textarea {
 }
 
 .input-icon-wrap:focus-within .field-icon {
-  color: var(--primary-red);
+  color: var(--accent-color);
 }
 
 .form-field input:focus,
@@ -3236,15 +3243,15 @@ textarea {
 .form-field textarea:focus {
   outline: none;
   background: #ffffff;
-  border-color: var(--primary-red);
-  box-shadow: 0 0 0 4px rgba(227, 24, 55, 0.12), 0 4px 12px rgba(0, 0, 0, 0.04);
+  border-color: #0f172a;
+  box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.1), 0 4px 12px rgba(0, 0, 0, 0.04);
   color: #0f172a;
 }
 
 .form-submit-btn {
   position: relative;
   width: 100%;
-  background: linear-gradient(135deg, #e31837 0%, #b91c1c 100%);
+  background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
   color: #ffffff;
   padding: 15px 28px;
   border-radius: 12px;
@@ -3254,7 +3261,7 @@ textarea {
   letter-spacing: 0.8px;
   border: none;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(227, 24, 55, 0.35);
+  box-shadow: 0 8px 24px rgba(225, 29, 72, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3279,9 +3286,9 @@ textarea {
 }
 
 .form-submit-btn:hover {
-  background: linear-gradient(135deg, #ff1a3c 0%, #cc0000 100%);
+  background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(227, 24, 55, 0.5);
+  box-shadow: 0 12px 30px rgba(225, 29, 72, 0.5);
 }
 
 .form-submit-btn .btn-icon {
@@ -4364,6 +4371,75 @@ textarea {
 
 @media (max-width: 992px) {
   .scroll-elevator-shaft {
+    display: flex;
+    right: 8px;
+    z-index: 990;
+  }
+
+  .shaft-container {
+    height: 210px;
+    width: 24px;
+    padding: 8px 0;
+    border-radius: 12px;
+    background: rgba(11, 19, 41, 0.78);
+  }
+
+  .shaft-car-indicator {
+    width: 17px;
+    height: 18px;
+  }
+
+  .shaft-car-indicator svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .shaft-floor-stop {
+    width: 15px;
+    height: 15px;
+    font-size: 0.5rem;
+  }
+
+  .shaft-tooltip {
+    right: 28px;
+    font-size: 0.65rem;
+    padding: 3px 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .scroll-elevator-shaft {
+    right: 4px;
+  }
+
+  .shaft-container {
+    height: 195px;
+    width: 22px;
+    padding: 6px 0;
+    border-radius: 10px;
+    background: rgba(11, 19, 41, 0.85);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+  }
+
+  .shaft-car-indicator {
+    width: 15px;
+    height: 16px;
+    border-radius: 3px;
+    box-shadow: 0 0 8px rgba(230, 0, 0, 0.85);
+  }
+
+  .shaft-car-indicator svg {
+    width: 9px;
+    height: 9px;
+  }
+
+  .shaft-floor-stop {
+    width: 14px;
+    height: 14px;
+    font-size: 0.44rem;
+  }
+
+  .shaft-tooltip {
     display: none;
   }
 }
@@ -4427,9 +4503,9 @@ textarea {
   gap: 8px;
   font-family: var(--font-mono);
   font-size: 0.74rem;
-  color: #38bdf8;
-  background: rgba(56, 189, 248, 0.1);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 4px 12px;
   border-radius: 20px;
 }
@@ -4496,7 +4572,7 @@ textarea {
   height: 4px;
   background: #ffffff;
   border-radius: 50%;
-  box-shadow: 0 0 10px #ffffff, 0 0 20px #38bdf8;
+  box-shadow: 0 0 10px #ffffff, 0 0 20px rgba(255, 255, 255, 0.8);
   animation: starlightTwinkle 1.8s infinite ease-in-out;
 }
 
@@ -5556,7 +5632,7 @@ textarea {
 }
 
 /* ==========================================================================
-   CINEMATIC LUXURY ELEVATOR PRELOADER & DOOR OPENING ANIMATION
+   AUTHENTIC LUXURY PASSENGER LIFT PRELOADER & MOTORIZED SLIDING DOORS
    ========================================================================== */
 .elevator-preloader {
   position: fixed;
@@ -5564,7 +5640,7 @@ textarea {
   width: 100vw;
   height: 100vh;
   z-index: 999999;
-  background: #050811;
+  background: #03060c;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5572,9 +5648,9 @@ textarea {
   user-select: none;
   opacity: 1;
   visibility: visible;
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              visibility 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .elevator-preloader.fade-out {
@@ -5584,41 +5660,126 @@ textarea {
   transform: scale(1.04);
 }
 
-/* Interior Revealed Cabin Stage */
+/* Elevator Entrance Frame (Hallway Architrave & Jambs) */
+.preloader-hallway-frame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 28;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.95);
+}
+
+.hallway-top-casing {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 52px;
+  background: linear-gradient(180deg, #090e1a 0%, #1e293b 60%, #334155 100%);
+  border-bottom: 2px solid #94a3b8;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.85);
+}
+
+.hallway-left-jamb,
+.hallway-right-jamb {
+  position: absolute;
+  top: 52px;
+  bottom: 0;
+  width: 20px;
+  background: linear-gradient(90deg, #1e293b 0%, #475569 50%, #334155 100%);
+  z-index: 29;
+}
+.hallway-left-jamb { left: 0; border-right: 1px solid rgba(255, 255, 255, 0.25); }
+.hallway-right-jamb { right: 0; border-left: 1px solid rgba(255, 255, 255, 0.25); }
+
+/* Revealed Luxury Elevator Cabin Interior (Inside Stage) */
 .preloader-cabin-stage {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at center, #0f1c38 0%, #080f1e 50%, #03060c 100%);
+  background: radial-gradient(circle at center, #0f1c38 0%, #0a1122 45%, #03060c 100%);
   z-index: 1;
   overflow: hidden;
 }
 
+/* Cabin Ceiling Downlights Bar */
+.cabin-ceiling-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(180deg, #111827 0%, rgba(17, 24, 39, 0) 100%);
+  display: flex;
+  justify-content: space-around;
+  padding: 0 15%;
+  z-index: 4;
+}
+
+.ceiling-spot {
+  position: relative;
+  width: 24px;
+  height: 8px;
+  background: #ffffff;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 0 20px 8px rgba(255, 255, 255, 0.9), 0 0 45px 15px rgba(56, 189, 248, 0.5);
+}
+
+.ceiling-spot::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 380px;
+  background: radial-gradient(ellipse at top, rgba(255, 255, 255, 0.15) 0%, rgba(56, 189, 248, 0.05) 40%, transparent 70%);
+  clip-path: polygon(45% 0%, 55% 0%, 100% 100%, 0% 100%);
+  pointer-events: none;
+}
+
 .preloader-ambient-glow {
   position: absolute;
-  width: 600px;
-  height: 600px;
+  width: 650px;
+  height: 650px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(230, 0, 0, 0.22) 0%, rgba(212, 175, 55, 0.08) 45%, transparent 70%);
-  filter: blur(40px);
+  background: radial-gradient(circle, rgba(230, 0, 0, 0.25) 0%, rgba(212, 175, 55, 0.1) 45%, transparent 70%);
+  filter: blur(50px);
   pointer-events: none;
   animation: ambientPulse 3s ease-in-out infinite alternate;
 }
 
 @keyframes ambientPulse {
-  0% { transform: scale(0.85); opacity: 0.6; }
+  0% { transform: scale(0.88); opacity: 0.6; }
   100% { transform: scale(1.15); opacity: 1; }
 }
 
 .preloader-starlight-pattern {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
-  background-size: 32px 32px;
-  opacity: 0.4;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.35;
   pointer-events: none;
+}
+
+/* Luxury Cabin Wall Panels */
+.cabin-wall-panels {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.4;
+}
+
+.cabin-wall-panel {
+  flex: 1;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 1px solid rgba(0, 0, 0, 0.6);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, transparent 100%);
 }
 
 /* Logo Showcase Inside Cabin */
@@ -5629,12 +5790,12 @@ textarea {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 20px;
-  max-width: 600px;
+  padding: 24px;
+  max-width: 640px;
   transform: scale(0.92);
   opacity: 0.3;
-  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .elevator-preloader.doors-open .preloader-logo-showcase {
@@ -5649,25 +5810,25 @@ textarea {
 
 .preloader-halo-pulse {
   position: absolute;
-  inset: -20px;
+  inset: -25px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(230, 0, 0, 0.35) 0%, transparent 70%);
-  filter: blur(15px);
-  animation: logoGlowPulse 2s ease-in-out infinite;
+  background: radial-gradient(circle, rgba(230, 0, 0, 0.4) 0%, transparent 70%);
+  filter: blur(20px);
+  animation: logoGlowPulse 2.2s ease-in-out infinite;
 }
 
 @keyframes logoGlowPulse {
   0%, 100% { transform: scale(1); opacity: 0.5; }
-  50% { transform: scale(1.2); opacity: 0.9; }
+  50% { transform: scale(1.22); opacity: 0.95; }
 }
 
 .preloader-logo-img {
   position: relative;
   z-index: 2;
-  width: 280px;
-  max-width: 80vw;
+  width: 290px;
+  max-width: 82vw;
   height: auto;
-  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.3)) drop-shadow(0 0 45px rgba(230, 0, 0, 0.5));
+  filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.3)) drop-shadow(0 0 50px rgba(230, 0, 0, 0.6));
 }
 
 .preloader-brand-motto {
@@ -5694,24 +5855,24 @@ textarea {
 
 /* Progress Track & Fill */
 .preloader-progress-track {
-  width: 220px;
+  width: 240px;
   height: 4px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   border-radius: 10px;
   overflow: hidden;
   position: relative;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
-  margin-bottom: 14px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6);
+  margin-bottom: 16px;
 }
 
 .preloader-progress-bar {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #ff3333, #d4af37, #ff3333);
+  background: linear-gradient(90deg, #ff2a2a, #fbbf24, #ff2a2a);
   background-size: 200% 100%;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(230, 0, 0, 0.8);
-  transition: width 0.3s ease-out;
+  box-shadow: 0 0 12px rgba(230, 0, 0, 0.9);
+  transition: width 0.28s ease-out;
   animation: gradientShift 2s linear infinite;
 }
 
@@ -5721,39 +5882,71 @@ textarea {
 }
 
 .preloader-hint-skip {
-  font-size: 0.72rem;
+  font-size: 0.74rem;
+  font-weight: 600;
   color: #64748b;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   cursor: pointer;
-  transition: color 0.2s;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 .preloader-hint-skip:hover {
-  color: #cbd5e1;
+  color: #ffffff;
+  background: rgba(230, 0, 0, 0.2);
+  border-color: rgba(230, 0, 0, 0.5);
+  box-shadow: 0 0 16px rgba(230, 0, 0, 0.3);
 }
 
-/* Upper Architrave & Digital Floor HUD */
+/* Cabin Floor Threshold Base */
+.cabin-floor-sill-base {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 28px;
+  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+  border-top: 2px solid #d4af37;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 4;
+}
+
+.sill-track-grooves {
+  height: 3px;
+  background: repeating-linear-gradient(90deg, #000 0, #000 6px, #475569 6px, #475569 12px);
+  margin: 0 20px;
+  opacity: 0.6;
+}
+
+/* Upper Architrave & Digital LCD Floor Display HUD */
 .preloader-hall-architrave {
   position: absolute;
-  top: 36px;
+  top: 6px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 30;
+  z-index: 35;
   pointer-events: none;
 }
 
 .preloader-hud-screen {
   display: flex;
   align-items: center;
-  gap: 16px;
-  background: rgba(10, 16, 30, 0.92);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-top: 2px solid #e60000;
-  padding: 10px 22px;
-  border-radius: 14px;
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(230, 0, 0, 0.25);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  gap: 14px;
+  background: radial-gradient(ellipse at center, #0f172a 0%, #030712 100%);
+  border: 1.5px solid #cbd5e1;
+  border-top: 2.5px solid #ff2a2a;
+  padding: 5px 18px;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.85), 0 0 16px rgba(203, 213, 225, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .hud-direction-indicator {
@@ -5763,14 +5956,14 @@ textarea {
 }
 
 .hud-arrow-lamp {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #ff3333;
   text-shadow: 0 0 12px #ff3333;
-  animation: arrowPulse 0.9s infinite alternate;
+  animation: arrowPulse 0.85s infinite alternate;
 }
 
 @keyframes arrowPulse {
-  0% { opacity: 0.4; transform: translateY(1px); }
+  0% { opacity: 0.35; transform: translateY(1px); }
   100% { opacity: 1; transform: translateY(-2px); }
 }
 
@@ -5780,16 +5973,17 @@ textarea {
 
 .hud-floor-code {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 800;
   line-height: 1;
   color: #fbbf24;
   letter-spacing: 2px;
-  text-shadow: 0 0 14px rgba(251, 191, 36, 0.7);
+  text-shadow: 0 0 14px rgba(251, 191, 36, 0.8);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .hud-status-caption {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   font-weight: 700;
   color: #94a3b8;
   letter-spacing: 1.5px;
@@ -5800,22 +5994,24 @@ textarea {
 .hud-telemetry-pill {
   display: flex;
   align-items: center;
-  gap: 6px;
-  background: rgba(34, 197, 94, 0.12);
-  border: 1px solid rgba(34, 197, 94, 0.3);
+  gap: 5px;
+  background: rgba(34, 197, 94, 0.14);
+  border: 1px solid rgba(34, 197, 94, 0.35);
   padding: 3px 8px;
-  border-radius: 20px;
-  font-size: 0.65rem;
-  font-weight: 700;
+  border-radius: 16px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
   color: #22c55e;
+  text-transform: uppercase;
 }
 
 .hud-live-dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: #22c55e;
-  box-shadow: 0 0 6px #22c55e;
+  box-shadow: 0 0 8px #22c55e;
   animation: liveDotPulse 1.2s infinite;
 }
 
@@ -5824,7 +6020,7 @@ textarea {
   50% { opacity: 0.4; transform: scale(0.8); }
 }
 
-/* Heavy Luxury Sliding Doors Rig */
+/* Heavy Architectural Brushed Stainless Steel Silver Sliding Doors Rig */
 .preloader-doors-rig {
   position: absolute;
   inset: 0;
@@ -5835,27 +6031,58 @@ textarea {
   overflow: hidden;
 }
 
-.preloader-door-leaf {
+/* Top Door Hanger Track Header in Silver Steel */
+.door-hanger-track {
   position: absolute;
   top: 0;
-  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 16px;
+  background: linear-gradient(180deg, #1e293b 0%, #475569 50%, #94a3b8 100%);
+  border-bottom: 1px solid #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  z-index: 25;
+}
+
+.hanger-roller-rail {
+  height: 2px;
+  background: #ffffff;
+  margin: 6px 10px 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Premium Silver Stainless Steel Door Leaves */
+.preloader-door-leaf {
+  position: absolute;
+  top: 14px;
+  bottom: 22px;
   width: 50%;
-  height: 100%;
-  background: linear-gradient(135deg, #070b14 0%, #111a2e 25%, #0a0f1d 50%, #16223b 75%, #070b14 100%);
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.9);
-  transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+  background: linear-gradient(
+    135deg, 
+    #a6b4c3 0%, 
+    #dbe3ec 14%, 
+    #b8c4d0 28%, 
+    #f8fafc 46%, 
+    #8e9eb2 50%, 
+    #e2e8f0 68%, 
+    #9baab9 84%, 
+    #cbd5e1 100%
+  );
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.95);
+  transition: transform 1.25s cubic-bezier(0.77, 0, 0.175, 1);
   will-change: transform;
+  overflow: hidden;
 }
 
 .preloader-door-leaf.door-left {
   left: 0;
-  border-right: 2px solid rgba(255, 255, 255, 0.15);
+  border-right: 2px solid #ffffff;
   transform: translateX(0);
 }
 
 .preloader-door-leaf.door-right {
   right: 0;
-  border-left: 2px solid rgba(255, 255, 255, 0.15);
+  border-left: 2px solid #ffffff;
   transform: translateX(0);
 }
 
@@ -5868,61 +6095,116 @@ textarea {
   transform: translateX(100%);
 }
 
-/* Door Luxury Texture & Inset Grooves */
+/* Authentic Hairline Brushed Stainless Steel Texture & Sheen */
 .door-metallic-surface {
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.02) 50%, transparent 50%),
-                    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 100% 4px, 40px 100%;
-  opacity: 0.6;
+  background-image: 
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.28) 0px, rgba(255, 255, 255, 0.28) 1px, transparent 1px, transparent 2.5px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.35) 0%, rgba(100, 116, 139, 0.15) 30%, rgba(255, 255, 255, 0.45) 50%, rgba(100, 116, 139, 0.15) 70%, rgba(255, 255, 255, 0.35) 100%);
+  background-size: 100% 2.5px, 100% 100%;
+  opacity: 0.9;
+}
+
+/* Architectural Inset Panels on Silver Doors */
+.door-architectural-panel {
+  position: absolute;
+  top: 14%;
+  bottom: 14%;
+  width: 65%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(203, 213, 225, 0.2) 50%, rgba(255, 255, 255, 0.55) 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  border-radius: 4px;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+.door-left .door-architectural-panel { right: 45px; }
+.door-right .door-architectural-panel { left: 45px; }
+
+.panel-inner-recess {
+  position: absolute;
+  inset: 12px;
+  border: 1px dashed rgba(255, 255, 255, 0.4);
 }
 
 .door-vertical-groove {
   position: absolute;
-  top: 10%;
-  bottom: 10%;
+  top: 8%;
+  bottom: 8%;
   width: 2px;
-  background: rgba(255, 255, 255, 0.06);
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.35) 20%, rgba(0, 0, 0, 0.35) 80%, transparent 100%);
+  box-shadow: 1px 0 0 rgba(255, 255, 255, 0.6);
 }
-.door-left .door-vertical-groove { right: 40px; }
-.door-right .door-vertical-groove { left: 40px; }
+.door-left .door-vertical-groove { right: 28px; }
+.door-right .door-vertical-groove { left: 28px; }
 
 .door-vertical-gold-seam {
   position: absolute;
   top: 0;
   bottom: 0;
   width: 3px;
-  background: linear-gradient(180deg, transparent 0%, #e60000 20%, #d4af37 50%, #e60000 80%, transparent 100%);
-  opacity: 0.85;
+  background: linear-gradient(180deg, transparent 0%, #ffffff 20%, #e2e8f0 50%, #ffffff 80%, transparent 100%);
+  opacity: 0.95;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
 }
 .door-left .door-vertical-gold-seam { right: 0; }
 .door-right .door-vertical-gold-seam { left: 0; }
+
+.door-rubber-bumper-edge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: #0f172a;
+  border-left: 1px solid #475569;
+  border-right: 1px solid #475569;
+}
+.door-left .door-rubber-bumper-edge { right: 0; }
+.door-right .door-rubber-bumper-edge { left: 0; }
 
 .door-edge-light {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 12px;
+  width: 14px;
   filter: blur(8px);
-  background: rgba(255, 51, 51, 0.6);
+  background: rgba(255, 255, 255, 0.85);
 }
-.door-left .door-edge-light { right: -6px; }
-.door-right .door-edge-light { left: -6px; }
+.door-left .door-edge-light { right: -7px; }
+.door-right .door-edge-light { left: -7px; }
 
-/* Central Vertical Arrival Light Beam */
+/* Bottom Landing Floor Sill in Brushed Aluminum/Stainless Steel */
+.door-landing-sill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 22px;
+  background: linear-gradient(180deg, #e2e8f0 0%, #94a3b8 50%, #64748b 100%);
+  border-top: 1.5px solid #ffffff;
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.7);
+  z-index: 26;
+}
+
+.sill-recessed-guide-groove {
+  height: 3px;
+  background: repeating-linear-gradient(90deg, #1e293b 0, #1e293b 8px, #ffffff 8px, #ffffff 16px);
+  margin: 6px 15px 0;
+  opacity: 0.8;
+}
+
+/* Central Vertical Arrival Laser Seal / Beam in Bright Silver-White */
 .preloader-arrival-beam {
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 14px;
+  bottom: 22px;
   left: 50%;
   width: 6px;
   transform: translateX(-50%);
-  background: linear-gradient(180deg, transparent 0%, #ffffff 30%, #ff3333 50%, #d4af37 70%, transparent 100%);
-  box-shadow: 0 0 25px 8px rgba(255, 51, 51, 0.8), 0 0 50px 15px rgba(212, 175, 55, 0.5);
+  background: linear-gradient(180deg, transparent 0%, #ffffff 30%, #ffffff 50%, #ffffff 70%, transparent 100%);
+  box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.95), 0 0 60px 20px rgba(255, 255, 255, 0.6);
   z-index: 25;
   opacity: 1;
-  transition: opacity 0.5s ease;
+  transition: opacity 0.45s ease;
   pointer-events: none;
 }
 
@@ -5933,21 +6215,33 @@ textarea {
 /* Mobile Responsiveness for Preloader */
 @media (max-width: 768px) {
   .preloader-logo-img {
-    width: 220px;
+    width: 230px;
   }
   .preloader-brand-motto {
     font-size: 0.68rem;
     letter-spacing: 1px;
+    gap: 4px;
   }
   .preloader-hall-architrave {
-    top: 20px;
+    top: 16px;
+    width: 90%;
+    max-width: 360px;
   }
   .preloader-hud-screen {
-    padding: 8px 16px;
-    gap: 12px;
+    padding: 8px 14px;
+    gap: 10px;
+    justify-content: space-between;
   }
   .hud-floor-code {
-    font-size: 1.25rem;
+    font-size: 1.35rem;
+  }
+  .hud-status-caption {
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+  }
+  .hud-telemetry-pill {
+    padding: 3px 7px;
+    font-size: 0.6rem;
   }
 }
 

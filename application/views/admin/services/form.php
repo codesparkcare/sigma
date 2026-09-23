@@ -35,7 +35,7 @@
 
                         <div class="col-12">
                             <label class="form-label fw-semibold">Key Highlights / Features (One feature per line)</label>
-                            <textarea name="features" class="form-control" rows="4" placeholder="Dubai Civil Defense Approved&#10;German Traction & Hydraulic Machines&#10;Complete Turnkey Project Management"><?= $service ? htmlspecialchars($service['features']) : '' ?></textarea>
+                            <textarea name="features" class="form-control" rows="4" placeholder="Dubai Civil Defense Approved&#10;Advanced Traction & Hydraulic Machines&#10;Complete Turnkey Project Management"><?= $service ? htmlspecialchars($service['features']) : '' ?></textarea>
                             <small class="text-muted">Enter each bullet point on a new line.</small>
                         </div>
 

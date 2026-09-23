@@ -93,3 +93,10 @@ $route['admin/toggle_review/(:num)'] = 'admin/toggle_review/$1';
 $route['admin/enquiries'] = 'admin/enquiries';
 $route['admin/update_enquiry_status/(:num)'] = 'admin/update_enquiry_status/$1';
 $route['admin/delete_enquiry/(:num)'] = 'admin/delete_enquiry/$1';
+
+$route['admin/smtp_settings'] = 'admin/smtp_settings';
+$route['admin/test_smtp'] = 'admin/test_smtp';
+
+$route['admin/login'] = 'admin/login';
+$route['admin/do_login'] = 'admin/do_login';
+$route['admin/logout'] = 'admin/logout';

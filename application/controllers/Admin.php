@@ -14,6 +14,16 @@ class Admin extends CI_Controller {
         $this->load->model('Enquiry_model');
         $this->load->model('About_model');
         $this->load->model('Contact_model');
+        $this->load->model('Smtp_model');
+        $this->load->model('Admin_model');
+
+        // Check authentication for protected admin pages
+        $current_method = $this->router->fetch_method();
+        if ($current_method !== 'login' && $current_method !== 'do_login') {
+            if (!$this->session->userdata('admin_logged_in')) {
+                redirect('admin/login');
+            }
+        }
     }
 
     // Helper for file upload
@@ -498,6 +508,162 @@ class Admin extends CI_Controller {
         $this->load->view('admin/layout/sidebar', $data);
         $this->load->view('admin/contact/index', $data);
         $this->load->view('admin/layout/footer', $data);
+    }
+
+    // =========================================================================
+    // SMTP & EMAIL CONFIGURATION
+    // =========================================================================
+    public function smtp_settings() {
+        if ($this->input->post()) {
+            $data = [
+                'is_enabled'                 => 1,
+                'smtp_host'                  => trim($this->input->post('smtp_host')),
+                'smtp_port'                  => (int)$this->input->post('smtp_port'),
+                'smtp_crypto'                => trim($this->input->post('smtp_crypto')),
+                'smtp_user'                  => trim($this->input->post('smtp_user')),
+                'smtp_pass'                  => $this->input->post('smtp_pass'),
+                'from_email'                 => trim($this->input->post('from_email')),
+                'from_name'                  => trim($this->input->post('from_name')),
+                'reply_to'                   => trim($this->input->post('reply_to')),
+                'admin_email'                => trim($this->input->post('admin_email')),
+                'send_inquiry_notification'  => 1,
+                'send_customer_confirmation' => 1
+            ];
+
+            $this->Smtp_model->update_settings($data);
+            $this->session->set_flashdata('success', 'SMTP and Email configuration saved successfully!');
+            redirect('admin/smtp_settings');
+        }
+
+        $data['title'] = 'SMTP & Email Configuration';
+        $data['smtp']  = $this->Smtp_model->get_settings();
+        $this->load->view('admin/layout/header', $data);
+        $this->load->view('admin/layout/sidebar', $data);
+        $this->load->view('admin/smtp/index', $data);
+        $this->load->view('admin/layout/footer', $data);
+    }
+
+    public function test_smtp() {
+        $recipient = $this->input->post('test_email');
+        if (empty($recipient) || !filter_var($recipient, FILTER_VALIDATE_EMAIL)) {
+            $resp = [
+                'status'  => 'error',
+                'message' => 'Please provide a valid recipient email address for testing.'
+            ];
+            if ($this->input->is_ajax_request()) {
+                $this->output->set_content_type('application/json')->set_output(json_encode($resp));
+                return;
+            }
+            $this->session->set_flashdata('error', $resp['message']);
+            redirect('admin/smtp_settings');
+        }
+
+        $subject = '✅ Sigma Height Elevators - SMTP Test Email Delivery';
+        $time = date('Y-m-d H:i:s');
+        $body = "
+        <div style='font-family: Arial, sans-serif; max-width: 600px; margin: 20px auto; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05);'>
+            <div style='background: #0b0f19; color: #ffffff; padding: 24px; text-align: center; border-bottom: 3px solid #e60000;'>
+                <h2 style='margin: 0; font-size: 20px;'>SIGMA HEIGHT ELEVATORS</h2>
+                <p style='margin: 4px 0 0 0; font-size: 13px; color: #94a3b8;'>SMTP Test Message Confirmation</p>
+            </div>
+            <div style='padding: 24px; background: #ffffff;'>
+                <div style='background: #dcfce7; color: #15803d; padding: 12px 16px; border-radius: 6px; font-weight: 600; font-size: 14px; margin-bottom: 20px;'>
+                    ✔ SMTP Connection and Authentication Verified Successfully!
+                </div>
+                <p style='color: #334155; font-size: 14px; line-height: 1.6;'>
+                    This is a live test email sent from the <strong>Sigma Height Elevators Admin Dashboard</strong>. Your mail server configuration is operating properly and ready to dispatch lead alerts and notifications.
+                </p>
+                <table style='width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 13px;'>
+                    <tr>
+                        <td style='padding: 8px 0; color: #64748b; width: 35%;'>Timestamp:</td>
+                        <td style='padding: 8px 0; color: #0f172a; font-weight: 600;'>{$time} (UTC)</td>
+                    </tr>
+                    <tr>
+                        <td style='padding: 8px 0; color: #64748b;'>Delivered To:</td>
+                        <td style='padding: 8px 0; color: #0f172a; font-weight: 600;'>{$recipient}</td>
+                    </tr>
+                </table>
+            </div>
+            <div style='background: #f8fafc; padding: 14px 24px; font-size: 12px; color: #94a3b8; text-align: center; border-top: 1px solid #e2e8f0;'>
+                Sigma Height Elevators L.L.C • Dubai, UAE
+            </div>
+        </div>";
+
+        $result = $this->Smtp_model->send_email($recipient, $subject, $body);
+
+        if ($result['success']) {
+            $resp = [
+                'status'   => 'success',
+                'message'  => 'Test email was dispatched successfully to <strong>' . htmlspecialchars($recipient) . '</strong>! Check your inbox/spam folder.',
+                'debugger' => $result['debugger']
+            ];
+            if ($this->input->is_ajax_request()) {
+                $this->output->set_content_type('application/json')->set_output(json_encode($resp));
+                return;
+            }
+            $this->session->set_flashdata('success', $resp['message']);
+        } else {
+            $resp = [
+                'status'   => 'error',
+                'message'  => 'Failed to send test email. Please verify your SMTP host, port, username, and password credentials.',
+                'debugger' => $result['debugger']
+            ];
+            if ($this->input->is_ajax_request()) {
+                $this->output->set_content_type('application/json')->set_output(json_encode($resp));
+                return;
+            }
+            $this->session->set_flashdata('error', $resp['message']);
+        }
+
+        redirect('admin/smtp_settings');
+    }
+
+    // =========================================================================
+    // AUTHENTICATION & LOGIN
+    // =========================================================================
+    public function login() {
+        if ($this->session->userdata('admin_logged_in')) {
+            redirect('admin');
+        }
+        $data['title'] = 'Admin Login';
+        $this->load->view('admin/login', $data);
+    }
+
+    public function do_login() {
+        if ($this->session->userdata('admin_logged_in')) {
+            redirect('admin');
+        }
+
+        $username = $this->input->post('username');
+        $password = $this->input->post('password');
+
+        if (empty($username) || empty($password)) {
+            $this->session->set_flashdata('error', 'Please enter both username and password.');
+            redirect('admin/login');
+        }
+
+        $user = $this->Admin_model->verify_credentials($username, $password);
+
+        if ($user) {
+            $this->session->set_userdata([
+                'admin_logged_in' => TRUE,
+                'admin_id'        => $user['id'],
+                'admin_username'  => $user['username'],
+                'admin_name'      => $user['name'],
+                'admin_email'     => $user['email']
+            ]);
+            $this->session->set_flashdata('success', 'Welcome back, ' . htmlspecialchars($user['name']) . '!');
+            redirect('admin');
+        } else {
+            $this->session->set_flashdata('error', 'Invalid username or password.');
+            redirect('admin/login');
+        }
+    }
+
+    public function logout() {
+        $this->session->unset_userdata(['admin_logged_in', 'admin_id', 'admin_username', 'admin_name', 'admin_email']);
+        $this->session->sess_destroy();
+        redirect('admin/login');
     }
 }
 

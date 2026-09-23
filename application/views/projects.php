@@ -68,10 +68,10 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
     gap: 6px;
   }
   .filter-btn:hover, .filter-btn.active {
-    background: #e60000;
+    background: #e11d48;
     color: #ffffff;
-    border-color: #e60000;
-    box-shadow: 0 4px 14px rgba(230, 0, 0, 0.3);
+    border-color: #e11d48;
+    box-shadow: 0 4px 14px rgba(225, 29, 72, 0.3);
   }
 
   /* Projects Grid */
@@ -93,7 +93,7 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
   .project-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 22px 40px rgba(0,0,0,0.09);
-    border-color: rgba(230, 0, 0, 0.3);
+    border-color: #cbd5e1;
   }
   .project-image-box {
     position: relative;
@@ -145,7 +145,7 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
     margin-bottom: 14px;
   }
   .project-meta-row i {
-    color: #e60000;
+    color: #64748b;
     margin-right: 4px;
   }
   .project-desc-text {
@@ -173,7 +173,7 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
     transition: color 0.2s;
   }
   .project-view-link:hover {
-    color: #e60000;
+    color: #e11d48;
   }
 </style>
 

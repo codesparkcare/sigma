@@ -138,7 +138,7 @@ if ($row['cnt'] == 0) {
             'icon_svg' => '<polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />',
             'short_desc' => 'Professional elevator installation in Dubai with safe, reliable, and modern lift systems for residential and commercial buildings.',
             'full_desc' => 'Sigma Height Elevators provides turnkey elevator installation engineered to strict UAE Civil Defense and European safety standards (EN 81). We handle every phase: structural site assessment, electrical planning, precision installation, shaft alignment, and official Dubai Municipality commissioning.',
-            'features' => "Dubai Civil Defense Approved\nGerman Traction & Hydraulic Machines\nComplete Turnkey Project Management\nFull Safety Sensor & Brake Certification",
+            'features' => "Dubai Civil Defense Approved\nAdvanced Traction & Hydraulic Machines\nComplete Turnkey Project Management\nFull Safety Sensor & Brake Certification",
             'image' => 'assets/images/service_passenger.jpg',
             'button_text' => 'Get A Quote',
             'sort_order' => 1,
@@ -339,7 +339,7 @@ if ($row['cnt'] == 0) {
             'client_title' => 'Villa Owner',
             'company' => 'Palm Jumeirah',
             'rating' => 5,
-            'review_text' => 'Sigma Height Elevators installed our 3-stop panoramic glass lift in Palm Jumeirah. The German precision, silent hydraulic drive, and impeccable gold finish exceeded all our expectations. Exceptional service!',
+            'review_text' => 'Sigma Height Elevators installed our 3-stop panoramic glass lift in Palm Jumeirah. The high precision engineering, silent hydraulic drive, and impeccable gold finish exceeded all our expectations. Exceptional service!',
             'sort_order' => 1,
             'is_active' => 1
         ],
@@ -379,4 +379,49 @@ if ($row['cnt'] == 0) {
     echo "Reviews seeded.\n";
 }
 
+// 6. Create SMTP Settings Table
+$mysqli->query("CREATE TABLE IF NOT EXISTS smtp_settings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    is_enabled TINYINT(1) DEFAULT 1,
+    smtp_host VARCHAR(255) DEFAULT 'smtp.hostinger.com',
+    smtp_port INT DEFAULT 465,
+    smtp_crypto VARCHAR(20) DEFAULT 'ssl',
+    smtp_user VARCHAR(255) DEFAULT 'info@sigmaheightelevators.com',
+    smtp_pass VARCHAR(255) DEFAULT '07Uis2742*',
+    from_email VARCHAR(255) DEFAULT 'info@sigmaheightelevators.com',
+    from_name VARCHAR(255) DEFAULT 'Sigma Height Elevators LLC',
+    reply_to VARCHAR(255) DEFAULT 'info@sigmaheightelevators.com',
+    admin_email VARCHAR(255) DEFAULT 'info@sigmaheightelevators.com',
+    send_inquiry_notification TINYINT(1) DEFAULT 1,
+    send_customer_confirmation TINYINT(1) DEFAULT 1,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+)");
+
+$res = $mysqli->query("SELECT COUNT(*) as cnt FROM smtp_settings");
+if ($res) {
+    $row = $res->fetch_assoc();
+    if ($row['cnt'] == 0) {
+        $mysqli->query("INSERT INTO smtp_settings (is_enabled, smtp_host, smtp_port, smtp_crypto, smtp_user, smtp_pass, from_email, from_name, reply_to, admin_email, send_inquiry_notification, send_customer_confirmation)
+        VALUES (1, 'smtp.hostinger.com', 465, 'ssl', 'info@sigmaheightelevators.com', '07Uis2742*', 'info@sigmaheightelevators.com', 'Sigma Height Elevators LLC', 'info@sigmaheightelevators.com', 'info@sigmaheightelevators.com', 1, 1)");
+    }
+}
+
+// 7. Create Admin Users Table
+$mysqli->query("CREATE TABLE IF NOT EXISTS admin_users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    name VARCHAR(100) DEFAULT 'Admin Manager',
+    email VARCHAR(150) DEFAULT 'info@sigmaheightelevators.com',
+    last_login DATETIME NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)");
+
+$pass_hash = password_hash('5+years.com', PASSWORD_BCRYPT);
+$stmt = $mysqli->prepare("INSERT INTO admin_users (username, password_hash, name, email) VALUES ('admin', ?, 'Admin Manager', 'info@sigmaheightelevators.com') ON DUPLICATE KEY UPDATE password_hash = VALUES(password_hash)");
+$stmt->bind_param("s", $pass_hash);
+$stmt->execute();
+
 echo "Database Migration and Seeding complete!\n";
+
+

@@ -20,11 +20,10 @@ $this->load->view('includes/header');
       <div class="shaft-floor-stop" data-target="#about" title="About Sigma Height">01<span class="shaft-tooltip">About Sigma Height</span></div>
       <div class="shaft-floor-stop" data-target="#services" title="Elevator Services">02<span class="shaft-tooltip">Elevator Services</span></div>
       <div class="shaft-floor-stop" data-target="#why-us" title="Why Choose Us">03<span class="shaft-tooltip">Why Choose Us</span></div>
-      <div class="shaft-floor-stop" data-target="#blueprint" title="Shaft Schematic">04<span class="shaft-tooltip">Shaft Schematic</span></div>
-      <div class="shaft-floor-stop" data-target="#process" title="7-Step Flow">05<span class="shaft-tooltip">7-Step Flow</span></div>
-      <div class="shaft-floor-stop" data-target="#projects" title="Signature Projects">06<span class="shaft-tooltip">Signature Projects</span></div>
-      <div class="shaft-floor-stop" data-target="#reviews" title="Client Reviews">07<span class="shaft-tooltip">Client Reviews</span></div>
-      <div class="shaft-floor-stop" data-target="#contact" title="Contact Engineers">08<span class="shaft-tooltip">Contact Engineers</span></div>
+      <div class="shaft-floor-stop" data-target="#process" title="7-Step Flow">04<span class="shaft-tooltip">7-Step Flow</span></div>
+      <div class="shaft-floor-stop" data-target="#projects" title="Signature Projects">05<span class="shaft-tooltip">Signature Projects</span></div>
+      <div class="shaft-floor-stop" data-target="#reviews" title="Client Reviews">06<span class="shaft-tooltip">Client Reviews</span></div>
+      <div class="shaft-floor-stop" data-target="#contact" title="Contact Engineers">07<span class="shaft-tooltip">Contact Engineers</span></div>
     </div>
   </div>
 
@@ -50,7 +49,7 @@ $this->load->view('includes/header');
           [
             'title' => 'Panoramic Glass Lifts with',
             'highlight_text' => '360° Dubai Views',
-            'subtitle' => 'Precision German-engineered structural glass lifts designed for architectural villas, luxury hotels, and commercial atriums.',
+            'subtitle' => 'Precision-engineered structural glass lifts designed for architectural villas, luxury hotels, and commercial atriums.',
             'badge_text' => 'Panoramic Glass',
             'button_text' => 'Explore Panoramic Lifts',
             'button_link' => 'services',
@@ -303,7 +302,7 @@ $this->load->view('includes/header');
           <p class="section-desc">
             Headquartered in Dubai, <strong>Sigma Height Elevators L.L.C</strong> is a premier engineering firm
             specializing in the design, supply, installation, modernization, and maintenance of high-performance
-            elevator systems. Combining German engineering precision with Italian cabin aesthetics, we serve residential
+            elevator systems. Combining advanced engineering precision with Italian cabin aesthetics, we serve residential
             palaces, high-rise commercial towers, luxury hotels, healthcare centers, and industrial facilities across
             the UAE.
           </p>
@@ -315,7 +314,7 @@ $this->load->view('includes/header');
                 <polyline points="22 4 12 14.01 9 11.01" />
               </svg>
               <div>
-                <div class="about-pillar-title">German Machine Technology</div>
+                <div class="about-pillar-title">Advanced Machine Technology</div>
                 <div class="about-pillar-desc">Quiet permanent magnet synchronous motors delivering smooth acceleration.
                 </div>
               </div>
@@ -1224,7 +1223,7 @@ $this->load->view('includes/header');
               </h3>
               <div class="project-card-cta-hint">
                 <span>
-                  <i class="fa-solid fa-maximize" style="color: #38bdf8;"></i> Click to Inspect Full Installation
+                  <i class="fa-solid fa-maximize" style="color: #ffffff;"></i> Click to Inspect Full Installation
                 </span>
               </div>
             </div>
@@ -1329,10 +1328,10 @@ $this->load->view('includes/header');
         outline: none;
       }
       .reviews-nav-btn:hover {
-        background: #e60000;
-        border-color: #e60000;
+        background: #e11d48;
+        border-color: #e11d48;
         transform: scale(1.08);
-        box-shadow: 0 0 16px rgba(230, 0, 0, 0.5);
+        box-shadow: 0 0 16px rgba(225, 29, 72, 0.45);
       }
       .reviews-status-tag {
         display: flex;
@@ -1353,11 +1352,11 @@ $this->load->view('includes/header');
 
     <div class="container">
       <div class="section-header-center">
-        <div class="section-tagline">
-          <svg width="14" height="14" fill="#ff2a2a" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <div class="section-tagline" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: #ffffff;">
+          <svg width="14" height="14" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           Client Trust & Endorsements
         </div>
-        <h2 class="section-title" style="color: #ffffff;">What Property Owners <span class="accent">Say About Us</span></h2>
+        <h2 class="section-title" style="color: #ffffff;">What Property Owners <span class="accent" style="color: #f8fafc;">Say About Us</span></h2>
         <p class="section-desc" style="color: #94a3b8;">Trusted by prestigious villa owners, property developers, and commercial facility managers across Dubai and the UAE.</p>
       </div>
 
@@ -1384,9 +1383,9 @@ $this->load->view('includes/header');
                 </div>
                 <div style="display: flex; align-items: center; gap: 14px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.08);">
                   <?php if (!empty($rev['client_avatar'])): ?>
-                    <img src="<?= base_url($rev['client_avatar']) ?>" alt="<?= htmlspecialchars($rev['client_name']) ?>" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid #e60000; flex-shrink: 0;">
+                    <img src="<?= base_url($rev['client_avatar']) ?>" alt="<?= htmlspecialchars($rev['client_name']) ?>" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid #64748b; flex-shrink: 0;">
                   <?php else: ?>
-                    <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #e60000 0%, #990000 100%); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1rem; flex-shrink: 0;">
+                    <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #334155 0%, #0f172a 100%); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1rem; flex-shrink: 0;">
                       <?= strtoupper(substr($rev['client_name'], 0, 2)) ?>
                     </div>
                   <?php endif; ?>
@@ -1484,7 +1483,7 @@ $this->load->view('includes/header');
               <div class="contact-info-text">
                 <div class="contact-info-title">Email Technical Inquiries</div>
                 <div class="contact-info-value">
-                  <a href="mailto:sales@sigmaheightelevators.com">sales@sigmaheightelevators.com</a>
+                  <a href="mailto:info@sigmaheightelevators.com">info@sigmaheightelevators.com</a>
                 </div>
                 <div class="contact-card-badge">Fast Response</div>
               </div>

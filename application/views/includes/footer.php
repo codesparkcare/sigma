@@ -15,7 +15,7 @@ $base_url = base_url();
             <img src="<?= $base_url ?>assets/Sigma-Elevator-White-logo.png" alt="Sigma Height Elevators" class="footer-logo">
           </a>
           <p class="footer-desc">
-            Sigma Height Elevators L.L.C is Dubai's trusted partner for German-engineered vertical transportation,
+            Sigma Height Elevators L.L.C is Dubai's trusted partner for precision-engineered vertical transportation,
             custom residential villa lifts, and commercial high-speed passenger systems.
           </p>
           <div class="footer-social-links">
@@ -230,7 +230,7 @@ $base_url = base_url();
               <span>&lt; 15 Min Fast Dispatch</span>
             </div>
             <div class="modal-assurance-item">
-              <i class="fa-solid fa-compass-drafting" style="color: #38bdf8;"></i>
+              <i class="fa-solid fa-compass-drafting" style="color: #cbd5e1;"></i>
               <span>Free On-Site Survey</span>
             </div>
           </div>

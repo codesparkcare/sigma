@@ -8,8 +8,30 @@ $is_services = (strpos($cur, 'services') === 0 || strpos($cur, 'service') === 0)
 $is_projects = (strpos($cur, 'projects') === 0 || strpos($cur, 'project') === 0);
 $is_contact  = ($cur == 'contact' || $cur == 'welcome/contact');
 
+if ($is_about) {
+    $active_page_name     = 'ABOUT US';
+    $active_floor_code    = '01';
+    $active_arrival_title = 'ARRIVED • ABOUT SIGMA HEIGHT';
+} elseif ($is_services) {
+    $active_page_name     = 'SERVICES';
+    $active_floor_code    = '02';
+    $active_arrival_title = 'ARRIVED • ELEVATOR SERVICES';
+} elseif ($is_projects) {
+    $active_page_name     = 'PROJECTS';
+    $active_floor_code    = '03';
+    $active_arrival_title = 'ARRIVED • SIGNATURE PROJECTS';
+} elseif ($is_contact) {
+    $active_page_name     = 'CONTACT US';
+    $active_floor_code    = '04';
+    $active_arrival_title = 'ARRIVED • CONTACT & SUPPORT';
+} else {
+    $active_page_name     = 'HOME';
+    $active_floor_code    = 'L';
+    $active_arrival_title = 'ARRIVED • MAIN LOBBY';
+}
+
 $meta_title = !empty($title) ? $title : 'Sigma Height Elevators L.L.C | Luxury & Commercial Elevators Dubai, UAE';
-$meta_desc  = !empty($meta_description) ? $meta_description : 'Sigma Height Elevators LLC is Dubai\'s leading elevator company specializing in luxury home elevators, passenger, panoramic glass lifts, hospital, freight elevators, dumbwaiters, and escalators with German engineering and Dubai Civil Defense certification.';
+$meta_desc  = !empty($meta_description) ? $meta_description : 'Sigma Height Elevators LLC is Dubai\'s leading elevator company specializing in luxury home elevators, passenger, panoramic glass lifts, hospital, freight elevators, dumbwaiters, and escalators with precision engineering and Dubai Civil Defense certification.';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,12 +50,16 @@ $meta_desc  = !empty($meta_description) ? $meta_description : 'Sigma Height Elev
   <meta property="og:type" content="website">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="<?= $base_url ?>assets/Sigma-Elevator-White-logo.png">
+  <link rel="icon" type="image/svg+xml" href="<?= $base_url ?>assets/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="<?= $base_url ?>assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="<?= $base_url ?>assets/favicon-16x16.png">
+  <link rel="shortcut icon" href="<?= $base_url ?>assets/favicon.ico">
+  <link rel="apple-touch-icon" href="<?= $base_url ?>assets/favicon.png">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Syne:wght@600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet">
   
   <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
@@ -44,15 +70,39 @@ $meta_desc  = !empty($meta_description) ? $meta_description : 'Sigma Height Elev
 <body>
 
   <!-- ==========================================================================
-       CINEMATIC LUXURY ELEVATOR PRELOADER WITH SLIDING DOORS & LOGO REVEAL
+       AUTHENTIC LUXURY PASSENGER LIFT PRELOADER WITH MOTORIZED SLIDING DOORS
        ========================================================================== -->
-  <div class="elevator-preloader" id="elevatorPreloader" role="dialog" aria-label="Loading Sigma Height Elevators">
+  <div class="elevator-preloader" id="elevatorPreloader" role="dialog" aria-label="Loading Sigma Height Elevators"
+       data-page="<?= htmlspecialchars($active_page_name) ?>"
+       data-floor="<?= htmlspecialchars($active_floor_code) ?>"
+       data-arrival="<?= htmlspecialchars($active_arrival_title) ?>">
     
+    <!-- Realistic Elevator Hallway / Wall Frame -->
+    <div class="preloader-hallway-frame">
+      <div class="hallway-top-casing"></div>
+      <div class="hallway-left-jamb"></div>
+      <div class="hallway-right-jamb"></div>
+    </div>
+
     <!-- Revealed Elevator Cabin Interior (Inside Stage) -->
     <div class="preloader-cabin-stage">
+      <!-- Realistic Cabin Ceiling with Recessed Downlights -->
+      <div class="cabin-ceiling-bar">
+        <div class="ceiling-spot light-left"></div>
+        <div class="ceiling-spot light-center"></div>
+        <div class="ceiling-spot light-right"></div>
+      </div>
+
       <div class="preloader-ambient-glow"></div>
       <div class="preloader-starlight-pattern"></div>
       
+      <!-- Luxury Cabin Interior Wall Panels -->
+      <div class="cabin-wall-panels">
+        <div class="cabin-wall-panel left"></div>
+        <div class="cabin-wall-panel center"></div>
+        <div class="cabin-wall-panel right"></div>
+      </div>
+
       <!-- Brand Logo Showcase inside Cabin -->
       <div class="preloader-logo-showcase" id="preloaderLogoShowcase">
         <div class="preloader-logo-frame">
@@ -62,41 +112,59 @@ $meta_desc  = !empty($meta_description) ? $meta_description : 'Sigma Height Elev
         <div class="preloader-brand-motto">
           <span class="motto-tag">DUBAI, UAE</span>
           <span class="motto-sep">•</span>
-          <span class="motto-tag">GERMAN ENGINEERING PRECISION</span>
+          <span class="motto-tag">PRECISION ENGINEERING EXCELLENCE</span>
           <span class="motto-sep">•</span>
           <span class="motto-tag">EN 81-20/50 COMPLIANT</span>
         </div>
         <div class="preloader-progress-track">
           <div class="preloader-progress-bar" id="preloaderProgressBar"></div>
         </div>
-        <div class="preloader-hint-skip">Click anywhere to enter</div>
+        <div class="preloader-hint-skip">
+          <i class="fa-solid fa-arrow-right-to-bracket" style="font-size:0.75rem; margin-right:4px;"></i> Click anywhere to enter
+        </div>
+      </div>
+
+      <!-- Cabin Floor Threshold -->
+      <div class="cabin-floor-sill-base">
+        <div class="sill-marble-edge"></div>
+        <div class="sill-track-grooves"></div>
       </div>
     </div>
 
-    <!-- Upper Architrave Digital Floor Display HUD -->
+    <!-- Upper Transom LCD Elevator Hall Floor Indicator HUD -->
     <div class="preloader-hall-architrave">
       <div class="preloader-hud-screen">
         <div class="hud-direction-indicator">
           <span class="hud-arrow-lamp" id="preloaderHudArrow">▲</span>
         </div>
         <div class="hud-center-data">
-          <div class="hud-floor-code" id="preloaderFloorCode">PH</div>
-          <div class="hud-status-caption" id="preloaderStatusCaption">ARRIVAL • LEVEL PH</div>
+          <div class="hud-floor-code" id="preloaderFloorCode"><?= htmlspecialchars($active_floor_code) ?></div>
+          <div class="hud-status-caption" id="preloaderStatusCaption"><?= htmlspecialchars($active_arrival_title) ?></div>
         </div>
         <div class="hud-telemetry-pill">
           <span class="hud-live-dot"></span>
-          <span>ONLINE</span>
+          <span id="preloaderPageBadge"><?= htmlspecialchars($active_page_name) ?></span>
         </div>
       </div>
     </div>
 
-    <!-- Heavy Luxury Sliding Lift Doors (Left & Right) -->
+    <!-- Heavy Architectural Brushed Metal Sliding Lift Doors -->
     <div class="preloader-doors-rig" id="preloaderDoorsRig">
+      <!-- Top Door Hanger Track Header -->
+      <div class="door-hanger-track">
+        <div class="hanger-roller-rail"></div>
+      </div>
+
       <!-- Left Door Leaf -->
       <div class="preloader-door-leaf door-left" id="preloaderDoorLeft">
         <div class="door-metallic-surface"></div>
+        <div class="door-architectural-panel">
+          <div class="panel-inner-recess"></div>
+          <div class="panel-accent-line"></div>
+        </div>
         <div class="door-vertical-groove"></div>
         <div class="door-vertical-gold-seam"></div>
+        <div class="door-rubber-bumper-edge"></div>
         <div class="door-vertical-beveled-edge"></div>
         <div class="door-edge-light"></div>
       </div>
@@ -104,14 +172,25 @@ $meta_desc  = !empty($meta_description) ? $meta_description : 'Sigma Height Elev
       <!-- Right Door Leaf -->
       <div class="preloader-door-leaf door-right" id="preloaderDoorRight">
         <div class="door-metallic-surface"></div>
+        <div class="door-architectural-panel">
+          <div class="panel-inner-recess"></div>
+          <div class="panel-accent-line"></div>
+        </div>
         <div class="door-vertical-groove"></div>
         <div class="door-vertical-gold-seam"></div>
+        <div class="door-rubber-bumper-edge"></div>
         <div class="door-vertical-beveled-edge"></div>
         <div class="door-edge-light"></div>
       </div>
+
+      <!-- Bottom Landing Floor Sill -->
+      <div class="door-landing-sill">
+        <div class="sill-plate-metal"></div>
+        <div class="sill-recessed-guide-groove"></div>
+      </div>
     </div>
 
-    <!-- Central Vertical Arrival Light Beam -->
+    <!-- Central Vertical Arrival Laser Seal / Beam -->
     <div class="preloader-arrival-beam" id="preloaderArrivalBeam"></div>
   </div>
 

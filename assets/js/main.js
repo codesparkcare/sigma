@@ -758,6 +758,8 @@ function initElevatorScrollShaft() {
   }
 
   window.addEventListener('scroll', updateShaft, { passive: true });
+  window.addEventListener('resize', updateShaft, { passive: true });
+  window.addEventListener('orientationchange', updateShaft, { passive: true });
   updateShaft();
 
   floorStops.forEach((stop) => {
@@ -767,7 +769,13 @@ function initElevatorScrollShaft() {
       const targetEl = document.querySelector(targetSelector);
       if (targetEl) {
         playElevatorChime();
-        targetEl.scrollIntoView({ behavior: 'smooth' });
+        const headerOffset = 70;
+        const elementPosition = targetEl.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + (window.pageYOffset || document.documentElement.scrollTop) - headerOffset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
       }
     });
   });
@@ -922,7 +930,7 @@ function initBlueprintHotspots() {
 
   const specs = {
     '1': {
-      tag: 'GERMAN PMSM DRIVE',
+      tag: 'ADVANCED PMSM DRIVE',
       title: 'Permanent Magnet Synchronous Machine (PMSM)',
       desc: 'Gearless permanent magnet traction motor mounted overhead, delivering 40% energy savings, ultra-smooth acceleration, and whisper-quiet operation under 42 dB with zero oil lubrication needed.',
       m1L: 'Energy Efficiency',
@@ -1307,6 +1315,11 @@ function initElevatorPreloader() {
   const progressBar = document.getElementById('preloaderProgressBar');
   const statusCaption = document.getElementById('preloaderStatusCaption');
   const hudArrow = document.getElementById('preloaderHudArrow');
+  const pageBadge = document.getElementById('preloaderPageBadge');
+
+  const targetPage = preloader.getAttribute('data-page') || 'HOME';
+  const targetFloor = preloader.getAttribute('data-floor') || 'L';
+  const targetArrival = preloader.getAttribute('data-arrival') || 'ARRIVED • MAIN LOBBY';
 
   let isDismissed = false;
 
@@ -1332,39 +1345,55 @@ function initElevatorPreloader() {
     }
   });
 
-  // Step 1: Initial rapid ascent simulation (0ms to 450ms)
+  // Dynamic ascent floors list tailored to target destination
+  let floorsList = ['B1', 'G', '01'];
+  if (targetFloor === '01') {
+    floorsList = ['B2', 'B1', 'G', '01'];
+  } else if (targetFloor === '02') {
+    floorsList = ['B1', 'G', '01', '02'];
+  } else if (targetFloor === '03') {
+    floorsList = ['G', '01', '02', '03'];
+  } else if (targetFloor === '04') {
+    floorsList = ['G', '01', '02', '03', '04'];
+  } else {
+    floorsList = ['B1', 'G', 'L'];
+  }
+
+  // Step 1: Initial rapid ascent simulation (0ms to 480ms)
   let currentStep = 0;
-  const floors = ['01', '06', '12', '18', 'PH'];
-  
+  const stepInterval = Math.max(Math.floor(420 / floorsList.length), 70);
+
   const floorInterval = setInterval(() => {
     if (isDismissed) {
       clearInterval(floorInterval);
       return;
     }
-    if (currentStep < floors.length) {
-      if (floorCode) floorCode.textContent = floors[currentStep];
+    if (currentStep < floorsList.length - 1) {
+      if (floorCode) floorCode.textContent = floorsList[currentStep];
       if (progressBar) {
-        const pct = Math.min(((currentStep + 1) / floors.length) * 85, 85);
+        const pct = Math.min(((currentStep + 1) / floorsList.length) * 85, 85);
         progressBar.style.width = `${pct}%`;
       }
       currentStep++;
     } else {
       clearInterval(floorInterval);
     }
-  }, 90);
+  }, stepInterval);
 
   // Step 2: Elevator Arrival & Doors Open (at 520ms)
   setTimeout(() => {
     if (isDismissed) return;
     if (floorCode) {
-      floorCode.textContent = 'PH';
+      floorCode.textContent = targetFloor;
       floorCode.style.color = '#22c55e';
-      floorCode.style.textShadow = '0 0 16px rgba(34, 197, 94, 0.8)';
+      floorCode.style.textShadow = '0 0 16px rgba(34, 197, 94, 0.9)';
     }
-    if (statusCaption) statusCaption.textContent = 'ARRIVED • PENTHOUSE';
+    if (statusCaption) statusCaption.textContent = targetArrival;
+    if (pageBadge) pageBadge.textContent = targetPage;
     if (hudArrow) {
       hudArrow.textContent = '●';
       hudArrow.style.color = '#22c55e';
+      hudArrow.style.textShadow = '0 0 12px #22c55e';
     }
 
     // Play elevator arrival chime
@@ -1374,7 +1403,7 @@ function initElevatorPreloader() {
       } catch (err) {}
     }
 
-    // Slide open doors
+    // Slide open doors with authentic mechanical easing
     preloader.classList.add('doors-open');
     if (progressBar) progressBar.style.width = '100%';
   }, 520);

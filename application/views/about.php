@@ -37,7 +37,7 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
     display: inline-block;
     width: 28px;
     height: 2px;
-    background: #e60000;
+    background: #ffffff;
     border-radius: 2px;
   }
   .page-hero-title {
@@ -121,7 +121,7 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
   .stat-val {
     font-size: 2.1rem;
     font-weight: 800;
-    color: #e60000;
+    color: #0f172a;
     font-family: 'Outfit', sans-serif;
     line-height: 1.1;
   }
@@ -145,13 +145,14 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
     width: 54px;
     height: 54px;
     border-radius: 12px;
-    background: rgba(230, 0, 0, 0.08);
-    color: #e60000;
+    background: #f1f5f9;
+    color: #0f172a;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
     margin-bottom: 20px;
+    border: 1px solid #e2e8f0;
   }
 </style>
 
@@ -174,7 +175,7 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
     <div class="container">
       <div class="about-story-grid" style="padding: 0;">
         <div>
-          <span style="color: #e60000; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.88rem; display: block; margin-bottom: 10px;">Who We Are</span>
+          <span style="color: #0f172a; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.88rem; display: block; margin-bottom: 10px;">Who We Are</span>
           <h2 style="font-size: 2.2rem; font-weight: 800; color: #0f172a; line-height: 1.3; margin-bottom: 24px;">Setting the Gold Standard in Vertical Transportation</h2>
           <div style="color: #475569; font-size: 1.05rem; line-height: 1.8; margin-bottom: 24px;">
             <?= nl2br(htmlspecialchars($about['story'])) ?>
@@ -217,7 +218,7 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
             <!-- Professional Clean Floating Badge Inside Image Box -->
             <div style="position: absolute; bottom: 18px; left: 18px; right: 18px; background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.12); padding: 12px 18px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; color: #ffffff; z-index: 2;">
               <div style="display: flex; align-items: center; gap: 10px;">
-                <div style="width: 34px; height: 34px; border-radius: 8px; background: rgba(230, 0, 0, 0.2); border: 1px solid rgba(230, 0, 0, 0.4); display: flex; align-items: center; justify-content: center; color: #ff4d4d; font-size: 0.95rem;">
+                <div style="width: 34px; height: 34px; border-radius: 8px; background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.25); display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 0.95rem;">
                   <i class="fa-solid fa-shield-halved"></i>
                 </div>
                 <div>

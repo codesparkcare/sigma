@@ -17,7 +17,7 @@ class Contact_model extends CI_Model {
                 'address' => 'Flat No. 325, Abdul Razak Al zarouni Building(Bldg No. 326), Damascus Street, Al Qusais Industrial Area 2, Dubai, UAE',
                 'phone' => '+048858454',
                 'emergency_phone' => '052-6405622',
-                'email' => 'sales@sigmaheightelevators.com',
+                'email' => 'info@sigmaheightelevators.com',
                 'working_hours' => 'Mon - Sat: 8:00 AM - 7:00 PM (24/7 Emergency Dispatch)',
                 'map_iframe' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.7335463633776!2d55.38284137444449!3d25.27954732836204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5d4e49e0588d%3A0x7b09691be44b0d24!2sSIGMA%20HEIGHT%20ELEVATORS%20LLC!5e0!3m2!1sen!2sin!4v1790062253852!5m2!1sen!2sin'
             ];

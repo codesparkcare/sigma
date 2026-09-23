@@ -13,6 +13,7 @@ class Welcome extends CI_Controller {
         $this->load->model('Enquiry_model');
         $this->load->model('About_model');
         $this->load->model('Contact_model');
+        $this->load->model('Smtp_model');
     }
 
     // Homepage with Dynamic Sliders, Services, Projects, and Reviews
@@ -106,6 +107,12 @@ class Welcome extends CI_Controller {
 
         try {
             $this->Enquiry_model->insert($data);
+
+            // Dispatch automated email notifications via SMTP if enabled
+            $this->Smtp_model->send_inquiry_notification($data);
+            if (!empty($data['email'])) {
+                $this->Smtp_model->send_customer_confirmation($data);
+            }
         } catch (Throwable $e) {
             log_message('error', $e->getMessage());
         }

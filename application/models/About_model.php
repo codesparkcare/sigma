@@ -12,7 +12,7 @@ class About_model extends CI_Model {
         $row = $this->db->get('about_cms')->row_array();
         if (!$row) {
             return [
-                'badge' => 'German Engineered • Dubai Certified',
+                'badge' => 'Precision Engineered • Dubai Certified',
                 'title' => 'Pioneering Luxury & Commercial Vertical Mobility Across the UAE',
                 'subtitle' => 'Sigma Height Elevators L.L.C is Dubai’s premier elevator engineering firm.',
                 'story' => 'Sigma Height Elevators delivers world-class elevator systems across the UAE.',

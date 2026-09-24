@@ -948,13 +948,13 @@ function initBlueprintHotspots() {
       m2V: '35% Reduced Wait Times'
     },
     '3': {
-      tag: 'EUROPEAN SAFETY EN 81',
+      tag: 'EUROPEAN SAFETY EN81-20:50',
       title: 'Progressive Safety Gear & Speed Governor',
       desc: 'Centrifugal overspeed governor instantly detects cable velocity anomaly and mechanically wedges the hardened safety brake jaws into the solid steel T-guide rails within milliseconds.',
       m1L: 'Trigger Speed',
       m1V: '115% Rated Velocity Lock',
       m2L: 'Standard Compliance',
-      m2V: 'EN 81-20/50 & DCD Certified'
+      m2V: 'EN81-20:50 European Compliance Standard'
     },
     '4': {
       tag: 'FAILSAFE PROTECTION',

@@ -191,7 +191,7 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
         <span>Our Services</span>
       </div>
       <h1 class="page-hero-title">Expert Elevator Services & <span>Vertical Solutions</span></h1>
-      <p class="page-hero-desc">From bespoke luxury villa lifts to commercial high-speed towers, our precision-engineered elevator services comply with strict Dubai Civil Defense and European EN-81 safety standards.</p>
+      <p class="page-hero-desc">From bespoke luxury villa lifts to commercial high-speed towers, our precision-engineered elevator services comply with strict Dubai Civil Defense and EN81-20:50 European Compliance Standard.</p>
     </div>
   </section>
 

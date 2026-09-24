@@ -220,12 +220,12 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 82px;
+  height: 88px;
   transition: height 0.3s ease;
 }
 
 .site-header.scrolled .nav-container {
-  height: 70px;
+  height: 72px;
 }
 
 .brand-logo-link {
@@ -234,10 +234,15 @@ textarea {
 }
 
 .brand-logo-img {
-  height: 52px;
+  height: 62px;
+  max-height: 64px;
   width: auto;
   object-fit: contain;
-  transition: transform 0.3s ease;
+  transition: height 0.3s ease, transform 0.3s ease;
+}
+
+.site-header.scrolled .brand-logo-img {
+  height: 52px;
 }
 
 .brand-logo-link:hover .brand-logo-img {
@@ -1384,12 +1389,12 @@ textarea {
    8 SERVICES SECTION (BRIGHT LUXURY CARDS)
    ========================================================================== */
 /* ==========================================================================
-   OUR SERVICES SECTION — Professional Dark Theme
+   OUR SERVICES SECTION — Clean Bright Luxury Theme
    ========================================================================== */
 .services-section {
-  background: linear-gradient(160deg, #0b1120 0%, #0f172a 50%, #160a0a 100%);
-  border-top: none;
-  border-bottom: none;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
   position: relative;
 }
 
@@ -1397,24 +1402,23 @@ textarea {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 30% 50%, rgba(255, 255, 255, 0.04) 0%, transparent 65%),
-    radial-gradient(ellipse at 70% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 30% 50%, rgba(225, 29, 72, 0.03) 0%, transparent 65%),
+    radial-gradient(ellipse at 70% 20%, rgba(15, 23, 42, 0.02) 0%, transparent 60%);
   pointer-events: none;
 }
 
-/* Override section title & desc colors for dark background */
 .services-section .section-tagline {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
-  color: #f8fafc;
+  background: var(--accent-color-light);
+  border-color: var(--accent-color-border);
+  color: var(--accent-color);
 }
 
 .services-section .section-title {
-  color: #ffffff;
+  color: var(--text-headings);
 }
 
 .services-section .section-desc {
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--text-muted);
 }
 
 .services-grid {
@@ -1426,15 +1430,16 @@ textarea {
 }
 
 .service-card {
-  background: rgba(255, 255, 255, 0.04);
+  background: #ffffff;
   border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-top: 3px solid #64748b;
+  border: 1px solid #e2e8f0;
+  border-top: 3px solid var(--primary-red);
   padding: 30px 24px 26px;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
   cursor: pointer;
 }
@@ -1443,16 +1448,16 @@ textarea {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
+  background: linear-gradient(135deg, rgba(225, 29, 72, 0.04) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .service-card:hover {
   transform: translateY(-8px);
-  background: rgba(255, 255, 255, 0.08);
+  background: #ffffff;
   border-color: var(--primary-red);
-  box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(225, 29, 72, 0.25);
+  box-shadow: 0 20px 35px -8px rgba(225, 29, 72, 0.12), 0 10px 15px -3px rgba(15, 23, 42, 0.05);
 }
 
 .service-card:hover::after {
@@ -1471,14 +1476,14 @@ textarea {
   width: 54px;
   height: 54px;
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  background: #f1f5f9;
+  border: 1.5px solid #e2e8f0;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #f8fafc;
+  color: var(--primary-red);
   margin-bottom: 20px;
-  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
   flex-shrink: 0;
 }
 
@@ -1486,7 +1491,7 @@ textarea {
   background: var(--primary-red);
   color: #ffffff;
   transform: scale(1.1) rotate(-3deg);
-  box-shadow: 0 8px 24px rgba(225, 29, 72, 0.45);
+  box-shadow: 0 8px 24px rgba(225, 29, 72, 0.35);
   border-color: var(--primary-red);
 }
 
@@ -1499,7 +1504,7 @@ textarea {
   font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #0f172a;
   letter-spacing: -0.01em;
   margin-bottom: 12px;
   line-height: 1.3;
@@ -1507,7 +1512,7 @@ textarea {
 
 .service-specs {
   font-size: 0.875rem;
-  color: rgba(200, 210, 230, 0.8);
+  color: #64748b;
   line-height: 1.7;
   flex: 1;
   margin-bottom: 22px;
@@ -1519,10 +1524,10 @@ textarea {
   gap: 8px;
   font-size: 0.8rem;
   font-weight: 700;
-  color: #cbd5e1;
+  color: #0f172a;
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid #e2e8f0;
   padding-top: 16px;
   margin-top: auto;
   text-decoration: none;
@@ -3326,7 +3331,7 @@ textarea {
 
 .footer-main-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  grid-template-columns: 1.25fr 0.85fr 1.45fr 1.25fr;
   gap: 36px;
   margin-bottom: 50px;
 }
@@ -3415,6 +3420,59 @@ textarea {
 .footer-links a:hover {
   color: #ffffff;
   transform: translateX(3px);
+}
+
+.footer-contact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.88rem;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+.footer-contact-item svg {
+  width: 17px;
+  height: 17px;
+  color: var(--primary-red);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.footer-phone-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.footer-phone-lines div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.footer-phone-lines a {
+  color: #e2e8f0;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.footer-phone-lines a:hover {
+  color: var(--primary-red);
+}
+
+.footer-phone-lines strong {
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .footer-certifications {
@@ -5675,8 +5733,8 @@ textarea {
   left: 0;
   right: 0;
   height: 52px;
-  background: linear-gradient(180deg, #090e1a 0%, #1e293b 60%, #334155 100%);
-  border-bottom: 2px solid #94a3b8;
+  background: linear-gradient(180deg, #050811 0%, #0d1527 60%, #111a2e 100%);
+  border-bottom: 2px solid rgba(230, 0, 0, 0.45);
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.85);
 }
 
@@ -5686,11 +5744,11 @@ textarea {
   top: 52px;
   bottom: 0;
   width: 20px;
-  background: linear-gradient(90deg, #1e293b 0%, #475569 50%, #334155 100%);
+  background: linear-gradient(90deg, #090e1a 0%, #16223b 50%, #0d1527 100%);
   z-index: 29;
 }
-.hallway-left-jamb { left: 0; border-right: 1px solid rgba(255, 255, 255, 0.25); }
-.hallway-right-jamb { right: 0; border-left: 1px solid rgba(255, 255, 255, 0.25); }
+.hallway-left-jamb { left: 0; border-right: 1px solid rgba(230, 0, 0, 0.3); }
+.hallway-right-jamb { right: 0; border-left: 1px solid rgba(230, 0, 0, 0.3); }
 
 /* Revealed Luxury Elevator Cabin Interior (Inside Stage) */
 .preloader-cabin-stage {
@@ -5745,7 +5803,7 @@ textarea {
   width: 650px;
   height: 650px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(230, 0, 0, 0.25) 0%, rgba(212, 175, 55, 0.1) 45%, transparent 70%);
+  background: radial-gradient(circle, rgba(230, 0, 0, 0.3) 0%, rgba(230, 0, 0, 0.1) 45%, transparent 70%);
   filter: blur(50px);
   pointer-events: none;
   animation: ambientPulse 3s ease-in-out infinite alternate;
@@ -5868,7 +5926,7 @@ textarea {
 .preloader-progress-bar {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #ff2a2a, #fbbf24, #ff2a2a);
+  background: linear-gradient(90deg, #ff1a1a, #ff6b6b, #ff1a1a);
   background-size: 200% 100%;
   border-radius: 10px;
   box-shadow: 0 0 12px rgba(230, 0, 0, 0.9);
@@ -5911,7 +5969,7 @@ textarea {
   right: 0;
   height: 28px;
   background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
-  border-top: 2px solid #d4af37;
+  border-top: 2px solid #e60000;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -5940,11 +5998,11 @@ textarea {
   align-items: center;
   gap: 14px;
   background: radial-gradient(ellipse at center, #0f172a 0%, #030712 100%);
-  border: 1.5px solid #cbd5e1;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-top: 2.5px solid #ff2a2a;
   padding: 5px 18px;
   border-radius: 10px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.85), 0 0 16px rgba(203, 213, 225, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.85), 0 0 20px rgba(230, 0, 0, 0.25);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
 }
@@ -5976,9 +6034,9 @@ textarea {
   font-size: 1.3rem;
   font-weight: 800;
   line-height: 1;
-  color: #fbbf24;
+  color: #ff2a2a;
   letter-spacing: 2px;
-  text-shadow: 0 0 14px rgba(251, 191, 36, 0.8);
+  text-shadow: 0 0 14px rgba(255, 42, 42, 0.85);
   transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
@@ -6020,7 +6078,7 @@ textarea {
   50% { opacity: 0.4; transform: scale(0.8); }
 }
 
-/* Heavy Architectural Brushed Stainless Steel Silver Sliding Doors Rig */
+/* Heavy Luxury Obsidian Sliding Lift Doors Rig */
 .preloader-doors-rig {
   position: absolute;
   inset: 0;
@@ -6031,44 +6089,34 @@ textarea {
   overflow: hidden;
 }
 
-/* Top Door Hanger Track Header in Silver Steel */
+/* Top Door Hanger Track Header */
 .door-hanger-track {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 16px;
-  background: linear-gradient(180deg, #1e293b 0%, #475569 50%, #94a3b8 100%);
-  border-bottom: 1px solid #ffffff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(180deg, #070b14 0%, #111a2e 50%, #16223b 100%);
+  border-bottom: 1px solid rgba(230, 0, 0, 0.4);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
   z-index: 25;
 }
 
 .hanger-roller-rail {
   height: 2px;
-  background: #ffffff;
+  background: #e60000;
   margin: 6px 10px 0;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 6px rgba(230, 0, 0, 0.6);
 }
 
-/* Premium Silver Stainless Steel Door Leaves */
+/* Authentic Dark Luxury Elevator Door Leaves */
 .preloader-door-leaf {
   position: absolute;
   top: 14px;
   bottom: 22px;
   width: 50%;
-  background: linear-gradient(
-    135deg, 
-    #a6b4c3 0%, 
-    #dbe3ec 14%, 
-    #b8c4d0 28%, 
-    #f8fafc 46%, 
-    #8e9eb2 50%, 
-    #e2e8f0 68%, 
-    #9baab9 84%, 
-    #cbd5e1 100%
-  );
-  box-shadow: 0 0 60px rgba(0, 0, 0, 0.95);
+  background: linear-gradient(135deg, #070b14 0%, #111a2e 25%, #0a0f1d 50%, #16223b 75%, #070b14 100%);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.95);
   transition: transform 1.25s cubic-bezier(0.77, 0, 0.175, 1);
   will-change: transform;
   overflow: hidden;
@@ -6076,13 +6124,13 @@ textarea {
 
 .preloader-door-leaf.door-left {
   left: 0;
-  border-right: 2px solid #ffffff;
+  border-right: 2px solid rgba(255, 255, 255, 0.15);
   transform: translateX(0);
 }
 
 .preloader-door-leaf.door-right {
   right: 0;
-  border-left: 2px solid #ffffff;
+  border-left: 2px solid rgba(255, 255, 255, 0.15);
   transform: translateX(0);
 }
 
@@ -6095,27 +6143,26 @@ textarea {
   transform: translateX(100%);
 }
 
-/* Authentic Hairline Brushed Stainless Steel Texture & Sheen */
+/* Door Luxury Texture & Inset Grooves */
 .door-metallic-surface {
   position: absolute;
   inset: 0;
-  background-image: 
-    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.28) 0px, rgba(255, 255, 255, 0.28) 1px, transparent 1px, transparent 2.5px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.35) 0%, rgba(100, 116, 139, 0.15) 30%, rgba(255, 255, 255, 0.45) 50%, rgba(100, 116, 139, 0.15) 70%, rgba(255, 255, 255, 0.35) 100%);
-  background-size: 100% 2.5px, 100% 100%;
-  opacity: 0.9;
+  background-image: linear-gradient(0deg, rgba(255, 255, 255, 0.02) 50%, transparent 50%),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 100% 4px, 40px 100%;
+  opacity: 0.6;
 }
 
-/* Architectural Inset Panels on Silver Doors */
+/* Architectural Inset Panels on Luxury Doors */
 .door-architectural-panel {
   position: absolute;
   top: 14%;
   bottom: 14%;
   width: 65%;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(203, 213, 225, 0.2) 50%, rgba(255, 255, 255, 0.55) 100%);
-  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(230, 0, 0, 0.05) 50%, rgba(255, 255, 255, 0.02) 100%);
+  border: 1px solid rgba(230, 0, 0, 0.35);
   border-radius: 4px;
-  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5), 0 0 15px rgba(230, 0, 0, 0.12);
 }
 .door-left .door-architectural-panel { right: 45px; }
 .door-right .door-architectural-panel { left: 45px; }
@@ -6123,7 +6170,7 @@ textarea {
 .panel-inner-recess {
   position: absolute;
   inset: 12px;
-  border: 1px dashed rgba(255, 255, 255, 0.4);
+  border: 1px dashed rgba(230, 0, 0, 0.25);
 }
 
 .door-vertical-groove {
@@ -6131,8 +6178,7 @@ textarea {
   top: 8%;
   bottom: 8%;
   width: 2px;
-  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.35) 20%, rgba(0, 0, 0, 0.35) 80%, transparent 100%);
-  box-shadow: 1px 0 0 rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.06);
 }
 .door-left .door-vertical-groove { right: 28px; }
 .door-right .door-vertical-groove { left: 28px; }
@@ -6142,9 +6188,9 @@ textarea {
   top: 0;
   bottom: 0;
   width: 3px;
-  background: linear-gradient(180deg, transparent 0%, #ffffff 20%, #e2e8f0 50%, #ffffff 80%, transparent 100%);
-  opacity: 0.95;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+  background: linear-gradient(180deg, transparent 0%, #ff1a1a 20%, #e60000 50%, #ff1a1a 80%, transparent 100%);
+  opacity: 0.9;
+  box-shadow: 0 0 10px rgba(230, 0, 0, 0.8);
 }
 .door-left .door-vertical-gold-seam { right: 0; }
 .door-right .door-vertical-gold-seam { left: 0; }
@@ -6154,9 +6200,9 @@ textarea {
   top: 0;
   bottom: 0;
   width: 6px;
-  background: #0f172a;
-  border-left: 1px solid #475569;
-  border-right: 1px solid #475569;
+  background: #070b14;
+  border-left: 1px solid #1e293b;
+  border-right: 1px solid #1e293b;
 }
 .door-left .door-rubber-bumper-edge { right: 0; }
 .door-right .door-rubber-bumper-edge { left: 0; }
@@ -6165,34 +6211,34 @@ textarea {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 14px;
+  width: 12px;
   filter: blur(8px);
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 51, 51, 0.6);
 }
-.door-left .door-edge-light { right: -7px; }
-.door-right .door-edge-light { left: -7px; }
+.door-left .door-edge-light { right: -6px; }
+.door-right .door-edge-light { left: -6px; }
 
-/* Bottom Landing Floor Sill in Brushed Aluminum/Stainless Steel */
+/* Bottom Landing Floor Sill */
 .door-landing-sill {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
   height: 22px;
-  background: linear-gradient(180deg, #e2e8f0 0%, #94a3b8 50%, #64748b 100%);
-  border-top: 1.5px solid #ffffff;
+  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+  border-top: 2px solid #e60000;
   box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.7);
   z-index: 26;
 }
 
 .sill-recessed-guide-groove {
   height: 3px;
-  background: repeating-linear-gradient(90deg, #1e293b 0, #1e293b 8px, #ffffff 8px, #ffffff 16px);
+  background: repeating-linear-gradient(90deg, #000 0, #000 8px, #475569 8px, #475569 16px);
   margin: 6px 15px 0;
   opacity: 0.8;
 }
 
-/* Central Vertical Arrival Laser Seal / Beam in Bright Silver-White */
+/* Central Vertical Arrival Light Beam */
 .preloader-arrival-beam {
   position: absolute;
   top: 14px;
@@ -6200,11 +6246,11 @@ textarea {
   left: 50%;
   width: 6px;
   transform: translateX(-50%);
-  background: linear-gradient(180deg, transparent 0%, #ffffff 30%, #ffffff 50%, #ffffff 70%, transparent 100%);
-  box-shadow: 0 0 30px 10px rgba(255, 255, 255, 0.95), 0 0 60px 20px rgba(255, 255, 255, 0.6);
+  background: linear-gradient(180deg, transparent 0%, #ffffff 30%, #ff3333 50%, #e60000 70%, transparent 100%);
+  box-shadow: 0 0 25px 8px rgba(255, 51, 51, 0.9), 0 0 50px 15px rgba(230, 0, 0, 0.6);
   z-index: 25;
   opacity: 1;
-  transition: opacity 0.45s ease;
+  transition: opacity 0.5s ease;
   pointer-events: none;
 }
 

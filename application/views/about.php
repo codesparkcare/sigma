@@ -223,7 +223,7 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
                 </div>
                 <div>
                   <div style="font-weight: 700; font-size: 0.88rem; color: #ffffff; line-height: 1.2;">Dubai Civil Defense Certified</div>
-                  <div style="font-size: 0.74rem; color: #94a3b8;">EN 81-20/50 European Safety Standards</div>
+                  <div style="font-size: 0.74rem; color: #94a3b8;">EN81-20:50 European Compliance Standard</div>
                 </div>
               </div>
               <div style="font-size: 0.72rem; font-weight: 700; color: #22c55e; background: rgba(34, 197, 94, 0.12); border: 1px solid rgba(34, 197, 94, 0.3); padding: 3px 8px; border-radius: 20px;">

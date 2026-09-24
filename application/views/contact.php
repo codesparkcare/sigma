@@ -262,10 +262,10 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
           <div class="contact-card-icon"><i class="fa-solid fa-headset"></i></div>
           <h3 class="contact-card-title">Phone & 24/7 Hotline</h3>
           <p class="contact-card-desc" style="margin-bottom: 6px;">
-            Office: <a href="tel:<?= preg_replace('/[^0-9+]/', '', $contact['phone']) ?>" class="contact-card-link"><?= htmlspecialchars($contact['phone']) ?></a>
+            Mobile: <a href="tel:<?= preg_replace('/[^0-9+]/', '', $contact['emergency_phone']) ?>" class="contact-card-link"><?= htmlspecialchars($contact['emergency_phone']) ?></a>
           </p>
           <p class="contact-card-desc">
-            24/7 Emergency: <a href="tel:<?= preg_replace('/[^0-9+]/', '', $contact['emergency_phone']) ?>" class="contact-card-link" style="color: #0f172a; font-weight: 700;"><?= htmlspecialchars($contact['emergency_phone']) ?></a>
+            Telephone: <a href="tel:<?= preg_replace('/[^0-9+]/', '', $contact['phone']) ?>" class="contact-card-link" style="color: #0f172a; font-weight: 700;"><?= htmlspecialchars($contact['phone']) ?></a>
           </p>
         </div>
 

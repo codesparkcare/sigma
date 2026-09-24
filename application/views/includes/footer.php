@@ -1,6 +1,18 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 $base_url = base_url();
+
+if (!isset($contact) || empty($contact)) {
+    $CI =& get_instance();
+    $CI->load->model('Contact_model');
+    $contact = $CI->Contact_model->get_data();
+}
+
+$ft_ph_clean = !empty($contact['phone']) ? preg_replace('/[^0-9+]/', '', $contact['phone']) : '048858454';
+$ft_em_clean = !empty($contact['emergency_phone']) ? preg_replace('/[^0-9+]/', '', $contact['emergency_phone']) : '0526405622';
+$ft_wa_clean = !empty($contact['emergency_phone']) ? preg_replace('/[^0-9]/', '', $contact['emergency_phone']) : (!empty($contact['phone']) ? preg_replace('/[^0-9]/', '', $contact['phone']) : '971526405622');
+if (strpos($ft_wa_clean, '05') === 0) { $ft_wa_clean = '971' . substr($ft_wa_clean, 1); }
+elseif (strpos($ft_wa_clean, '5') === 0 && strlen($ft_wa_clean) == 9) { $ft_wa_clean = '971' . $ft_wa_clean; }
 ?>
   <!-- ==========================================================================
        FOOTER SECTION (COMMON UNIFIED FOOTER)
@@ -25,7 +37,7 @@ $base_url = base_url();
             <a href="https://www.facebook.com/sigmaheight" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor">
                 <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" />
               </svg></a>
-            <a href="https://wa.me/971526405622" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="WhatsApp">
+            <a href="https://wa.me/<?= $ft_wa_clean ?>" target="_blank" rel="noopener noreferrer" class="social-icon-link" aria-label="WhatsApp">
               <i class="fa-brands fa-whatsapp" style="font-size: 1.15rem;"></i>
             </a>
           </div>
@@ -43,14 +55,33 @@ $base_url = base_url();
           </ul>
         </div>
 
-        <!-- Col 3: Services Links -->
+        <!-- Col 3: Contact & Headquarters -->
         <div>
-          <h4 class="footer-col-title">Our Services</h4>
-          <ul class="footer-links">
-            <li><a href="<?= site_url('services') ?>">Home Elevators</a></li>
-            <li><a href="<?= site_url('services') ?>">Passenger Elevators</a></li>
-            <li><a href="<?= site_url('services') ?>">Panoramic Elevators</a></li>
-            <li><a href="<?= site_url('services') ?>">Dumbwaiters</a></li>
+          <h4 class="footer-col-title">Contact &amp; Support</h4>
+          <ul class="footer-contact-list">
+            <li class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <span><?= htmlspecialchars($contact['address'] ?? 'Flat No. 325, Abdul Razak Al zarouni Building, Damascus Street, Al Qusais Industrial Area 2, Dubai, UAE') ?></span>
+            </li>
+            <li class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              <div class="footer-phone-lines">
+                <div><strong>Mobile:</strong> <a href="tel:<?= $ft_em_clean ?>"><?= htmlspecialchars($contact['emergency_phone'] ?? '052-6405622') ?></a></div>
+                <div><strong>Telephone:</strong> <a href="tel:<?= $ft_ph_clean ?>"><?= htmlspecialchars($contact['phone'] ?? '04-8858454') ?></a></div>
+              </div>
+            </li>
+            <li class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+              </svg>
+              <span><?= htmlspecialchars($contact['working_hours'] ?? 'Mon - Sat: 8:00 AM - 7:00 PM (24/7 Emergency Standby)') ?></span>
+            </li>
           </ul>
         </div>
 
@@ -68,7 +99,7 @@ $base_url = base_url();
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
               </svg>
-              <span>EN 81-20/50 European Standard</span>
+              <span>EN81-20:50 European Compliance Standard</span>
             </div>
             <div class="cert-badge-row">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -119,7 +150,7 @@ $base_url = base_url();
       <div class="quote-modal-header">
         <div class="quote-modal-badge">
           <span class="modal-beacon-dot"></span>
-          <span>Official Engineering Consultation • EN 81-20 &amp; DCD Compliant</span>
+          <span>Official Engineering Consultation • EN81-20:50 European Compliance Standard</span>
         </div>
         <h2 class="quote-modal-title" id="quoteModalTitle">
           Request An <span class="accent-text">Elevator Engineering Quote</span>
@@ -271,13 +302,13 @@ $base_url = base_url();
       </p>
 
       <div class="thankyou-actions-row">
-        <a href="https://wa.me/971526405622" target="_blank" rel="noopener noreferrer" class="thankyou-btn thankyou-whatsapp-btn">
+        <a href="https://wa.me/<?= $ft_wa_clean ?>" target="_blank" rel="noopener noreferrer" class="thankyou-btn thankyou-whatsapp-btn">
           <i class="fa-brands fa-whatsapp"></i>
           <span>Chat on WhatsApp</span>
         </a>
-        <a href="tel:+052-6405622" class="thankyou-btn thankyou-call-btn">
+        <a href="tel:<?= $ft_em_clean ?>" class="thankyou-btn thankyou-call-btn">
           <i class="fa-solid fa-phone"></i>
-          <span>Call 052-6405622</span>
+          <span>Call <?= !empty($contact['emergency_phone']) ? htmlspecialchars($contact['emergency_phone']) : '052-6405622' ?></span>
         </a>
       </div>
 

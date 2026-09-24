@@ -137,7 +137,7 @@ if ($row['cnt'] == 0) {
             'slug' => 'elevator-installation',
             'icon_svg' => '<polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />',
             'short_desc' => 'Professional elevator installation in Dubai with safe, reliable, and modern lift systems for residential and commercial buildings.',
-            'full_desc' => 'Sigma Height Elevators provides turnkey elevator installation engineered to strict UAE Civil Defense and European safety standards (EN 81). We handle every phase: structural site assessment, electrical planning, precision installation, shaft alignment, and official Dubai Municipality commissioning.',
+            'full_desc' => 'Sigma Height Elevators provides turnkey elevator installation engineered to strict UAE Civil Defense and EN81-20:50 European Compliance Standard. We handle every phase: structural site assessment, electrical planning, precision installation, shaft alignment, and official Dubai Municipality commissioning.',
             'features' => "Dubai Civil Defense Approved\nAdvanced Traction & Hydraulic Machines\nComplete Turnkey Project Management\nFull Safety Sensor & Brake Certification",
             'image' => 'assets/images/service_passenger.jpg',
             'button_text' => 'Get A Quote',

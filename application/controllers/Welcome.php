@@ -14,6 +14,9 @@ class Welcome extends CI_Controller {
         $this->load->model('About_model');
         $this->load->model('Contact_model');
         $this->load->model('Smtp_model');
+
+        // Automatically pass dynamic contact settings to all views (header, footer, sections, pages)
+        $this->load->vars(['contact' => $this->Contact_model->get_data()]);
     }
 
     // Homepage with Dynamic Sliders, Services, Projects, and Reviews

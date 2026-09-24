@@ -326,7 +326,7 @@ $this->load->view('includes/header');
               </svg>
               <div>
                 <div class="about-pillar-title">Dubai Civil Defense Approved</div>
-                <div class="about-pillar-desc">100% compliant with EN-81 European codes and statutory UAE civil defense
+                <div class="about-pillar-desc">100% compliant with EN81-20:50 European Compliance Standard and statutory UAE civil defense
                   mandates.</div>
               </div>
             </div>
@@ -1250,7 +1250,7 @@ $this->load->view('includes/header');
   <!-- ==========================================================================
        11.5. CLIENT TESTIMONIALS & REVIEWS SECTION (SIDE SCROLL SLIDER)
        ========================================================================== -->
-  <section class="section-wrapper reviews-section" id="reviews" style="background: linear-gradient(180deg, #090d16 0%, #111827 100%); padding: 90px 0; color: #ffffff; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); position: relative; overflow: hidden;">
+  <section class="section-wrapper reviews-section" id="reviews" style="background: #ffffff; padding: 90px 0; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; position: relative; overflow: hidden;">
     
     <style>
       .reviews-slider-container {
@@ -1278,11 +1278,11 @@ $this->load->view('includes/header');
         flex: 0 0 calc(33.333% - 16px);
         min-width: 320px;
         scroll-snap-align: start;
-        background: rgba(255, 255, 255, 0.035);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
         border-radius: 20px;
         padding: 32px 28px;
-        backdrop-filter: blur(14px);
+        box-shadow: 0 8px 25px -4px rgba(15, 23, 42, 0.06), 0 4px 10px -2px rgba(15, 23, 42, 0.03);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -1291,8 +1291,8 @@ $this->load->view('includes/header');
       }
       .review-slide-card:hover {
         transform: translateY(-6px);
-        border-color: rgba(230, 0, 0, 0.45);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 24px rgba(230, 0, 0, 0.15);
+        border-color: rgba(225, 29, 72, 0.35);
+        box-shadow: 0 20px 35px -8px rgba(225, 29, 72, 0.12), 0 10px 15px -3px rgba(15, 23, 42, 0.05);
       }
       @media (max-width: 992px) {
         .review-slide-card {
@@ -1317,9 +1317,9 @@ $this->load->view('includes/header');
         width: 44px;
         height: 44px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.06);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        color: #ffffff;
+        background: #f1f5f9;
+        border: 1px solid #cbd5e1;
+        color: #0f172a;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -1330,14 +1330,15 @@ $this->load->view('includes/header');
       .reviews-nav-btn:hover {
         background: #e11d48;
         border-color: #e11d48;
+        color: #ffffff;
         transform: scale(1.08);
-        box-shadow: 0 0 16px rgba(225, 29, 72, 0.45);
+        box-shadow: 0 0 16px rgba(225, 29, 72, 0.35);
       }
       .reviews-status-tag {
         display: flex;
         align-items: center;
         gap: 8px;
-        color: #94a3b8;
+        color: #64748b;
         font-size: 0.85rem;
       }
       .reviews-status-dot {
@@ -1352,12 +1353,12 @@ $this->load->view('includes/header');
 
     <div class="container">
       <div class="section-header-center">
-        <div class="section-tagline" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); color: #ffffff;">
+        <div class="section-tagline">
           <svg width="14" height="14" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          Client Trust & Endorsements
+          Client Trust &amp; Endorsements
         </div>
-        <h2 class="section-title" style="color: #ffffff;">What Property Owners <span class="accent" style="color: #f8fafc;">Say About Us</span></h2>
-        <p class="section-desc" style="color: #94a3b8;">Trusted by prestigious villa owners, property developers, and commercial facility managers across Dubai and the UAE.</p>
+        <h2 class="section-title">What Property Owners <span class="accent">Say About Us</span></h2>
+        <p class="section-desc">Trusted by prestigious villa owners, property developers, and commercial facility managers across Dubai and the UAE.</p>
       </div>
 
       <div class="reviews-slider-container">
@@ -1373,25 +1374,25 @@ $this->load->view('includes/header');
                         <span>★</span>
                       <?php endfor; ?>
                     </div>
-                    <span style="font-size: 0.72rem; color: #22c55e; background: rgba(34, 197, 94, 0.12); border: 1px solid rgba(34, 197, 94, 0.3); padding: 2px 8px; border-radius: 12px; font-weight: 600;">
+                    <span style="font-size: 0.72rem; color: #16a34a; background: #dcfce7; border: 1px solid #bbf7d0; padding: 2px 8px; border-radius: 12px; font-weight: 600;">
                       <i class="fa-solid fa-circle-check" style="font-size: 0.7rem; margin-right: 2px;"></i> Verified Client
                     </span>
                   </div>
-                  <p style="color: #cbd5e1; font-size: 0.96rem; line-height: 1.75; font-style: italic; margin-bottom: 24px;">
+                  <p style="color: #334155; font-size: 0.96rem; line-height: 1.75; font-style: italic; margin-bottom: 24px;">
                     "<?= htmlspecialchars($rev['review_text']) ?>"
                   </p>
                 </div>
-                <div style="display: flex; align-items: center; gap: 14px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.08);">
+                <div style="display: flex; align-items: center; gap: 14px; padding-top: 18px; border-top: 1px solid #e2e8f0;">
                   <?php if (!empty($rev['client_avatar'])): ?>
-                    <img src="<?= base_url($rev['client_avatar']) ?>" alt="<?= htmlspecialchars($rev['client_name']) ?>" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid #64748b; flex-shrink: 0;">
+                    <img src="<?= base_url($rev['client_avatar']) ?>" alt="<?= htmlspecialchars($rev['client_name']) ?>" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid #cbd5e1; flex-shrink: 0;">
                   <?php else: ?>
-                    <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #334155 0%, #0f172a 100%); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1rem; flex-shrink: 0;">
+                    <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #0f172a 0%, #334155 100%); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1rem; flex-shrink: 0;">
                       <?= strtoupper(substr($rev['client_name'], 0, 2)) ?>
                     </div>
                   <?php endif; ?>
                   <div>
-                    <div style="font-weight: 700; color: #ffffff; font-size: 1.02rem; line-height: 1.2;"><?= htmlspecialchars($rev['client_name']) ?></div>
-                    <div style="color: #94a3b8; font-size: 0.82rem; margin-top: 3px;">
+                    <div style="font-weight: 700; color: #0f172a; font-size: 1.02rem; line-height: 1.2;"><?= htmlspecialchars($rev['client_name']) ?></div>
+                    <div style="color: #64748b; font-size: 0.82rem; margin-top: 3px;">
                       <?= htmlspecialchars($rev['client_title']) ?><?= !empty($rev['company']) ? ' &bull; ' . htmlspecialchars($rev['company']) : '' ?>
                     </div>
                   </div>
@@ -1451,7 +1452,7 @@ $this->load->view('includes/header');
               </div>
               <div class="contact-info-text">
                 <div class="contact-info-title">Head Office & Showroom</div>
-                <div class="contact-info-value">Flat No. 325, Abdul Razak Al zarouni Building(Bldg No. 326), Damascus Street, Al Qusais Industrial Area 2, Dubai, UAE</div>
+                <div class="contact-info-value"><?= !empty($contact['address']) ? htmlspecialchars($contact['address']) : 'Flat No. 325, Abdul Razak Al zarouni Building(Bldg No. 326), Damascus Street, Al Qusais Industrial Area 2, Dubai, UAE' ?></div>
                 <div class="contact-card-badge">Dubai, UAE</div>
               </div>
             </div>
@@ -1466,8 +1467,15 @@ $this->load->view('includes/header');
               <div class="contact-info-text">
                 <div class="contact-info-title">Direct Engineering & 24/7 Helpline</div>
                 <div class="contact-info-value">
-                  <span>General: <a href="tel:+97142889120">+048858454</a></span>
-                  <span class="emergency-tag">24/7 Emergency: <a href="tel:+052-6405622">052-6405622</a></span>
+                  <?php 
+                    $idx_phone_clean = !empty($contact['phone']) ? preg_replace('/[^0-9+]/', '', $contact['phone']) : '048858454';
+                    $idx_em_clean    = !empty($contact['emergency_phone']) ? preg_replace('/[^0-9+]/', '', $contact['emergency_phone']) : '0526405622';
+                    $idx_wa          = !empty($contact['emergency_phone']) ? preg_replace('/[^0-9]/', '', $contact['emergency_phone']) : (!empty($contact['phone']) ? preg_replace('/[^0-9]/', '', $contact['phone']) : '971526405622');
+                    if (strpos($idx_wa, '05') === 0) { $idx_wa = '971' . substr($idx_wa, 1); }
+                    elseif (strpos($idx_wa, '5') === 0 && strlen($idx_wa) == 9) { $idx_wa = '971' . $idx_wa; }
+                  ?>
+                  <span class="emergency-tag">Mobile: <a href="tel:<?= $idx_em_clean ?>"><?= !empty($contact['emergency_phone']) ? htmlspecialchars($contact['emergency_phone']) : '052-6405622' ?></a></span>
+                  <span>Telephone: <a href="tel:<?= $idx_phone_clean ?>"><?= !empty($contact['phone']) ? htmlspecialchars($contact['phone']) : '+048858454' ?></a></span>
                 </div>
                 <div class="contact-card-badge active-status">Live Desk</div>
               </div>
@@ -1483,7 +1491,7 @@ $this->load->view('includes/header');
               <div class="contact-info-text">
                 <div class="contact-info-title">Email Technical Inquiries</div>
                 <div class="contact-info-value">
-                  <a href="mailto:info@sigmaheightelevators.com">info@sigmaheightelevators.com</a>
+                  <a href="mailto:<?= !empty($contact['email']) ? htmlspecialchars($contact['email']) : 'info@sigmaheightelevators.com' ?>"><?= !empty($contact['email']) ? htmlspecialchars($contact['email']) : 'info@sigmaheightelevators.com' ?></a>
                 </div>
                 <div class="contact-card-badge">Fast Response</div>
               </div>
@@ -1491,7 +1499,7 @@ $this->load->view('includes/header');
           </div>
 
           <div class="contact-actions-row">
-            <a href="https://wa.me/052-6405622?text=Hello%20Sigma%20Height%20Elevators,%20I%20would%20like%20a%20quotation"
+            <a href="https://wa.me/<?= $idx_wa ?>?text=Hello%20Sigma%20Height%20Elevators,%20I%20would%20like%20a%20quotation"
               target="_blank" class="contact-whatsapp-btn">
               <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
                 <path

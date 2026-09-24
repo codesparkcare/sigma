@@ -30,6 +30,27 @@ if ($is_about) {
     $active_arrival_title = 'ARRIVED • MAIN LOBBY';
 }
 
+if (!isset($contact) || empty($contact)) {
+    $CI =& get_instance();
+    $CI->load->model('Contact_model');
+    $contact = $CI->Contact_model->get_data();
+}
+
+$site_address   = !empty($contact['address']) ? $contact['address'] : 'Flat No. 325, Abdul Razak Al zarouni Building(Bldg No. 326), Damascus Street, Al Qusais Industrial Area 2, Dubai, UAE';
+$site_phone     = !empty($contact['phone']) ? $contact['phone'] : '+048858454';
+$site_emergency = !empty($contact['emergency_phone']) ? $contact['emergency_phone'] : '052-6405622';
+$site_email     = !empty($contact['email']) ? $contact['email'] : 'info@sigmaheightelevators.com';
+$site_hours     = !empty($contact['working_hours']) ? $contact['working_hours'] : 'Mon - Sat: 8:00 AM - 7:00 PM';
+
+$phone_clean     = preg_replace('/[^0-9+]/', '', (string)$site_phone);
+$emergency_clean = preg_replace('/[^0-9+]/', '', (string)$site_emergency);
+$wa_number       = preg_replace('/[^0-9]/', '', (string)$site_emergency);
+if (strpos($wa_number, '05') === 0) {
+    $wa_number = '971' . substr($wa_number, 1);
+} elseif (strpos($wa_number, '5') === 0 && strlen($wa_number) == 9) {
+    $wa_number = '971' . $wa_number;
+}
+
 $meta_title = !empty($title) ? $title : 'Sigma Height Elevators L.L.C | Luxury & Commercial Elevators Dubai, UAE';
 $meta_desc  = !empty($meta_description) ? $meta_description : 'Sigma Height Elevators LLC is Dubai\'s leading elevator company specializing in luxury home elevators, passenger, panoramic glass lifts, hospital, freight elevators, dumbwaiters, and escalators with precision engineering and Dubai Civil Defense certification.';
 ?>
@@ -114,7 +135,7 @@ $meta_desc  = !empty($meta_description) ? $meta_description : 'Sigma Height Elev
           <span class="motto-sep">•</span>
           <span class="motto-tag">PRECISION ENGINEERING EXCELLENCE</span>
           <span class="motto-sep">•</span>
-          <span class="motto-tag">EN 81-20/50 COMPLIANT</span>
+          <span class="motto-tag">EN81-20:50 EUROPEAN COMPLIANCE STANDARD</span>
         </div>
         <div class="preloader-progress-track">
           <div class="preloader-progress-bar" id="preloaderProgressBar"></div>
@@ -205,14 +226,7 @@ $meta_desc  = !empty($meta_description) ? $meta_description : 'Sigma Height Elev
             <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
             <circle cx="12" cy="10" r="3" />
           </svg>
-          Office 402, Al Quoz 3, Sheikh Zayed Road, Dubai, UAE
-        </span>
-        <span class="topbar-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10" />
-            <polyline points="12 6 12 12 16 14" />
-          </svg>
-          Mon - Sat: 8:00 AM - 7:00 PM
+          <?= htmlspecialchars($site_address) ?>
         </span>
       </div>
 
@@ -224,14 +238,13 @@ $meta_desc  = !empty($meta_description) ? $meta_description : 'Sigma Height Elev
           <span id="soundToggleLabel">SOUND: ON</span>
         </button>
         <span class="topbar-item">
-          <span class="topbar-badge">24/7 EMERGENCY</span>
-          <a href="tel:+052-6405622" class="topbar-highlight">052-6405622</a>
+          <span>Mobile: <a href="tel:<?= $emergency_clean ?>" class="topbar-highlight"><?= htmlspecialchars($site_emergency) ?></a></span>
         </span>
         <span class="topbar-item">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
           </svg>
-          <a href="tel:+97142889120">+048858454</a>
+          <span>Telephone: <a href="tel:<?= $phone_clean ?>"><?= htmlspecialchars($site_phone) ?></a></span>
         </span>
       </div>
     </div>
@@ -280,7 +293,7 @@ $meta_desc  = !empty($meta_description) ? $meta_description : 'Sigma Height Elev
   <div class="mobile-backdrop" id="mobileBackdrop"></div>
   <aside class="mobile-nav-drawer" id="mobileDrawer">
     <div>
-      <img src="<?= $base_url ?>assets/Sigma-Elevator-White-logo.png" alt="Sigma Height Elevators" style="height: 44px; margin-bottom: 30px;">
+      <img src="<?= $base_url ?>assets/Sigma-Elevator-White-logo.png" alt="Sigma Height Elevators" style="height: 50px; margin-bottom: 26px;">
       <ul class="mobile-menu-links">
         <li><a href="<?= site_url('') ?>" class="<?= $is_home ? 'active' : '' ?>">Home</a></li>
         <li><a href="<?= site_url('about') ?>" class="<?= $is_about ? 'active' : '' ?>">About Us</a></li>
@@ -292,7 +305,7 @@ $meta_desc  = !empty($meta_description) ? $meta_description : 'Sigma Height Elev
     <div>
       <a href="<?= site_url('contact') ?>" class="btn-primary" style="width: 100%; justify-content: center; margin-bottom: 16px;">Request Free Consultation</a>
       <div style="font-size: 0.85rem; color: #9ca3af; text-align: center;">
-        Dubai Helpline: <a href="tel:+052-6405622" style="color: #ff3333; font-weight: bold;">052-6405622</a>
+        Dubai Helpline: <a href="tel:<?= $emergency_clean ?>" style="color: #ff3333; font-weight: bold;"><?= htmlspecialchars($site_emergency) ?></a>
       </div>
     </div>
   </aside>

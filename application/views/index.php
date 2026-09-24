@@ -1250,7 +1250,7 @@ $this->load->view('includes/header');
   <!-- ==========================================================================
        11.5. CLIENT TESTIMONIALS & REVIEWS SECTION (SIDE SCROLL SLIDER)
        ========================================================================== -->
-  <section class="section-wrapper reviews-section" id="reviews" style="background: #ffffff; padding: 90px 0; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0; position: relative; overflow: hidden;">
+  <section class="section-wrapper reviews-section" id="reviews" style="background: #0f172a; padding: 90px 0; color: #ffffff; border-top: 1px solid #1e293b; border-bottom: 1px solid #1e293b; position: relative; overflow: hidden;">
     
     <style>
       .reviews-slider-container {
@@ -1278,11 +1278,11 @@ $this->load->view('includes/header');
         flex: 0 0 calc(33.333% - 16px);
         min-width: 320px;
         scroll-snap-align: start;
-        background: #ffffff;
-        border: 1px solid #e2e8f0;
+        background: rgba(255, 255, 255, 0.035);
+        border: 1px solid rgba(255, 255, 255, 0.09);
         border-radius: 20px;
         padding: 32px 28px;
-        box-shadow: 0 8px 25px -4px rgba(15, 23, 42, 0.06), 0 4px 10px -2px rgba(15, 23, 42, 0.03);
+        box-shadow: 0 8px 25px -4px rgba(0, 0, 0, 0.35);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -1292,7 +1292,7 @@ $this->load->view('includes/header');
       .review-slide-card:hover {
         transform: translateY(-6px);
         border-color: rgba(225, 29, 72, 0.35);
-        box-shadow: 0 20px 35px -8px rgba(225, 29, 72, 0.12), 0 10px 15px -3px rgba(15, 23, 42, 0.05);
+        box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.5), 0 0 20px rgba(225, 29, 72, 0.2);
       }
       @media (max-width: 992px) {
         .review-slide-card {
@@ -1317,9 +1317,9 @@ $this->load->view('includes/header');
         width: 44px;
         height: 44px;
         border-radius: 50%;
-        background: #f1f5f9;
-        border: 1px solid #cbd5e1;
-        color: #0f172a;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: #ffffff;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -1338,7 +1338,7 @@ $this->load->view('includes/header');
         display: flex;
         align-items: center;
         gap: 8px;
-        color: #64748b;
+        color: #94a3b8;
         font-size: 0.85rem;
       }
       .reviews-status-dot {
@@ -1353,12 +1353,12 @@ $this->load->view('includes/header');
 
     <div class="container">
       <div class="section-header-center">
-        <div class="section-tagline">
+        <div class="section-tagline" style="background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.16); color: #f8fafc;">
           <svg width="14" height="14" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           Client Trust &amp; Endorsements
         </div>
-        <h2 class="section-title">What Property Owners <span class="accent">Say About Us</span></h2>
-        <p class="section-desc">Trusted by prestigious villa owners, property developers, and commercial facility managers across Dubai and the UAE.</p>
+        <h2 class="section-title" style="color: #ffffff;">What Property Owners <span class="accent">Say About Us</span></h2>
+        <p class="section-desc" style="color: #94a3b8;">Trusted by prestigious villa owners, property developers, and commercial facility managers across Dubai and the UAE.</p>
       </div>
 
       <div class="reviews-slider-container">
@@ -1374,25 +1374,25 @@ $this->load->view('includes/header');
                         <span>★</span>
                       <?php endfor; ?>
                     </div>
-                    <span style="font-size: 0.72rem; color: #16a34a; background: #dcfce7; border: 1px solid #bbf7d0; padding: 2px 8px; border-radius: 12px; font-weight: 600;">
+                    <span style="font-size: 0.72rem; color: #22c55e; background: rgba(34, 197, 94, 0.12); border: 1px solid rgba(34, 197, 94, 0.3); padding: 2px 8px; border-radius: 12px; font-weight: 600;">
                       <i class="fa-solid fa-circle-check" style="font-size: 0.7rem; margin-right: 2px;"></i> Verified Client
                     </span>
                   </div>
-                  <p style="color: #334155; font-size: 0.96rem; line-height: 1.75; font-style: italic; margin-bottom: 24px;">
+                  <p style="color: #cbd5e1; font-size: 0.96rem; line-height: 1.75; font-style: italic; margin-bottom: 24px;">
                     "<?= htmlspecialchars($rev['review_text']) ?>"
                   </p>
                 </div>
-                <div style="display: flex; align-items: center; gap: 14px; padding-top: 18px; border-top: 1px solid #e2e8f0;">
+                <div style="display: flex; align-items: center; gap: 14px; padding-top: 18px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
                   <?php if (!empty($rev['client_avatar'])): ?>
-                    <img src="<?= base_url($rev['client_avatar']) ?>" alt="<?= htmlspecialchars($rev['client_name']) ?>" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid #cbd5e1; flex-shrink: 0;">
+                    <img src="<?= base_url($rev['client_avatar']) ?>" alt="<?= htmlspecialchars($rev['client_name']) ?>" style="width: 48px; height: 48px; border-radius: 50%; object-fit: cover; border: 2px solid #64748b; flex-shrink: 0;">
                   <?php else: ?>
-                    <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #0f172a 0%, #334155 100%); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1rem; flex-shrink: 0;">
+                    <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #1e293b 0%, #334155 100%); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1rem; flex-shrink: 0;">
                       <?= strtoupper(substr($rev['client_name'], 0, 2)) ?>
                     </div>
                   <?php endif; ?>
                   <div>
-                    <div style="font-weight: 700; color: #0f172a; font-size: 1.02rem; line-height: 1.2;"><?= htmlspecialchars($rev['client_name']) ?></div>
-                    <div style="color: #64748b; font-size: 0.82rem; margin-top: 3px;">
+                    <div style="font-weight: 700; color: #ffffff; font-size: 1.02rem; line-height: 1.2;"><?= htmlspecialchars($rev['client_name']) ?></div>
+                    <div style="color: #94a3b8; font-size: 0.82rem; margin-top: 3px;">
                       <?= htmlspecialchars($rev['client_title']) ?><?= !empty($rev['company']) ? ' &bull; ' . htmlspecialchars($rev['company']) : '' ?>
                     </div>
                   </div>

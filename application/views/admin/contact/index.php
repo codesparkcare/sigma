@@ -31,12 +31,12 @@
                         </div>
 
                         <div class="col-md-6">
-                            <label class="form-label fw-semibold">General Telephone / Office Line <span class="text-danger">*</span></label>
-                            <input type="text" name="phone" class="form-control" value="<?= htmlspecialchars($contact['phone']) ?>" required>
+                            <label class="form-label fw-semibold">Mobile Number <span class="text-danger">*</span></label>
+                            <input type="text" name="emergency_phone" class="form-control" value="<?= htmlspecialchars($contact['emergency_phone']) ?>" placeholder="e.g. 052-6405622" required>
                         </div>
                         <div class="col-md-6">
-                            <label class="form-label fw-semibold">24/7 Emergency Dispatch Hotline <span class="text-danger">*</span></label>
-                            <input type="text" name="emergency_phone" class="form-control" value="<?= htmlspecialchars($contact['emergency_phone']) ?>" required>
+                            <label class="form-label fw-semibold">Telephone / Landline <span class="text-danger">*</span></label>
+                            <input type="text" name="phone" class="form-control" value="<?= htmlspecialchars($contact['phone']) ?>" placeholder="e.g. 04-8858454" required>
                         </div>
 
                         <div class="col-12">

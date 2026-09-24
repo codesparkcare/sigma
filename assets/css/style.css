@@ -1389,12 +1389,13 @@ textarea {
    8 SERVICES SECTION (BRIGHT LUXURY CARDS)
    ========================================================================== */
 /* ==========================================================================
-   OUR SERVICES SECTION — Clean Bright Luxury Theme
+   OUR SERVICES SECTION — Footer Dark Slate Theme (#0f172a)
    ========================================================================== */
 .services-section {
-  background: #f8fafc;
-  border-top: 1px solid #e2e8f0;
-  border-bottom: 1px solid #e2e8f0;
+  background: #0f172a;
+  color: #ffffff;
+  border-top: 1px solid #1e293b;
+  border-bottom: 1px solid #1e293b;
   position: relative;
 }
 
@@ -1402,23 +1403,23 @@ textarea {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 30% 50%, rgba(225, 29, 72, 0.03) 0%, transparent 65%),
-    radial-gradient(ellipse at 70% 20%, rgba(15, 23, 42, 0.02) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 30% 50%, rgba(225, 29, 72, 0.05) 0%, transparent 65%),
+    radial-gradient(ellipse at 70% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 60%);
   pointer-events: none;
 }
 
 .services-section .section-tagline {
-  background: var(--accent-color-light);
-  border-color: var(--accent-color-border);
-  color: var(--accent-color);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.16);
+  color: #f8fafc;
 }
 
 .services-section .section-title {
-  color: var(--text-headings);
+  color: #ffffff;
 }
 
 .services-section .section-desc {
-  color: var(--text-muted);
+  color: #94a3b8;
 }
 
 .services-grid {
@@ -1430,16 +1431,16 @@ textarea {
 }
 
 .service-card {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.035);
   border-radius: var(--radius-md);
-  border: 1px solid #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.09);
   border-top: 3px solid var(--primary-red);
   padding: 30px 24px 26px;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
   cursor: pointer;
 }
@@ -1448,16 +1449,16 @@ textarea {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(225, 29, 72, 0.04) 0%, transparent 60%);
+  background: linear-gradient(135deg, rgba(225, 29, 72, 0.06) 0%, transparent 60%);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
 .service-card:hover {
   transform: translateY(-8px);
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.07);
   border-color: var(--primary-red);
-  box-shadow: 0 20px 35px -8px rgba(225, 29, 72, 0.12), 0 10px 15px -3px rgba(15, 23, 42, 0.05);
+  box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.5), 0 0 20px rgba(225, 29, 72, 0.2);
 }
 
 .service-card:hover::after {
@@ -1476,12 +1477,12 @@ textarea {
   width: 54px;
   height: 54px;
   border-radius: 14px;
-  background: #f1f5f9;
-  border: 1.5px solid #e2e8f0;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.16);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--primary-red);
+  color: #ffffff;
   margin-bottom: 20px;
   transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
   flex-shrink: 0;
@@ -1491,7 +1492,7 @@ textarea {
   background: var(--primary-red);
   color: #ffffff;
   transform: scale(1.1) rotate(-3deg);
-  box-shadow: 0 8px 24px rgba(225, 29, 72, 0.35);
+  box-shadow: 0 8px 24px rgba(225, 29, 72, 0.45);
   border-color: var(--primary-red);
 }
 
@@ -1504,7 +1505,7 @@ textarea {
   font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 700;
-  color: #0f172a;
+  color: #ffffff;
   letter-spacing: -0.01em;
   margin-bottom: 12px;
   line-height: 1.3;
@@ -1512,7 +1513,7 @@ textarea {
 
 .service-specs {
   font-size: 0.875rem;
-  color: #64748b;
+  color: #cbd5e1;
   line-height: 1.7;
   flex: 1;
   margin-bottom: 22px;
@@ -1524,10 +1525,10 @@ textarea {
   gap: 8px;
   font-size: 0.8rem;
   font-weight: 700;
-  color: #0f172a;
+  color: #cbd5e1;
   text-transform: uppercase;
   letter-spacing: 0.8px;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 16px;
   margin-top: auto;
   text-decoration: none;

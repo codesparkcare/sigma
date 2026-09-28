@@ -31,6 +31,12 @@
             </a>
         </li>
         <li>
+            <a href="<?= site_url('admin/products') ?>" class="<?= strpos(uri_string(), 'admin/products') !== false || strpos(uri_string(), 'admin/product') !== false ? 'active' : '' ?>">
+                <i class="fa-solid fa-boxes-stacked"></i>
+                <span>Products Catalog</span>
+            </a>
+        </li>
+        <li>
             <a href="<?= site_url('admin/projects') ?>" class="<?= strpos(uri_string(), 'admin/projects') !== false || strpos(uri_string(), 'admin/project') !== false ? 'active' : '' ?>">
                 <i class="fa-solid fa-building"></i>
                 <span>Projects Portfolio</span>

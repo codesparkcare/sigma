@@ -8,6 +8,7 @@ class Welcome extends CI_Controller {
         $this->load->helper(['url', 'form']);
         $this->load->model('Slider_model');
         $this->load->model('Service_model');
+        $this->load->model('Product_model');
         $this->load->model('Project_model');
         $this->load->model('Review_model');
         $this->load->model('Enquiry_model');
@@ -19,11 +20,12 @@ class Welcome extends CI_Controller {
         $this->load->vars(['contact' => $this->Contact_model->get_data()]);
     }
 
-    // Homepage with Dynamic Sliders, Services, Projects, and Reviews
+    // Homepage with Dynamic Sliders, Services, Products, Projects, and Reviews
     public function index()
     {
-        $data['sliders']  = $this->Slider_model->get_all(true);
+        $data['sliders']  = $this->Slider_model->get_by_page('home', true);
         $data['services'] = $this->Service_model->get_all(true);
+        $data['products'] = $this->Product_model->get_all(true, true); // active and featured for homepage
         $data['projects'] = $this->Project_model->get_all(true);
         $data['reviews']  = $this->Review_model->get_all(true);
 
@@ -33,8 +35,9 @@ class Welcome extends CI_Controller {
     // Dedicated About Us Page (Dynamic CMS)
     public function about()
     {
-        $data['title'] = 'About Us | Sigma Height Elevators Dubai, UAE';
-        $data['about'] = $this->About_model->get_data();
+        $data['title']   = 'About Us | Sigma Height Elevators Dubai, UAE';
+        $data['about']   = $this->About_model->get_data();
+        $data['sliders'] = $this->Slider_model->get_by_page('about', true);
 
         $this->load->view('about', $data);
     }
@@ -44,6 +47,7 @@ class Welcome extends CI_Controller {
     {
         $data['title']    = 'Elevator Services & Engineering Solutions';
         $data['services'] = $this->Service_model->get_all(true);
+        $data['sliders']  = $this->Slider_model->get_by_page('services', true);
 
         $this->load->view('services', $data);
     }
@@ -54,6 +58,22 @@ class Welcome extends CI_Controller {
         redirect('services');
     }
 
+    // Dedicated Products Catalog Page
+    public function products()
+    {
+        $data['title']    = 'Elevator Models & Premium Products Catalog | Sigma Height Dubai';
+        $data['products'] = $this->Product_model->get_all(true);
+        $data['sliders']  = $this->Slider_model->get_by_page('products', true);
+
+        $this->load->view('products', $data);
+    }
+
+    // Single Product Detail Page (Redirected to Products)
+    public function product_detail($id = null)
+    {
+        redirect('products');
+    }
+
     // Dedicated Projects Showcase Page
     public function projects()
     {
@@ -62,6 +82,7 @@ class Welcome extends CI_Controller {
         $data['category']   = $category;
         $data['projects']   = $this->Project_model->get_all(true, $category);
         $data['categories'] = $this->Project_model->get_categories();
+        $data['sliders']    = $this->Slider_model->get_by_page('projects', true);
 
         $this->load->view('projects', $data);
     }
@@ -77,6 +98,7 @@ class Welcome extends CI_Controller {
     {
         $data['title']   = 'Contact Us | Sigma Height Elevators Dubai, UAE';
         $data['contact'] = $this->Contact_model->get_data();
+        $data['sliders'] = $this->Slider_model->get_by_page('contact', true);
 
         $this->load->view('contact', $data);
     }

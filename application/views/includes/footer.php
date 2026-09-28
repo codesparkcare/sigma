@@ -50,6 +50,7 @@ elseif (strpos($ft_wa_clean, '5') === 0 && strlen($ft_wa_clean) == 9) { $ft_wa_c
             <li><a href="<?= site_url('') ?>">Home</a></li>
             <li><a href="<?= site_url('about') ?>">About Us</a></li>
             <li><a href="<?= site_url('services') ?>">All Services</a></li>
+            <li><a href="<?= site_url('products') ?>">Elevator Products</a></li>
             <li><a href="<?= site_url('projects') ?>">All Projects</a></li>
             <li><a href="<?= site_url('contact') ?>">Contact & Enquiry</a></li>
           </ul>
@@ -258,7 +259,7 @@ elseif (strpos($ft_wa_clean, '5') === 0 && strlen($ft_wa_clean) == 9) { $ft_wa_c
             </div>
             <div class="modal-assurance-item">
               <i class="fa-solid fa-bolt" style="color: #ff3333;"></i>
-              <span>&lt; 15 Min Fast Dispatch</span>
+              <span>&lt; 30 Min Fast Dispatch</span>
             </div>
             <div class="modal-assurance-item">
               <i class="fa-solid fa-compass-drafting" style="color: #cbd5e1;"></i>

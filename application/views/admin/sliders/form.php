@@ -14,11 +14,27 @@
             <div class="admin-card-body">
                 <form action="<?= $slider ? site_url('admin/edit_slider/' . $slider['id']) : site_url('admin/add_slider') ?>" method="POST" enctype="multipart/form-data">
                     <div class="row g-3">
-                        <div class="col-md-8">
+                        <div class="col-md-4">
+                            <label class="form-label fw-semibold">Display Page / Location <span class="text-danger">*</span></label>
+                            <?php 
+                                $selected_page = $slider ? (!empty($slider['page']) ? $slider['page'] : 'home') : (isset($default_page) ? $default_page : 'home');
+                            ?>
+                            <select name="page" class="form-select fw-semibold" required>
+                                <option value="home" <?= $selected_page === 'home' ? 'selected' : '' ?>>🏠 Homepage (Hero Slider)</option>
+                                <option value="services" <?= $selected_page === 'services' ? 'selected' : '' ?>>🛠️ Services Page (/services)</option>
+                                <option value="products" <?= $selected_page === 'products' ? 'selected' : '' ?>>📦 Products Page (/products)</option>
+                                <option value="projects" <?= $selected_page === 'projects' ? 'selected' : '' ?>>🏢 Projects Page (/projects)</option>
+                                <option value="contact" <?= $selected_page === 'contact' ? 'selected' : '' ?>>📞 Contact Page (/contact)</option>
+                                <option value="about" <?= $selected_page === 'about' ? 'selected' : '' ?>>ℹ️ About Us Page (/about)</option>
+                            </select>
+                            <small class="text-muted">Choose which page this slide/banner displays on.</small>
+                        </div>
+
+                        <div class="col-md-5">
                             <label class="form-label fw-semibold">Slide Main Title <span class="text-danger">*</span></label>
                             <input type="text" name="title" class="form-control" placeholder="e.g. Luxury Home Elevators for" value="<?= $slider ? htmlspecialchars($slider['title']) : '' ?>" required>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label class="form-label fw-semibold">Highlight Text (Red Accent)</label>
                             <input type="text" name="highlight_text" class="form-control" placeholder="e.g. Modern Living" value="<?= $slider ? htmlspecialchars($slider['highlight_text']) : '' ?>">
                         </div>
@@ -32,8 +48,38 @@
                             <input type="text" name="button_text" class="form-control" placeholder="e.g. Explore Home Elevators" value="<?= $slider ? htmlspecialchars($slider['button_text']) : 'Explore Services' ?>">
                         </div>
                         <div class="col-md-4">
-                            <label class="form-label fw-semibold">Button Link</label>
-                            <input type="text" name="button_link" class="form-control" placeholder="e.g. services or #contact" value="<?= $slider ? htmlspecialchars($slider['button_link']) : 'services' ?>">
+                            <label class="form-label fw-semibold">Button Link (Page / Section)</label>
+                            <?php 
+                                $current_link = $slider ? $slider['button_link'] : 'services';
+                                $predefined_links = [
+                                    'services', 'products', 'projects', 'about', 'contact',
+                                    '#contact', '#services', '#products', '#why-us', '#process', '#calculator', '#telemetry', '#faq'
+                                ];
+                            ?>
+                            <select name="button_link" class="form-select">
+                                <optgroup label="Website Pages">
+                                    <option value="services" <?= $current_link === 'services' ? 'selected' : '' ?>>Services Page (/services)</option>
+                                    <option value="products" <?= $current_link === 'products' ? 'selected' : '' ?>>Products Catalog (/products)</option>
+                                    <option value="projects" <?= $current_link === 'projects' ? 'selected' : '' ?>>Projects Portfolio (/projects)</option>
+                                    <option value="about" <?= $current_link === 'about' ? 'selected' : '' ?>>About Us Page (/about)</option>
+                                    <option value="contact" <?= $current_link === 'contact' ? 'selected' : '' ?>>Contact Us Page (/contact)</option>
+                                </optgroup>
+                                <optgroup label="Homepage Sections (Anchors)">
+                                    <option value="#contact" <?= $current_link === '#contact' ? 'selected' : '' ?>>#contact (Instant Quote / Inquiry Form)</option>
+                                    <option value="#services" <?= $current_link === '#services' ? 'selected' : '' ?>>#services (Services Section)</option>
+                                    <option value="#products" <?= $current_link === '#products' ? 'selected' : '' ?>>#products (Products Section)</option>
+                                    <option value="#why-us" <?= $current_link === '#why-us' ? 'selected' : '' ?>>#why-us (Why Choose Us Section)</option>
+                                    <option value="#process" <?= $current_link === '#process' ? 'selected' : '' ?>>#process (Engineering Workflow Section)</option>
+                                    <option value="#calculator" <?= $current_link === '#calculator' ? 'selected' : '' ?>>#calculator (Cost Estimator)</option>
+                                    <option value="#telemetry" <?= $current_link === '#telemetry' ? 'selected' : '' ?>>#telemetry (Live Telemetry Section)</option>
+                                    <option value="#faq" <?= $current_link === '#faq' ? 'selected' : '' ?>>#faq (Frequently Asked Questions)</option>
+                                </optgroup>
+                                <?php if (!empty($current_link) && !in_array($current_link, $predefined_links)): ?>
+                                    <optgroup label="Custom Value">
+                                        <option value="<?= htmlspecialchars($current_link) ?>" selected><?= htmlspecialchars($current_link) ?> (Custom)</option>
+                                    </optgroup>
+                                <?php endif; ?>
+                            </select>
                         </div>
 
                         <div class="col-12">

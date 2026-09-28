@@ -157,42 +157,115 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
 </style>
 
   <!-- HERO BANNER (REDUCED COMPACT HEIGHT & PROFESSIONAL DESIGN) -->
-  <section class="page-hero-banner">
-    <div class="container">
+  <?php 
+    $hero_slide = !empty($sliders) ? $sliders[0] : null;
+    $hero_bg = ($hero_slide && !empty($hero_slide['image'])) ? base_url($hero_slide['image']) : null;
+    $hero_btn_link = $hero_slide ? $hero_slide['button_link'] : 'services';
+    $hero_href = (strpos($hero_btn_link, 'http') === 0 || strpos($hero_btn_link, '#') === 0) ? $hero_btn_link : site_url($hero_btn_link);
+  ?>
+  <section class="page-hero-banner" style="<?= $hero_bg ? "background: linear-gradient(rgba(9, 13, 22, 0.88), rgba(17, 24, 39, 0.94)), url('{$hero_bg}') center/cover no-repeat;" : '' ?>">
+    <div class="container position-relative" style="z-index: 2;">
       <div class="page-hero-tag">
         <span class="tag-line"></span>
-        <span>About Sigma Height Elevators</span>
+        <span><?= ($hero_slide && !empty($hero_slide['badge_text'])) ? htmlspecialchars($hero_slide['badge_text']) : 'About Sigma Height Elevators' ?></span>
       </div>
-      <h1 class="page-hero-title"><?= htmlspecialchars($about['title']) ?></h1>
+      <h1 class="page-hero-title">
+        <?php if ($hero_slide): ?>
+          <?= htmlspecialchars($hero_slide['title']) ?> 
+          <span style="color: #ff3333;"><?= htmlspecialchars($hero_slide['highlight_text']) ?></span>
+        <?php else: ?>
+          <?= htmlspecialchars($about['title']) ?>
+        <?php endif; ?>
+      </h1>
       <p class="page-hero-subtitle">
-        <?= htmlspecialchars($about['subtitle']) ?>
+        <?= $hero_slide ? htmlspecialchars($hero_slide['subtitle']) : htmlspecialchars($about['subtitle']) ?>
       </p>
+      <?php if ($hero_slide && !empty($hero_slide['button_text'])): ?>
+        <div style="margin-top: 20px;">
+          <a href="<?= $hero_href ?>" class="btn-theme text-white" style="display: inline-flex; align-items: center; gap: 8px; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem;">
+            <span><?= htmlspecialchars($hero_slide['button_text']) ?></span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      <?php endif; ?>
     </div>
   </section>
 
-  <!-- COMPANY STORY SECTION -->
-  <section class="section-wrapper" style="background: #f8fafc; padding: 70px 0;">
+  <!-- COMPANY STORY & CAPABILITIES SECTION -->
+  <section class="section-wrapper" style="background: #f8fafc; padding: 75px 0;">
     <div class="container">
-      <div class="about-story-grid" style="padding: 0;">
+      <div class="about-story-grid" style="padding: 0; align-items: start;">
         <div>
-          <span style="color: #0f172a; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.88rem; display: block; margin-bottom: 10px;">Who We Are</span>
-          <h2 style="font-size: 2.2rem; font-weight: 800; color: #0f172a; line-height: 1.3; margin-bottom: 24px;">Setting the Gold Standard in Vertical Transportation</h2>
-          <div style="color: #475569; font-size: 1.05rem; line-height: 1.8; margin-bottom: 24px;">
-            <?= nl2br(htmlspecialchars($about['story'])) ?>
+          <div class="section-tagline" style="display: inline-flex; align-items: center; gap: 8px; color: #e60000; font-weight: 700; font-size: 0.88rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">
+            <i class="fa-solid fa-shield-halved"></i> About Sigma Height Elevators L.L.C.
+          </div>
+          <h2 style="font-size: clamp(1.9rem, 3vw, 2.5rem); font-weight: 800; color: #0f172a; line-height: 1.25; margin-bottom: 20px;">
+            Complete Elevator Solutions Across <span style="color: #ff3333;">Dubai and the UAE</span>
+          </h2>
+          
+          <div style="color: #334155; font-size: 1.08rem; line-height: 1.75; margin-bottom: 18px; font-weight: 500;">
+            Sigma Height Elevators L.L.C. is a Dubai-based elevator company providing complete <strong>elevator supply, installation, testing, commissioning, maintenance, repair and modernization</strong> services across the UAE.
+          </div>
+
+          <div style="color: #64748b; font-size: 1.02rem; line-height: 1.7; margin-bottom: 28px;">
+            Our engineering solutions combine modern technology, safe operation, energy efficiency and responsive after-sales support.
+          </div>
+
+          <!-- 4 Core Pillars Grid -->
+          <div class="about-pillars" style="margin-bottom: 30px;">
+            <div class="about-pillar-item">
+              <div class="about-pillar-icon-box">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+              </div>
+              <div class="about-pillar-content">
+                <div class="about-pillar-title">Turnkey Elevator Installation</div>
+                <p class="about-pillar-desc">Complete project coordination, supply, installation, testing and commissioning for new residential, commercial and industrial elevators.</p>
+              </div>
+            </div>
+
+            <div class="about-pillar-item">
+              <div class="about-pillar-icon-box">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <div class="about-pillar-content">
+                <div class="about-pillar-title">UAE Safety &amp; Engineering Standards</div>
+                <p class="about-pillar-desc">Elevator systems engineered to applicable UAE authority requirements and safety standards, including <strong style="color: #0f172a;">EN 81-20 &amp; EN 81-50</strong>.</p>
+              </div>
+            </div>
+
+            <div class="about-pillar-item">
+              <div class="about-pillar-icon-box">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+              </div>
+              <div class="about-pillar-content">
+                <div class="about-pillar-title">24/7 Maintenance &amp; Lift Repair</div>
+                <p class="about-pillar-desc">Preventive AMC services, technical diagnostics, emergency breakdown support and genuine parts for various lift makes.</p>
+              </div>
+            </div>
+
+            <div class="about-pillar-item">
+              <div class="about-pillar-icon-box">
+                <i class="fa-solid fa-arrows-rotate"></i>
+              </div>
+              <div class="about-pillar-content">
+                <div class="about-pillar-title">Elevator Modernization &amp; Customization</div>
+                <p class="about-pillar-desc">Controller, VVVF drive, machine, door and luxury cabin upgrades to improve safety, ride quality and energy performance.</p>
+              </div>
+            </div>
           </div>
 
           <div class="about-stat-strip">
             <div class="stat-box">
-              <div class="stat-val"><?= htmlspecialchars($about['experience_years']) ?></div>
-              <div class="stat-name">UAE Experience</div>
+              <div class="stat-val"><?= !empty($about['experience_years']) ? htmlspecialchars($about['experience_years']) : 'Since 2016' ?></div>
+              <div class="stat-name">Serving the UAE</div>
             </div>
             <div class="stat-box" style="border-left: 1px solid #f1f5f9; border-right: 1px solid #f1f5f9;">
-              <div class="stat-val"><?= htmlspecialchars($about['elevators_installed']) ?></div>
+              <div class="stat-val"><?= !empty($about['elevators_installed']) ? htmlspecialchars($about['elevators_installed']) : '500+' ?></div>
               <div class="stat-name">Elevators Installed</div>
             </div>
             <div class="stat-box">
-              <div class="stat-val"><?= htmlspecialchars($about['client_satisfaction']) ?></div>
-              <div class="stat-name">Client Rating</div>
+              <div class="stat-val"><?= !empty($about['client_satisfaction']) ? htmlspecialchars($about['client_satisfaction']) : '100%' ?></div>
+              <div class="stat-name">EN 81-20/50 Certified</div>
             </div>
           </div>
         </div>
@@ -201,7 +274,7 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
           <?php
             $raw_img = !empty($about['image']) ? str_replace('\\', '/', trim($about['image'])) : '';
             if (empty($raw_img)) {
-                $about_img_src = base_url('assets/images/about_elevator.jpg');
+                $about_img_src = base_url('assets/images/about_home_elevator.jpg');
             } elseif (strpos($raw_img, 'http://') === 0 || strpos($raw_img, 'https://') === 0) {
                 $about_img_src = $raw_img;
             } else {
@@ -213,21 +286,12 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
                  alt="Sigma Height Elevators - Luxury Elevator Interior Dubai" 
                  loading="eager"
                  style="width: 100% !important; height: 100% !important; object-fit: cover !important; display: block !important; opacity: 1 !important; visibility: visible !important; transform: none !important;"
-                 onerror="this.onerror=null; this.src='<?= base_url('assets/images/about_elevator.jpg') ?>';">
+                 onerror="this.onerror=null; this.src='<?= base_url('assets/images/about_home_elevator.jpg') ?>';">
             
-            <!-- Professional Clean Floating Badge Inside Image Box -->
-            <div style="position: absolute; bottom: 18px; left: 18px; right: 18px; background: rgba(15, 23, 42, 0.88); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.12); padding: 12px 18px; border-radius: 12px; display: flex; align-items: center; justify-content: space-between; color: #ffffff; z-index: 2;">
-              <div style="display: flex; align-items: center; gap: 10px;">
-                <div style="width: 34px; height: 34px; border-radius: 8px; background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.25); display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 0.95rem;">
-                  <i class="fa-solid fa-shield-halved"></i>
-                </div>
-                <div>
-                  <div style="font-weight: 700; font-size: 0.88rem; color: #ffffff; line-height: 1.2;">Dubai Civil Defense Certified</div>
-                  <div style="font-size: 0.74rem; color: #94a3b8;">EN81-20:50 European Compliance Standard</div>
-                </div>
-              </div>
-              <div style="font-size: 0.72rem; font-weight: 700; color: #22c55e; background: rgba(34, 197, 94, 0.12); border: 1px solid rgba(34, 197, 94, 0.3); padding: 3px 8px; border-radius: 20px;">
-                <i class="fa-solid fa-circle-check" style="margin-right: 3px;"></i> Certified
+            <!-- Prominent Banner from Document: SERVING THE UAE SINCE 2016 -->
+            <div style="position: absolute; bottom: 18px; left: 18px; right: 18px; background: #2563eb; background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%); border: 1px solid rgba(255, 255, 255, 0.25); padding: 14px 20px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #ffffff; z-index: 2; box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);">
+              <div style="font-weight: 800; font-size: 1.05rem; letter-spacing: 1.5px; text-transform: uppercase; text-align: center; color: #ffffff;">
+                <i class="fa-solid fa-award me-2" style="color: #fbbf24;"></i> SERVING THE UAE SINCE 2016
               </div>
             </div>
           </div>
@@ -245,7 +309,7 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
             <div class="mv-icon"><i class="fa-solid fa-bullseye"></i></div>
             <h3 style="font-size: 1.45rem; font-weight: 700; color: #0f172a; margin-bottom: 14px;">Our Core Mission</h3>
             <p style="color: #64748b; font-size: 1rem; line-height: 1.7; margin: 0;">
-              <?= nl2br(htmlspecialchars($about['mission'])) ?>
+              Providing turnkey project coordination, safe operation, and precision engineering compliant with EN 81-20 and EN 81-50 standards, backed by dedicated 24/7 after-sales technical support.
             </p>
           </div>
         </div>
@@ -254,7 +318,7 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
             <div class="mv-icon"><i class="fa-solid fa-compass"></i></div>
             <h3 style="font-size: 1.45rem; font-weight: 700; color: #0f172a; margin-bottom: 14px;">Our Strategic Vision</h3>
             <p style="color: #64748b; font-size: 1rem; line-height: 1.7; margin: 0;">
-              <?= nl2br(htmlspecialchars($about['vision'])) ?>
+              To be the most trusted elevator solutions partner across Dubai and the UAE for new supply & installations, preventive AMC maintenance, and advanced elevator modernization.
             </p>
           </div>
         </div>

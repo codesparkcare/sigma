@@ -57,6 +57,9 @@ $route['translate_uri_dashes'] = FALSE;
 $route['about'] = 'welcome/about';
 $route['services'] = 'welcome/services';
 $route['service/(:num)'] = 'welcome/service_detail/$1';
+$route['products'] = 'welcome/products';
+$route['product/(:num)'] = 'welcome/product_detail/$1';
+$route['product/(:any)'] = 'welcome/product_detail/$1';
 $route['projects'] = 'welcome/projects';
 $route['project/(:num)'] = 'welcome/project_detail/$1';
 $route['contact'] = 'welcome/contact';
@@ -76,6 +79,13 @@ $route['admin/add_service'] = 'admin/add_service';
 $route['admin/edit_service/(:num)'] = 'admin/edit_service/$1';
 $route['admin/delete_service/(:num)'] = 'admin/delete_service/$1';
 $route['admin/toggle_service/(:num)'] = 'admin/toggle_service/$1';
+
+$route['admin/products'] = 'admin/products';
+$route['admin/add_product'] = 'admin/add_product';
+$route['admin/edit_product/(:num)'] = 'admin/edit_product/$1';
+$route['admin/delete_product/(:num)'] = 'admin/delete_product/$1';
+$route['admin/toggle_product/(:num)'] = 'admin/toggle_product/$1';
+$route['admin/toggle_product_featured/(:num)'] = 'admin/toggle_product_featured/$1';
 
 $route['admin/projects'] = 'admin/projects';
 $route['admin/add_project'] = 'admin/add_project';

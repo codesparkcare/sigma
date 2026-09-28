@@ -68,7 +68,21 @@ $mysqli->query("CREATE TABLE IF NOT EXISTS reviews (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )");
 
-// 5. Update enquiries table if service column missing
+// 5. Create Products Table
+$mysqli->query("CREATE TABLE IF NOT EXISTS products (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    slug VARCHAR(255) NOT NULL,
+    subtitle VARCHAR(255) DEFAULT '',
+    description TEXT,
+    image VARCHAR(255) NOT NULL,
+    is_featured TINYINT(1) DEFAULT 1,
+    sort_order INT DEFAULT 0,
+    is_active TINYINT(1) DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)");
+
+// 6. Update enquiries table if service column missing
 $col_check = $mysqli->query("SHOW COLUMNS FROM enquiries LIKE 'service'");
 if ($col_check && $col_check->num_rows == 0) {
     $mysqli->query("ALTER TABLE enquiries ADD COLUMN service VARCHAR(255) AFTER phone");
@@ -79,6 +93,80 @@ if ($col_check2 && $col_check2->num_rows == 0) {
 }
 
 echo "Tables ready. Now checking seed data...\n";
+
+// Seed Products if empty
+$res = $mysqli->query("SELECT COUNT(*) as cnt FROM products");
+$row = $res->fetch_assoc();
+if ($row['cnt'] == 0) {
+    $products = [
+        [
+            'title'       => 'Luxury Panoramic Glass Elevators',
+            'slug'        => 'luxury-panoramic-glass-elevators',
+            'subtitle'    => 'Custom Architectural Showcase',
+            'description' => 'Ultra-luxurious 360-degree cylindrical and polygonal glass elevators engineered with frameless curved safety panels, stainless titanium trim, and whisper-silent traction drive for modern villas and atriums.',
+            'image'       => 'assets/images/service_panoramic.jpg',
+            'is_featured' => 1,
+            'sort_order'  => 1,
+            'is_active'   => 1
+        ],
+        [
+            'title'       => 'Bespoke Villa & Home Elevators',
+            'slug'        => 'bespoke-villa-home-elevators',
+            'subtitle'    => 'Quiet Residential Mobility',
+            'description' => 'Compact, machine-room-less (MRL) residential lifts crafted for luxury residences and penthouses. Requires minimal pit depth, zero overhead room, and features custom Italian marble flooring.',
+            'image'       => 'assets/images/service_home.jpg',
+            'is_featured' => 1,
+            'sort_order'  => 2,
+            'is_active'   => 1
+        ],
+        [
+            'title'       => 'High-Speed Commercial Passenger Lifts',
+            'slug'        => 'high-speed-commercial-passenger-lifts',
+            'subtitle'    => 'Smart High-Traffic Transportation',
+            'description' => 'Heavy-duty passenger elevators with speeds up to 4.0 m/s, destination dispatch algorithms, energy-regenerative braking, and contactless RFID floor access for corporate towers and luxury hotels.',
+            'image'       => 'assets/images/service_passenger.jpg',
+            'is_featured' => 1,
+            'sort_order'  => 3,
+            'is_active'   => 1
+        ],
+        [
+            'title'       => 'Heavy-Duty Freight & Cargo Elevators',
+            'slug'        => 'heavy-duty-freight-cargo-elevators',
+            'subtitle'    => 'Industrial Strength & Capacity',
+            'description' => 'Robust goods lifts built to withstand heavy pallet and vehicle transit from 1,000 kg up to 10,000 kg capacity, featuring reinforced non-slip checkered steel floors and collision protection rails.',
+            'image'       => 'assets/images/service_freight.jpg',
+            'is_featured' => 1,
+            'sort_order'  => 4,
+            'is_active'   => 1
+        ],
+        [
+            'title'       => 'Hospital & Stretcher Bed Elevators',
+            'slug'        => 'hospital-stretcher-bed-elevators',
+            'subtitle'    => 'JCI Compliant Medical Mobility',
+            'description' => 'Smooth micro-leveling hospital elevators designed with anti-bacterial stainless steel cabins, wide telescopic doors for rapid stretcher transfer, and emergency medical priority override systems.',
+            'image'       => 'assets/images/service_hospital.jpg',
+            'is_featured' => 1,
+            'sort_order'  => 5,
+            'is_active'   => 1
+        ],
+        [
+            'title'       => 'Commercial Escalators & Moving Walks',
+            'slug'        => 'commercial-escalators-moving-walks',
+            'subtitle'    => 'Continuous Transit Solutions',
+            'description' => 'Weatherproof escalators and moving travelators featuring intelligent auto-standby radar sensors, LED skirt lighting, and safety comb plates for shopping malls, airports, and metro hubs.',
+            'image'       => 'assets/images/service_escalators.jpg',
+            'is_featured' => 1,
+            'sort_order'  => 6,
+            'is_active'   => 1
+        ]
+    ];
+    $stmt = $mysqli->prepare("INSERT INTO products (title, slug, subtitle, description, image, is_featured, sort_order, is_active) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    foreach ($products as $prd) {
+        $stmt->bind_param("sssssiii", $prd['title'], $prd['slug'], $prd['subtitle'], $prd['description'], $prd['image'], $prd['is_featured'], $prd['sort_order'], $prd['is_active']);
+        $stmt->execute();
+    }
+    echo "Products seeded.\n";
+}
 
 // Seed Sliders if empty
 $res = $mysqli->query("SELECT COUNT(*) as cnt FROM sliders");

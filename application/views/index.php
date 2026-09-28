@@ -16,19 +16,20 @@ $this->load->view('includes/header');
           <polyline points="18 15 12 9 6 15" />
         </svg>
       </div>
-      <div class="shaft-floor-stop active" data-target="#hero" title="Hero Penthouse">H<span class="shaft-tooltip">Hero Penthouse</span></div>
+      <div class="shaft-floor-stop active" data-target="#hero" title="Ground Floor (Main)">GF<span class="shaft-tooltip">Ground Floor (Main)</span></div>
       <div class="shaft-floor-stop" data-target="#about" title="About Sigma Height">01<span class="shaft-tooltip">About Sigma Height</span></div>
       <div class="shaft-floor-stop" data-target="#services" title="Elevator Services">02<span class="shaft-tooltip">Elevator Services</span></div>
-      <div class="shaft-floor-stop" data-target="#why-us" title="Why Choose Us">03<span class="shaft-tooltip">Why Choose Us</span></div>
-      <div class="shaft-floor-stop" data-target="#process" title="7-Step Flow">04<span class="shaft-tooltip">7-Step Flow</span></div>
-      <div class="shaft-floor-stop" data-target="#projects" title="Signature Projects">05<span class="shaft-tooltip">Signature Projects</span></div>
-      <div class="shaft-floor-stop" data-target="#reviews" title="Client Reviews">06<span class="shaft-tooltip">Client Reviews</span></div>
-      <div class="shaft-floor-stop" data-target="#contact" title="Contact Engineers">07<span class="shaft-tooltip">Contact Engineers</span></div>
+      <div class="shaft-floor-stop" data-target="#products" title="Elevator Products">03<span class="shaft-tooltip">Elevator Products</span></div>
+      <div class="shaft-floor-stop" data-target="#why-us" title="Why Choose Us">04<span class="shaft-tooltip">Why Choose Us</span></div>
+      <div class="shaft-floor-stop" data-target="#process" title="7-Step Flow">05<span class="shaft-tooltip">7-Step Flow</span></div>
+      <div class="shaft-floor-stop" data-target="#projects" title="Signature Projects">06<span class="shaft-tooltip">Signature Projects</span></div>
+      <div class="shaft-floor-stop" data-target="#reviews" title="Client Reviews">07<span class="shaft-tooltip">Client Reviews</span></div>
+      <div class="shaft-floor-stop" data-target="#contact" title="Contact Engineers">08<span class="shaft-tooltip">Contact Engineers</span></div>
     </div>
   </div>
 
   <!-- ==========================================================================
-       4. HERO SLIDER SECTION (WITH PARTICLES & FLOOR DISPATCH HUD)
+       4. HERO SLIDER SECTION
        ========================================================================== -->
   <section class="hero-slider-section" id="hero">
     <!-- Kinetic Rising Particles Canvas -->
@@ -99,43 +100,11 @@ $this->load->view('includes/header');
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
                 </a>
-                <a href="#contact" class="btn-secondary hero-btn-quote">
-                  <i class="fa-solid fa-file-invoice-dollar" style="color: #ff3333;"></i>
-                  <span>Get Instant Quote</span>
-                </a>
               </div>
             </div>
           </div>
         </div>
       <?php endforeach; ?>
-    </div>
-
-    <!-- Futuristic Interactive Floor Dispatch HUD -->
-    <div class="hero-floor-hud" id="heroFloorHud">
-      <div class="hud-header">
-        <div class="hud-tag">
-          <span class="hud-pulse-dot"></span>
-          <span>DISPATCH HUD</span>
-        </div>
-        <div class="hud-digital-screen">
-          <span class="hud-screen-arrow">▲</span>
-          <span class="hud-screen-floor" id="hudScreenFloor">PH</span>
-          <span class="hud-screen-unit">LVL</span>
-        </div>
-      </div>
-      <div class="hud-buttons-stack">
-        <?php 
-          $floor_codes = ['PH', '04', '03', '02', '01'];
-          foreach ($active_slides as $idx => $slide): 
-            $code = isset($floor_codes[$idx]) ? $floor_codes[$idx] : sprintf('%02d', $idx + 1);
-            $badge = !empty($slide['badge_text']) ? $slide['badge_text'] : 'Elevator System ' . ($idx + 1);
-        ?>
-          <button type="button" class="hud-btn <?= $idx === 0 ? 'active' : '' ?>" data-slide="<?= $idx ?>">
-            <span class="hud-btn-code"><?= $code ?></span>
-            <span class="hud-btn-name"><?= htmlspecialchars($badge) ?></span>
-          </button>
-        <?php endforeach; ?>
-      </div>
     </div>
 
     <!-- Slider Navigation Controls -->
@@ -170,10 +139,6 @@ $this->load->view('includes/header');
         <span>SYSTEM STATUS: <strong>100% OPERATIONAL</strong></span>
       </div>
       <div class="telemetry-node">
-        <span class="telemetry-beacon gold"></span>
-        <span>ACOUSTIC NOISE: <strong id="telemetryDecibels">40.8 dB (WHISPER QUIET)</strong></span>
-      </div>
-      <div class="telemetry-node">
         <span class="telemetry-beacon blue"></span>
         <span>DRIVE EFFICIENCY: <strong id="telemetryDrive">98.6% VVVF REGENERATIVE</strong></span>
       </div>
@@ -187,16 +152,12 @@ $this->load->view('includes/header');
       </div>
       <div class="telemetry-node">
         <span class="telemetry-beacon gold"></span>
-        <span>EMERGENCY DISPATCH: <strong>&lt; 15 MIN AVERAGE RESPONSE</strong></span>
+        <span>EMERGENCY DISPATCH: <strong>&lt; 30 MIN AVERAGE RESPONSE</strong></span>
       </div>
       <!-- Duplicate nodes for seamless infinite ticker scroll -->
       <div class="telemetry-node">
         <span class="telemetry-beacon"></span>
         <span>SYSTEM STATUS: <strong>100% OPERATIONAL</strong></span>
-      </div>
-      <div class="telemetry-node">
-        <span class="telemetry-beacon gold"></span>
-        <span>ACOUSTIC NOISE: <strong>40.8 dB (WHISPER QUIET)</strong></span>
       </div>
       <div class="telemetry-node">
         <span class="telemetry-beacon blue"></span>
@@ -205,6 +166,14 @@ $this->load->view('includes/header');
       <div class="telemetry-node">
         <span class="telemetry-beacon red"></span>
         <span>CIVIL DEFENSE CODE: <strong>EN 81-20/50 &amp; DCD COMPLIANT</strong></span>
+      </div>
+      <div class="telemetry-node">
+        <span class="telemetry-beacon"></span>
+        <span>DUBAI FLEET: <strong>500+ ACTIVE INSTALLATIONS</strong></span>
+      </div>
+      <div class="telemetry-node">
+        <span class="telemetry-beacon gold"></span>
+        <span>EMERGENCY DISPATCH: <strong>&lt; 30 MIN AVERAGE RESPONSE</strong></span>
       </div>
     </div>
   </div>
@@ -251,7 +220,7 @@ $this->load->view('includes/header');
             </svg>
           </div>
           <div>
-            <div class="metric-number"><span class="counter-val" data-target="15">0</span><span class="plus"> Min</span>
+            <div class="metric-number"><span class="counter-val" data-target="30">0</span><span class="plus"> Min</span>
             </div>
             <div class="metric-label">Rapid Emergency Dispatch</div>
           </div>
@@ -279,79 +248,73 @@ $this->load->view('includes/header');
        ========================================================================== -->
   <section class="section-wrapper about-section" id="about">
     <div class="container">
-      <div class="about-grid">
+      <div class="about-grid" style="align-items: stretch;">
 
-        <div class="about-img-box">
-          <img src="<?= $base_url ?>assets/images/hero_luxury_home.jpg"
-            alt="Sigma Height Elevators Engineering Expertise">
-          <div class="about-experience-badge">
-            <div class="about-badge-num">15+</div>
-            <div class="about-badge-text">Years of Engineering<br>Excellence in Dubai</div>
+        <div class="about-img-box" style="height: 100%; min-height: 520px; display: flex; position: relative;">
+          <img src="<?= $base_url ?>assets/images/about_home_elevator.jpg"
+            alt="Sigma Height Elevators Luxury Panoramic Elevator Atrium"
+            style="width: 100%; height: 100%; min-height: 100%; object-fit: cover; display: block;"
+            onerror="this.onerror=null; this.src='<?= $base_url ?>assets/images/about_home_elevator.png';">
+          <div class="about-experience-badge" style="background: #2563eb; background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%); border: 1px solid rgba(255,255,255,0.3); box-shadow: 0 10px 25px rgba(37,99,235,0.4); bottom: 18px; right: 18px; padding: 10px 18px; border-radius: 12px; display: flex; align-items: center; gap: 10px;">
+            <div class="about-badge-num" style="font-size: 1.15rem; font-weight: 800; letter-spacing: 0.5px; color: #ffffff; white-space: nowrap;"><i class="fa-solid fa-award me-1" style="color: #fbbf24;"></i> SINCE 2016</div>
+            <div class="about-badge-text" style="font-weight: 700; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.8px; color: #ffffff; line-height: 1.25;">Serving Dubai &amp;<br>Across UAE</div>
           </div>
         </div>
 
-        <div class="about-content-col">
-          <div class="section-tagline">
+        <div class="about-content-col" style="display: flex; flex-direction: column; justify-content: center;">
+          <div class="section-tagline" style="display: inline-flex; align-items: center; align-self: flex-start; width: fit-content; max-width: fit-content; gap: 8px; margin-bottom: 12px;">
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
               <circle cx="12" cy="12" r="10" />
               <path d="M12 8v8M8 12h8" />
             </svg>
             About Sigma Height Elevators L.L.C
           </div>
-          <h2 class="section-title">Setting The Benchmark In <span class="accent">Dubai's Vertical Mobility</span></h2>
-          <p class="section-desc">
-            Headquartered in Dubai, <strong>Sigma Height Elevators L.L.C</strong> is a premier engineering firm
-            specializing in the design, supply, installation, modernization, and maintenance of high-performance
-            elevator systems. Combining advanced engineering precision with Italian cabin aesthetics, we serve residential
-            palaces, high-rise commercial towers, luxury hotels, healthcare centers, and industrial facilities across
-            the UAE.
+          <h2 class="section-title">Complete Elevator Solutions Across <span class="accent">Dubai and the UAE</span></h2>
+          <p class="section-desc" style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 14px;">
+            <strong>Sigma Height Elevators L.L.C.</strong> is a Dubai-based elevator company providing complete elevator supply, installation, testing, commissioning, maintenance, repair and modernization services across the UAE.
+          </p>
+          <p class="section-desc" style="font-size: 0.96rem; line-height: 1.65; color: #64748b; margin-bottom: 24px;">
+            Our engineering solutions combine modern technology, safe operation, energy efficiency and responsive after-sales support.
           </p>
 
           <div class="about-pillars">
             <div class="about-pillar-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                <polyline points="22 4 12 14.01 9 11.01" />
-              </svg>
-              <div>
-                <div class="about-pillar-title">Advanced Machine Technology</div>
-                <div class="about-pillar-desc">Quiet permanent magnet synchronous motors delivering smooth acceleration.
-                </div>
+              <div class="about-pillar-icon-box">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+              </div>
+              <div class="about-pillar-content">
+                <div class="about-pillar-title">Turnkey Elevator Installation</div>
+                <p class="about-pillar-desc">Complete project coordination, supply, installation, testing and commissioning for new residential, commercial and industrial elevators.</p>
               </div>
             </div>
 
             <div class="about-pillar-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              </svg>
-              <div>
-                <div class="about-pillar-title">Dubai Civil Defense Approved</div>
-                <div class="about-pillar-desc">100% compliant with EN81-20:50 European Compliance Standard and statutory UAE civil defense
-                  mandates.</div>
+              <div class="about-pillar-icon-box">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <div class="about-pillar-content">
+                <div class="about-pillar-title">UAE Safety &amp; Engineering Standards</div>
+                <p class="about-pillar-desc">Elevator systems engineered to UAE statutory authority requirements &amp; European safety standards <strong style="color: #0f172a;">EN 81-20 &amp; EN 81-50</strong>.</p>
               </div>
             </div>
 
             <div class="about-pillar-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <circle cx="12" cy="12" r="10" />
-                <polygon points="12 6 12 12 14 14" />
-              </svg>
-              <div>
-                <div class="about-pillar-title">24/7 Rapid Mobile Support</div>
-                <div class="about-pillar-desc">Strategic technician fleet stationed across Dubai for swift emergency
-                  dispatch.</div>
+              <div class="about-pillar-icon-box">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+              </div>
+              <div class="about-pillar-content">
+                <div class="about-pillar-title">24/7 Maintenance &amp; Lift Repair</div>
+                <p class="about-pillar-desc">Preventive AMC services, technical diagnostics, emergency breakdown response and spare parts for all lift makes and models.</p>
               </div>
             </div>
 
             <div class="about-pillar-item">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <polygon
-                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-              </svg>
-              <div>
-                <div class="about-pillar-title">Bespoke Custom Cabins</div>
-                <div class="about-pillar-desc">Custom finishes with imported marble, titanium gold accents, and acoustic
-                  glass.</div>
+              <div class="about-pillar-icon-box">
+                <i class="fa-solid fa-arrows-rotate"></i>
+              </div>
+              <div class="about-pillar-content">
+                <div class="about-pillar-title">Elevator Modernization &amp; Customization</div>
+                <p class="about-pillar-desc">Controller, VVVF drive, motor, door and luxury cabin upgrades to improve ride comfort, safety and energy efficiency.</p>
               </div>
             </div>
           </div>
@@ -385,7 +348,7 @@ $this->load->view('includes/header');
           </svg>
           Our Services
         </div>
-        <h2 class="section-title">Expert Elevator Services <span class="accent">Tailored For You</span></h2>
+        <h2 class="section-title" style="color: #ffffff;">Expert Elevator Services <span class="accent" style="color: #ff3333 !important;">Tailored For You</span></h2>
         <p class="section-desc">From new elevator installation to design, maintenance, and modernization — we deliver
           end-to-end vertical mobility solutions across the UAE.</p>
       </div>
@@ -587,7 +550,86 @@ $this->load->view('includes/header');
     </div>
   </section>
 
+  <!-- ==========================================================================
+       7.5. OUR PRODUCTS SECTION (MINIMAL ELEGANT HOMEPAGE SHOWCASE)
+       ========================================================================== -->
+  <section class="section-wrapper products-home-section" id="products" style="background: #f8fafc; padding: 85px 0;">
+    <div class="container">
+      <div class="section-header-center">
+        <div class="section-tagline">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+            <line x1="12" y1="22.08" x2="12" y2="12"/>
+          </svg>
+          Elevator Products &amp; Models
+        </div>
+        <h2 class="section-title">Featured Elevator <span class="accent">Models &amp; Products</span></h2>
+        <p class="section-desc">Engineered for luxury residences, commercial high-rises, and industrial facilities across Dubai and UAE.</p>
+      </div>
 
+      <div class="products-home-grid">
+        <?php 
+          $home_products = !empty($products) ? $products : [
+            [
+              'title' => 'Luxury Panoramic Glass Elevators',
+              'subtitle' => 'Architectural Showcase',
+              'description' => 'Ultra-luxurious 360-degree glass elevators engineered with frameless curved safety panels and whisper-silent drive.',
+              'image' => 'assets/images/service_panoramic.jpg'
+            ],
+            [
+              'title' => 'Bespoke Villa & Home Elevators',
+              'subtitle' => 'Quiet Residential',
+              'description' => 'Compact, machine-room-less (MRL) residential lifts crafted for luxury residences and penthouses with minimal pit depth.',
+              'image' => 'assets/images/service_home.jpg'
+            ],
+            [
+              'title' => 'High-Speed Commercial Passenger Lifts',
+              'subtitle' => 'Smart High-Traffic',
+              'description' => 'Heavy-duty passenger elevators with speeds up to 4.0 m/s, destination dispatch algorithms, and energy-regenerative braking.',
+              'image' => 'assets/images/service_passenger.jpg'
+            ]
+          ];
+          $show_products = array_slice($home_products, 0, 3);
+          foreach ($show_products as $hp):
+        ?>
+          <div class="product-mini-card">
+            <div class="product-mini-img-wrap">
+              <img src="<?= base_url($hp['image']) ?>" alt="<?= htmlspecialchars($hp['title']) ?>" loading="lazy">
+              <?php if (!empty($hp['subtitle'])): ?>
+                <span class="product-mini-pill"><?= htmlspecialchars($hp['subtitle']) ?></span>
+              <?php endif; ?>
+            </div>
+            <div class="product-mini-body">
+              <h3 class="product-mini-title"><?= htmlspecialchars($hp['title']) ?></h3>
+              <p class="product-mini-desc"><?= htmlspecialchars(mb_strimwidth(strip_tags($hp['description']), 0, 120, '...')) ?></p>
+              <div class="product-mini-foot">
+                <a href="<?= site_url('contact') ?>?product=<?= urlencode($hp['title']) ?>" class="product-mini-link">
+                  <span>Get A Quote</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="<?= site_url('products') ?>" class="product-mini-more">
+                  <span>Details <i class="fa-solid fa-angle-right ms-1"></i></span>
+                </a>
+              </div>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      </div>
+
+      <!-- More Products Action Center -->
+      <div class="services-action-bottom" style="margin-top: 40px;">
+        <a href="<?= site_url('products') ?>" class="btn-more-services">
+          <span>View All Elevator Products &amp; Catalog</span>
+          <div class="btn-icon-bubble">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- ==========================================================================
        8. WHY CHOOSE US SECTION
@@ -1357,7 +1399,7 @@ $this->load->view('includes/header');
           <svg width="14" height="14" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           Client Trust &amp; Endorsements
         </div>
-        <h2 class="section-title" style="color: #ffffff;">What Property Owners <span class="accent">Say About Us</span></h2>
+        <h2 class="section-title" style="color: #ffffff;">What Property Owners <span class="accent" style="color: #ff3333 !important;">Say About Us</span></h2>
         <p class="section-desc" style="color: #94a3b8;">Trusted by prestigious villa owners, property developers, and commercial facility managers across Dubai and the UAE.</p>
       </div>
 

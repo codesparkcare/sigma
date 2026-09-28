@@ -9,6 +9,7 @@ class Admin extends CI_Controller {
         $this->load->library(['session']);
         $this->load->model('Slider_model');
         $this->load->model('Service_model');
+        $this->load->model('Product_model');
         $this->load->model('Project_model');
         $this->load->model('Review_model');
         $this->load->model('Enquiry_model');
@@ -53,6 +54,7 @@ class Admin extends CI_Controller {
         $data['title'] = 'Dashboard Overview';
         $data['count_sliders'] = $this->Slider_model->count_total();
         $data['count_services'] = $this->Service_model->count_total();
+        $data['count_products'] = $this->Product_model->count_total();
         $data['count_projects'] = $this->Project_model->count_total();
         $data['count_reviews'] = $this->Review_model->count_total();
         $data['count_enquiries'] = $this->Enquiry_model->count_total();
@@ -65,11 +67,13 @@ class Admin extends CI_Controller {
     }
 
     // =========================================================================
-    // SLIDERS MANAGEMENT
+    // SLIDERS & PAGE HERO BANNERS MANAGEMENT
     // =========================================================================
     public function sliders() {
-        $data['title'] = 'Manage Sliders';
-        $data['sliders'] = $this->Slider_model->get_all();
+        $data['title'] = 'Manage Page Sliders & Hero Banners';
+        $selected_page = $this->input->get('page');
+        $data['selected_page'] = $selected_page;
+        $data['sliders'] = $this->Slider_model->get_all(false, $selected_page);
         $this->load->view('admin/layout/header', $data);
         $this->load->view('admin/layout/sidebar', $data);
         $this->load->view('admin/sliders/index', $data);
@@ -82,6 +86,7 @@ class Admin extends CI_Controller {
             $image_url = $uploaded ? $uploaded : $this->input->post('image_url');
 
             $data = [
+                'page'           => $this->input->post('page') ?: 'home',
                 'title'          => $this->input->post('title'),
                 'highlight_text' => $this->input->post('highlight_text'),
                 'subtitle'       => $this->input->post('subtitle'),
@@ -93,12 +98,13 @@ class Admin extends CI_Controller {
                 'is_active'      => $this->input->post('is_active') ? 1 : 0
             ];
             $this->Slider_model->insert($data);
-            $this->session->set_flashdata('success', 'Hero slide added successfully!');
-            redirect('admin/sliders');
+            $this->session->set_flashdata('success', 'Slide / banner added successfully!');
+            redirect('admin/sliders?page=' . $data['page']);
         }
 
-        $data['title'] = 'Add New Slide';
+        $data['title'] = 'Add New Slide / Page Banner';
         $data['slider'] = null;
+        $data['default_page'] = $this->input->get('page') ?: 'home';
         $this->load->view('admin/layout/header', $data);
         $this->load->view('admin/layout/sidebar', $data);
         $this->load->view('admin/sliders/form', $data);
@@ -116,6 +122,7 @@ class Admin extends CI_Controller {
             $image_url = $uploaded ? $uploaded : ($this->input->post('image_url') ?: $slider['image']);
 
             $data = [
+                'page'           => $this->input->post('page') ?: ($slider['page'] ?: 'home'),
                 'title'          => $this->input->post('title'),
                 'highlight_text' => $this->input->post('highlight_text'),
                 'subtitle'       => $this->input->post('subtitle'),
@@ -127,12 +134,13 @@ class Admin extends CI_Controller {
                 'is_active'      => $this->input->post('is_active') ? 1 : 0
             ];
             $this->Slider_model->update($id, $data);
-            $this->session->set_flashdata('success', 'Hero slide updated successfully!');
-            redirect('admin/sliders');
+            $this->session->set_flashdata('success', 'Slide / banner updated successfully!');
+            redirect('admin/sliders?page=' . $data['page']);
         }
 
         $data['title'] = 'Edit Slide #' . $id;
         $data['slider'] = $slider;
+        $data['default_page'] = !empty($slider['page']) ? $slider['page'] : 'home';
         $this->load->view('admin/layout/header', $data);
         $this->load->view('admin/layout/sidebar', $data);
         $this->load->view('admin/sliders/form', $data);
@@ -238,6 +246,97 @@ class Admin extends CI_Controller {
         $this->Service_model->toggle_status($id);
         $this->session->set_flashdata('success', 'Service status updated!');
         redirect('admin/services');
+    }
+
+    // =========================================================================
+    // PRODUCTS MANAGEMENT
+    // =========================================================================
+    public function products() {
+        $data['title'] = 'Manage Products';
+        $data['products'] = $this->Product_model->get_all();
+        $this->load->view('admin/layout/header', $data);
+        $this->load->view('admin/layout/sidebar', $data);
+        $this->load->view('admin/products/index', $data);
+        $this->load->view('admin/layout/footer', $data);
+    }
+
+    public function add_product() {
+        if ($this->input->post()) {
+            $uploaded = $this->upload_image('image_file', 'products');
+            $image_url = $uploaded ? $uploaded : $this->input->post('image_url');
+
+            $data = [
+                'title'       => $this->input->post('title'),
+                'slug'        => url_title($this->input->post('title'), 'dash', TRUE),
+                'subtitle'    => $this->input->post('subtitle'),
+                'description' => $this->input->post('description'),
+                'image'       => $image_url ?: 'assets/images/service_passenger.jpg',
+                'is_featured' => $this->input->post('is_featured') ? 1 : 0,
+                'sort_order'  => (int)$this->input->post('sort_order'),
+                'is_active'   => $this->input->post('is_active') ? 1 : 0
+            ];
+            $this->Product_model->insert($data);
+            $this->session->set_flashdata('success', 'Product added successfully!');
+            redirect('admin/products');
+        }
+
+        $data['title'] = 'Add New Product';
+        $data['product'] = null;
+        $this->load->view('admin/layout/header', $data);
+        $this->load->view('admin/layout/sidebar', $data);
+        $this->load->view('admin/products/form', $data);
+        $this->load->view('admin/layout/footer', $data);
+    }
+
+    public function edit_product($id) {
+        $product = $this->Product_model->get_by_id($id);
+        if (!$product) {
+            redirect('admin/products');
+        }
+
+        if ($this->input->post()) {
+            $uploaded = $this->upload_image('image_file', 'products');
+            $image_url = $uploaded ? $uploaded : ($this->input->post('image_url') ?: $product['image']);
+
+            $data = [
+                'title'       => $this->input->post('title'),
+                'slug'        => url_title($this->input->post('title'), 'dash', TRUE),
+                'subtitle'    => $this->input->post('subtitle'),
+                'description' => $this->input->post('description'),
+                'image'       => $image_url,
+                'is_featured' => $this->input->post('is_featured') ? 1 : 0,
+                'sort_order'  => (int)$this->input->post('sort_order'),
+                'is_active'   => $this->input->post('is_active') ? 1 : 0
+            ];
+            $this->Product_model->update($id, $data);
+            $this->session->set_flashdata('success', 'Product updated successfully!');
+            redirect('admin/products');
+        }
+
+        $data['title'] = 'Edit Product: ' . $product['title'];
+        $data['product'] = $product;
+        $this->load->view('admin/layout/header', $data);
+        $this->load->view('admin/layout/sidebar', $data);
+        $this->load->view('admin/products/form', $data);
+        $this->load->view('admin/layout/footer', $data);
+    }
+
+    public function delete_product($id) {
+        $this->Product_model->delete($id);
+        $this->session->set_flashdata('success', 'Product deleted successfully!');
+        redirect('admin/products');
+    }
+
+    public function toggle_product($id) {
+        $this->Product_model->toggle_status($id);
+        $this->session->set_flashdata('success', 'Product status updated!');
+        redirect('admin/products');
+    }
+
+    public function toggle_product_featured($id) {
+        $this->Product_model->toggle_featured($id);
+        $this->session->set_flashdata('success', 'Product homepage featured status updated!');
+        redirect('admin/products');
     }
 
     // =========================================================================

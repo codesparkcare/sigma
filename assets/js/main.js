@@ -728,28 +728,55 @@ function initLiveTelemetryTicker() {
 }
 
 /* ==========================================================================
-   SCROLL-LINKED VERTICAL ELEVATOR SHAFT TRACKER
+   SCROLL-LINKED VERTICAL ELEVATOR SHAFT TRACKER (ENHANCED PRECISION OPERATION)
    ========================================================================== */
 function initElevatorScrollShaft() {
   const shaftCar = document.getElementById('shaftCarIndicator');
   const shaftContainer = document.getElementById('shaftTrackContainer');
   const floorStops = document.querySelectorAll('.shaft-floor-stop');
-  if (!shaftCar || !shaftContainer) return;
+  if (!shaftCar || !shaftContainer || floorStops.length === 0) return;
 
   function updateShaft() {
     const scrollY = window.pageYOffset || document.documentElement.scrollTop;
     const docHeight = document.documentElement.scrollHeight - window.innerHeight;
     const progress = Math.min(Math.max(scrollY / (docHeight || 1), 0), 1);
 
-    const trackHeight = shaftContainer.offsetHeight - 24;
-    const carHeight = shaftCar.offsetHeight;
-    const maxTop = trackHeight - carHeight;
+    // Calculate active section based on actual scroll position
+    let activeIdx = 0;
+    const viewportMiddle = scrollY + window.innerHeight * 0.35;
 
-    shaftCar.style.top = `${progress * maxTop + 12}px`;
-
-    const targetIdx = Math.round(progress * (floorStops.length - 1));
     floorStops.forEach((stop, idx) => {
-      if (idx === targetIdx) {
+      const targetSelector = stop.getAttribute('data-target');
+      const targetEl = document.querySelector(targetSelector);
+      if (targetEl) {
+        const top = targetEl.offsetTop;
+        if (viewportMiddle >= top - 80) {
+          activeIdx = idx;
+        }
+      }
+    });
+
+    // If near bottom of document, activate the last floor stop (Contact)
+    if (scrollY + window.innerHeight >= document.documentElement.scrollHeight - 60) {
+      activeIdx = floorStops.length - 1;
+    }
+
+    // Position the elevator car indicator smoothly
+    const activeStop = floorStops[activeIdx];
+    if (activeStop) {
+      const containerRect = shaftContainer.getBoundingClientRect();
+      const stopRect = activeStop.getBoundingClientRect();
+      const relativeTop = stopRect.top - containerRect.top + (stopRect.height / 2) - (shaftCar.offsetHeight / 2);
+      shaftCar.style.top = `${Math.max(4, Math.min(relativeTop, shaftContainer.offsetHeight - shaftCar.offsetHeight - 4))}px`;
+    } else {
+      const trackHeight = shaftContainer.offsetHeight - 24;
+      const carHeight = shaftCar.offsetHeight;
+      const maxTop = trackHeight - carHeight;
+      shaftCar.style.top = `${progress * maxTop + 12}px`;
+    }
+
+    floorStops.forEach((stop, idx) => {
+      if (idx === activeIdx) {
         stop.classList.add('active');
       } else {
         stop.classList.remove('active');
@@ -760,7 +787,7 @@ function initElevatorScrollShaft() {
   window.addEventListener('scroll', updateShaft, { passive: true });
   window.addEventListener('resize', updateShaft, { passive: true });
   window.addEventListener('orientationchange', updateShaft, { passive: true });
-  updateShaft();
+  setTimeout(updateShaft, 100);
 
   floorStops.forEach((stop) => {
     stop.addEventListener('click', (e) => {
@@ -768,8 +795,10 @@ function initElevatorScrollShaft() {
       const targetSelector = stop.getAttribute('data-target');
       const targetEl = document.querySelector(targetSelector);
       if (targetEl) {
-        playElevatorChime();
-        const headerOffset = 70;
+        if (typeof playElevatorChime === 'function') {
+          playElevatorChime();
+        }
+        const headerOffset = 75;
         const elementPosition = targetEl.getBoundingClientRect().top;
         const offsetPosition = elementPosition + (window.pageYOffset || document.documentElement.scrollTop) - headerOffset;
         window.scrollTo({
@@ -1318,8 +1347,8 @@ function initElevatorPreloader() {
   const pageBadge = document.getElementById('preloaderPageBadge');
 
   const targetPage = preloader.getAttribute('data-page') || 'HOME';
-  const targetFloor = preloader.getAttribute('data-floor') || 'L';
-  const targetArrival = preloader.getAttribute('data-arrival') || 'ARRIVED • MAIN LOBBY';
+  const targetFloor = preloader.getAttribute('data-floor') || 'GF';
+  const targetArrival = preloader.getAttribute('data-arrival') || 'ARRIVED • GROUND FLOOR';
 
   let isDismissed = false;
 
@@ -1346,17 +1375,19 @@ function initElevatorPreloader() {
   });
 
   // Dynamic ascent floors list tailored to target destination
-  let floorsList = ['B1', 'G', '01'];
+  let floorsList = ['B2', 'B1', 'GF'];
   if (targetFloor === '01') {
-    floorsList = ['B2', 'B1', 'G', '01'];
+    floorsList = ['B2', 'B1', 'GF', '01'];
   } else if (targetFloor === '02') {
-    floorsList = ['B1', 'G', '01', '02'];
+    floorsList = ['B1', 'GF', '01', '02'];
   } else if (targetFloor === '03') {
-    floorsList = ['G', '01', '02', '03'];
+    floorsList = ['GF', '01', '02', '03'];
   } else if (targetFloor === '04') {
-    floorsList = ['G', '01', '02', '03', '04'];
+    floorsList = ['GF', '01', '02', '03', '04'];
+  } else if (targetFloor === '05') {
+    floorsList = ['GF', '01', '02', '03', '04', '05'];
   } else {
-    floorsList = ['B1', 'G', 'L'];
+    floorsList = ['B2', 'B1', 'GF'];
   }
 
   // Step 1: Initial rapid ascent simulation (0ms to 480ms)

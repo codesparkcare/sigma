@@ -5,6 +5,7 @@ $cur = uri_string();
 $is_home     = ($cur == '' || $cur == 'welcome' || $cur == 'welcome/index');
 $is_about    = ($cur == 'about' || $cur == 'welcome/about');
 $is_services = (strpos($cur, 'services') === 0 || strpos($cur, 'service') === 0);
+$is_products = (strpos($cur, 'products') === 0 || strpos($cur, 'product') === 0);
 $is_projects = (strpos($cur, 'projects') === 0 || strpos($cur, 'project') === 0);
 $is_contact  = ($cur == 'contact' || $cur == 'welcome/contact');
 
@@ -16,18 +17,22 @@ if ($is_about) {
     $active_page_name     = 'SERVICES';
     $active_floor_code    = '02';
     $active_arrival_title = 'ARRIVED • ELEVATOR SERVICES';
+} elseif ($is_products) {
+    $active_page_name     = 'PRODUCTS';
+    $active_floor_code    = '03';
+    $active_arrival_title = 'ARRIVED • ELEVATOR PRODUCTS';
 } elseif ($is_projects) {
     $active_page_name     = 'PROJECTS';
-    $active_floor_code    = '03';
+    $active_floor_code    = '04';
     $active_arrival_title = 'ARRIVED • SIGNATURE PROJECTS';
 } elseif ($is_contact) {
     $active_page_name     = 'CONTACT US';
-    $active_floor_code    = '04';
+    $active_floor_code    = '05';
     $active_arrival_title = 'ARRIVED • CONTACT & SUPPORT';
 } else {
     $active_page_name     = 'HOME';
-    $active_floor_code    = 'L';
-    $active_arrival_title = 'ARRIVED • MAIN LOBBY';
+    $active_floor_code    = 'GF';
+    $active_arrival_title = 'ARRIVED • GROUND FLOOR';
 }
 
 if (!isset($contact) || empty($contact)) {
@@ -265,6 +270,7 @@ $meta_desc  = !empty($meta_description) ? $meta_description : 'Sigma Height Elev
           <li class="nav-item"><a href="<?= site_url('') ?>" class="nav-link <?= $is_home ? 'active' : '' ?>">Home</a></li>
           <li class="nav-item"><a href="<?= site_url('about') ?>" class="nav-link <?= $is_about ? 'active' : '' ?>">About Us</a></li>
           <li class="nav-item"><a href="<?= site_url('services') ?>" class="nav-link <?= $is_services ? 'active' : '' ?>">Services</a></li>
+          <li class="nav-item"><a href="<?= site_url('products') ?>" class="nav-link <?= $is_products ? 'active' : '' ?>">Products</a></li>
           <li class="nav-item"><a href="<?= site_url('projects') ?>" class="nav-link <?= $is_projects ? 'active' : '' ?>">Projects</a></li>
           <li class="nav-item"><a href="<?= site_url('contact') ?>" class="nav-link <?= $is_contact ? 'active' : '' ?>">Contact Us</a></li>
         </ul>
@@ -298,6 +304,7 @@ $meta_desc  = !empty($meta_description) ? $meta_description : 'Sigma Height Elev
         <li><a href="<?= site_url('') ?>" class="<?= $is_home ? 'active' : '' ?>">Home</a></li>
         <li><a href="<?= site_url('about') ?>" class="<?= $is_about ? 'active' : '' ?>">About Us</a></li>
         <li><a href="<?= site_url('services') ?>" class="<?= $is_services ? 'active' : '' ?>">Services</a></li>
+        <li><a href="<?= site_url('products') ?>" class="<?= $is_products ? 'active' : '' ?>">Products</a></li>
         <li><a href="<?= site_url('projects') ?>" class="<?= $is_projects ? 'active' : '' ?>">Projects</a></li>
         <li><a href="<?= site_url('contact') ?>" class="<?= $is_contact ? 'active' : '' ?>">Contact Us</a></li>
       </ul>

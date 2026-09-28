@@ -78,9 +78,9 @@ $is_local = (isset($_SERVER['HTTP_HOST']) && (strpos($_SERVER['HTTP_HOST'], 'loc
 if ($is_local) {
 	// Localhost / XAMPP Configuration
 	$db['default'] = array(
-		'dsn'	=> '',
+		'dsn' => '',
 		'hostname' => '127.0.0.1',
-		'port' => 3306,
+		'port' => 3307,
 		'username' => 'root',
 		'password' => '',
 		'database' => 'sigma',
@@ -102,7 +102,7 @@ if ($is_local) {
 } else {
 	// Live Server Configuration
 	$db['default'] = array(
-		'dsn'	=> '',
+		'dsn' => '',
 		'hostname' => 'localhost',
 		'username' => 'sigmahei_rathi',
 		'password' => 'Rathi@123*#',

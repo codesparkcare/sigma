@@ -1,7 +1,7 @@
 <div class="row g-4 mb-4">
     <!-- Stat 1: Services -->
-    <div class="col-sm-6 col-xl-3">
-        <div class="admin-card mb-0 p-4 d-flex align-items-center justify-content-between">
+    <div class="col-sm-6 col-xl">
+        <div class="admin-card mb-0 p-4 d-flex align-items-center justify-content-between h-100">
             <div>
                 <div class="text-muted text-uppercase fw-bold" style="font-size: 0.75rem; letter-spacing: 0.8px;">Services</div>
                 <div class="fs-2 fw-bold text-dark mt-1"><?= $count_services ?></div>
@@ -9,15 +9,31 @@
                     Manage Services <i class="fa-solid fa-arrow-right ms-1"></i>
                 </a>
             </div>
-            <div style="width: 52px; height: 52px; border-radius: 12px; background: rgba(37, 99, 235, 0.1); color: #2563eb; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(37, 99, 235, 0.1); color: #2563eb; display: flex; align-items: center; justify-content: center; font-size: 1.35rem;">
                 <i class="fa-solid fa-screwdriver-wrench"></i>
             </div>
         </div>
     </div>
 
-    <!-- Stat 2: Total Projects -->
-    <div class="col-sm-6 col-xl-3">
-        <div class="admin-card mb-0 p-4 d-flex align-items-center justify-content-between">
+    <!-- Stat 2: Products -->
+    <div class="col-sm-6 col-xl">
+        <div class="admin-card mb-0 p-4 d-flex align-items-center justify-content-between h-100">
+            <div>
+                <div class="text-muted text-uppercase fw-bold" style="font-size: 0.75rem; letter-spacing: 0.8px;">Products</div>
+                <div class="fs-2 fw-bold text-dark mt-1"><?= isset($count_products) ? $count_products : 0 ?></div>
+                <a href="<?= site_url('admin/products') ?>" class="text-decoration-none text-danger fw-semibold" style="font-size: 0.82rem;">
+                    Manage Products <i class="fa-solid fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(147, 51, 234, 0.1); color: #9333ea; display: flex; align-items: center; justify-content: center; font-size: 1.35rem;">
+                <i class="fa-solid fa-boxes-stacked"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stat 3: Total Projects -->
+    <div class="col-sm-6 col-xl">
+        <div class="admin-card mb-0 p-4 d-flex align-items-center justify-content-between h-100">
             <div>
                 <div class="text-muted text-uppercase fw-bold" style="font-size: 0.75rem; letter-spacing: 0.8px;">Total Projects</div>
                 <div class="fs-2 fw-bold text-dark mt-1"><?= $count_projects ?></div>
@@ -25,15 +41,15 @@
                     Manage Projects <i class="fa-solid fa-arrow-right ms-1"></i>
                 </a>
             </div>
-            <div style="width: 52px; height: 52px; border-radius: 12px; background: rgba(16, 185, 129, 0.1); color: #10b981; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(16, 185, 129, 0.1); color: #10b981; display: flex; align-items: center; justify-content: center; font-size: 1.35rem;">
                 <i class="fa-solid fa-building"></i>
             </div>
         </div>
     </div>
 
-    <!-- Stat 3: Client Reviews -->
-    <div class="col-sm-6 col-xl-3">
-        <div class="admin-card mb-0 p-4 d-flex align-items-center justify-content-between">
+    <!-- Stat 4: Client Reviews -->
+    <div class="col-sm-6 col-xl">
+        <div class="admin-card mb-0 p-4 d-flex align-items-center justify-content-between h-100">
             <div>
                 <div class="text-muted text-uppercase fw-bold" style="font-size: 0.75rem; letter-spacing: 0.8px;">Client Reviews</div>
                 <div class="fs-2 fw-bold text-dark mt-1"><?= $count_reviews ?></div>
@@ -41,23 +57,23 @@
                     Manage Reviews <i class="fa-solid fa-arrow-right ms-1"></i>
                 </a>
             </div>
-            <div style="width: 52px; height: 52px; border-radius: 12px; background: rgba(245, 158, 11, 0.1); color: #f59e0b; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(245, 158, 11, 0.1); color: #f59e0b; display: flex; align-items: center; justify-content: center; font-size: 1.35rem;">
                 <i class="fa-solid fa-star"></i>
             </div>
         </div>
     </div>
 
-    <!-- Stat 4: Contact / Inquiries -->
-    <div class="col-sm-6 col-xl-3">
-        <div class="admin-card mb-0 p-4 d-flex align-items-center justify-content-between">
+    <!-- Stat 5: Contact / Inquiries -->
+    <div class="col-sm-6 col-xl">
+        <div class="admin-card mb-0 p-4 d-flex align-items-center justify-content-between h-100">
             <div>
-                <div class="text-muted text-uppercase fw-bold" style="font-size: 0.75rem; letter-spacing: 0.8px;">Contact</div>
+                <div class="text-muted text-uppercase fw-bold" style="font-size: 0.75rem; letter-spacing: 0.8px;">Inquiries</div>
                 <div class="fs-2 fw-bold text-dark mt-1"><?= $count_enquiries ?></div>
                 <a href="<?= site_url('admin/enquiries') ?>" class="text-decoration-none text-danger fw-semibold" style="font-size: 0.82rem;">
                     View Inquiries <i class="fa-solid fa-arrow-right ms-1"></i>
                 </a>
             </div>
-            <div style="width: 52px; height: 52px; border-radius: 12px; background: rgba(230, 0, 0, 0.1); color: #e60000; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(230, 0, 0, 0.1); color: #e60000; display: flex; align-items: center; justify-content: center; font-size: 1.35rem;">
                 <i class="fa-solid fa-envelope-open-text"></i>
             </div>
         </div>
@@ -76,6 +92,9 @@
             </a>
             <a href="<?= site_url('admin/add_service') ?>" class="btn btn-outline-dark d-inline-flex align-items-center gap-2 fw-semibold">
                 <i class="fa-solid fa-plus"></i> Add Elevator Service
+            </a>
+            <a href="<?= site_url('admin/add_product') ?>" class="btn btn-outline-danger d-inline-flex align-items-center gap-2 fw-semibold">
+                <i class="fa-solid fa-plus"></i> Add Elevator Product
             </a>
             <a href="<?= site_url('admin/add_project') ?>" class="btn btn-outline-dark d-inline-flex align-items-center gap-2 fw-semibold">
                 <i class="fa-solid fa-plus"></i> Add Portfolio Project

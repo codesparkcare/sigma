@@ -178,17 +178,39 @@ $this->load->view('includes/header', ['title' => $title, 'meta_description' => $
 </style>
 
   <!-- HERO BANNER -->
-  <section class="page-hero-banner">
-    <div class="container">
+  <?php 
+    $hero_slide = !empty($sliders) ? $sliders[0] : null;
+    $hero_bg = ($hero_slide && !empty($hero_slide['image'])) ? base_url($hero_slide['image']) : null;
+    $hero_btn_link = $hero_slide ? $hero_slide['button_link'] : 'contact';
+    $hero_href = (strpos($hero_btn_link, 'http') === 0 || strpos($hero_btn_link, '#') === 0) ? $hero_btn_link : site_url($hero_btn_link);
+  ?>
+  <section class="page-hero-banner" style="<?= $hero_bg ? "background: linear-gradient(rgba(9, 13, 22, 0.88), rgba(17, 24, 39, 0.94)), url('{$hero_bg}') center/cover no-repeat;" : '' ?>">
+    <div class="container position-relative" style="z-index: 2;">
       <div class="breadcrumb-nav">
         <a href="<?= site_url('') ?>"><i class="fa-solid fa-house"></i> Home</a>
         <i class="fa-solid fa-chevron-right" style="font-size: 0.7rem;"></i>
         <span>Projects Showcase</span>
       </div>
-      <h1 class="page-hero-title">Our Landmark Elevator <span>Projects Portfolio</span></h1>
+      <?php if ($hero_slide && !empty($hero_slide['badge_text'])): ?>
+        <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(230,0,0,0.18); border: 1px solid rgba(230,0,0,0.4); color: #ff6666; font-size: 0.82rem; font-weight: 600; padding: 5px 14px; border-radius: 30px; margin-bottom: 14px;">
+          <i class="fa-solid fa-certificate"></i> <?= htmlspecialchars($hero_slide['badge_text']) ?>
+        </div>
+      <?php endif; ?>
+      <h1 class="page-hero-title">
+        <?= $hero_slide ? htmlspecialchars($hero_slide['title']) : 'Our Landmark Elevator' ?> 
+        <span><?= $hero_slide ? htmlspecialchars($hero_slide['highlight_text']) : 'Projects Portfolio' ?></span>
+      </h1>
       <p style="color: #cbd5e1; max-width: 680px; font-size: 1.1rem; line-height: 1.6;">
-        Explore our completed installations across Palm Jumeirah villas, Emirates Hills estates, Downtown business towers, and luxury hotel atriums in Dubai.
+        <?= $hero_slide ? htmlspecialchars($hero_slide['subtitle']) : 'Explore our completed installations across Palm Jumeirah villas, Emirates Hills estates, Downtown business towers, and luxury hotel atriums in Dubai.' ?>
       </p>
+      <?php if ($hero_slide && !empty($hero_slide['button_text'])): ?>
+        <div style="margin-top: 24px;">
+          <a href="<?= $hero_href ?>" class="btn-theme text-white" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 26px; border-radius: 8px; text-decoration: none; font-weight: 600;">
+            <span><?= htmlspecialchars($hero_slide['button_text']) ?></span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      <?php endif; ?>
     </div>
   </section>
 
